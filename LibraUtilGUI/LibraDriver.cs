@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium;
 using System.IO;
 using System.Reflection;
 using System.Threading;
@@ -96,6 +96,7 @@ namespace LibraUtilGUI
         }
 
         //スクリーンショットを撮る
+
         //シャットダウン
         public void shutdown()
         {

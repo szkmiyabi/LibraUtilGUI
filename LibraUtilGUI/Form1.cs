@@ -21,19 +21,24 @@ namespace LibraUtilGUI
         public Form1()
         {
             InitializeComponent();
+            settings_filename = Application.UserAppDataPath + @"\settings.config";
+            loadAppSettings();
         }
-
-
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int[] appWait = { 60, 10, 6, 5 };
-            LibraDriver ldr = new LibraDriver("", "", "600", appWait, "chrome", "no", "no");
+            int[] appWait = { systemWait, longWait, midWait, shortWait };
+            LibraDriver ldr = new LibraDriver(uid, pswd, "600", appWait, driver, headless, basic_auth);
             ldr.login();
             Thread.Sleep(5000);
             ldr.logout();
             ldr.shutdown();
 
+        }
+
+        private void FileMenuSettings_Click(object sender, EventArgs e)
+        {
+            showSettingsForm();
         }
     }
 
