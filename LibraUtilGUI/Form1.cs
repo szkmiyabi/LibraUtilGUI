@@ -23,29 +23,17 @@ namespace LibraUtilGUI
             InitializeComponent();
         }
 
-        private void browse_ch()
-        {
-            ChromeDriver driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
-            string url = "https://www.google.com/";
-            driver.Url = url;
-            Thread.Sleep(5000);
-            driver.Quit();
-        }
 
-
-        private void browse_fx()
-        {
-            FirefoxDriver driver = new FirefoxDriver(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
-            string url = "https://www.google.com/";
-            driver.Url = url;
-            Thread.Sleep(5000);
-            driver.Quit();
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            browse_ch();
-            browse_fx();
+            int[] appWait = { 60, 10, 6, 5 };
+            LibraDriver ldr = new LibraDriver("", "", "600", appWait, "chrome", "no", "no");
+            ldr.login();
+            Thread.Sleep(5000);
+            ldr.logout();
+            ldr.shutdown();
+
         }
     }
 
