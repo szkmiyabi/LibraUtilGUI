@@ -30,13 +30,13 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.uidText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pswdText = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.guidelineLevelCombo = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.systemWaitCombo = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,26 +45,31 @@
             this.midWaitCombo = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.shortWaitCombo = new System.Windows.Forms.NumericUpDown();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.driverCombo = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.headlessCombo = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.guidelineLevelCombo = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.basicAuthCombo = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.OkButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.workDirText = new System.Windows.Forms.TextBox();
+            this.workDirBrowseButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.systemWaitCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.longWaitCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.midWaitCombo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shortWaitCombo)).BeginInit();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -74,16 +79,18 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel4, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel4, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel5, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.05479F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.94521F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(536, 155);
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.11267F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.88733F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(536, 174);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -97,49 +104,8 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(530, 30);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(530, 26);
             this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.label3);
-            this.flowLayoutPanel2.Controls.Add(this.systemWaitCombo);
-            this.flowLayoutPanel2.Controls.Add(this.label4);
-            this.flowLayoutPanel2.Controls.Add(this.longWaitCombo);
-            this.flowLayoutPanel2.Controls.Add(this.label5);
-            this.flowLayoutPanel2.Controls.Add(this.midWaitCombo);
-            this.flowLayoutPanel2.Controls.Add(this.label6);
-            this.flowLayoutPanel2.Controls.Add(this.shortWaitCombo);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 39);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(530, 27);
-            this.flowLayoutPanel2.TabIndex = 1;
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.label7);
-            this.flowLayoutPanel3.Controls.Add(this.driverCombo);
-            this.flowLayoutPanel3.Controls.Add(this.label8);
-            this.flowLayoutPanel3.Controls.Add(this.headlessCombo);
-            this.flowLayoutPanel3.Controls.Add(this.label10);
-            this.flowLayoutPanel3.Controls.Add(this.basicAuthCombo);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 72);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(530, 39);
-            this.flowLayoutPanel3.TabIndex = 2;
-            // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.Controls.Add(this.OkButton);
-            this.flowLayoutPanel4.Controls.Add(this.CancelButton);
-            this.flowLayoutPanel4.Controls.Add(this.ClearButton);
-            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(166, 117);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(367, 35);
-            this.flowLayoutPanel4.TabIndex = 3;
             // 
             // label1
             // 
@@ -172,6 +138,43 @@
             this.pswdText.Name = "pswdText";
             this.pswdText.Size = new System.Drawing.Size(100, 19);
             this.pswdText.TabIndex = 3;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(325, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(88, 12);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "ガイドラインレベル";
+            // 
+            // guidelineLevelCombo
+            // 
+            this.guidelineLevelCombo.FormattingEnabled = true;
+            this.guidelineLevelCombo.Items.AddRange(new object[] {
+            "AA",
+            "A",
+            "AAA"});
+            this.guidelineLevelCombo.Location = new System.Drawing.Point(419, 3);
+            this.guidelineLevelCombo.Name = "guidelineLevelCombo";
+            this.guidelineLevelCombo.Size = new System.Drawing.Size(61, 20);
+            this.guidelineLevelCombo.TabIndex = 5;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.label3);
+            this.flowLayoutPanel2.Controls.Add(this.systemWaitCombo);
+            this.flowLayoutPanel2.Controls.Add(this.label4);
+            this.flowLayoutPanel2.Controls.Add(this.longWaitCombo);
+            this.flowLayoutPanel2.Controls.Add(this.label5);
+            this.flowLayoutPanel2.Controls.Add(this.midWaitCombo);
+            this.flowLayoutPanel2.Controls.Add(this.label6);
+            this.flowLayoutPanel2.Controls.Add(this.shortWaitCombo);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 35);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(530, 24);
+            this.flowLayoutPanel2.TabIndex = 1;
             // 
             // label3
             // 
@@ -282,6 +285,20 @@
             0,
             0});
             // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.label7);
+            this.flowLayoutPanel3.Controls.Add(this.driverCombo);
+            this.flowLayoutPanel3.Controls.Add(this.label8);
+            this.flowLayoutPanel3.Controls.Add(this.headlessCombo);
+            this.flowLayoutPanel3.Controls.Add(this.label10);
+            this.flowLayoutPanel3.Controls.Add(this.basicAuthCombo);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 65);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(530, 29);
+            this.flowLayoutPanel3.TabIndex = 2;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -322,27 +339,6 @@
             this.headlessCombo.Size = new System.Drawing.Size(65, 20);
             this.headlessCombo.TabIndex = 3;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(325, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(88, 12);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "ガイドラインレベル";
-            // 
-            // guidelineLevelCombo
-            // 
-            this.guidelineLevelCombo.FormattingEnabled = true;
-            this.guidelineLevelCombo.Items.AddRange(new object[] {
-            "AA",
-            "A",
-            "AAA"});
-            this.guidelineLevelCombo.Location = new System.Drawing.Point(419, 3);
-            this.guidelineLevelCombo.Name = "guidelineLevelCombo";
-            this.guidelineLevelCombo.Size = new System.Drawing.Size(61, 20);
-            this.guidelineLevelCombo.TabIndex = 5;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -362,6 +358,17 @@
             this.basicAuthCombo.Name = "basicAuthCombo";
             this.basicAuthCombo.Size = new System.Drawing.Size(62, 20);
             this.basicAuthCombo.TabIndex = 7;
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.OkButton);
+            this.flowLayoutPanel4.Controls.Add(this.CancelButton);
+            this.flowLayoutPanel4.Controls.Add(this.ClearButton);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(166, 139);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(367, 32);
+            this.flowLayoutPanel4.TabIndex = 3;
             // 
             // OkButton
             // 
@@ -393,11 +400,48 @@
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Controls.Add(this.label11);
+            this.flowLayoutPanel5.Controls.Add(this.workDirText);
+            this.flowLayoutPanel5.Controls.Add(this.workDirBrowseButton);
+            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 100);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(530, 33);
+            this.flowLayoutPanel5.TabIndex = 4;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(78, 12);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "作業ディレクトリ";
+            // 
+            // workDirText
+            // 
+            this.workDirText.Location = new System.Drawing.Point(87, 3);
+            this.workDirText.Name = "workDirText";
+            this.workDirText.Size = new System.Drawing.Size(326, 19);
+            this.workDirText.TabIndex = 1;
+            // 
+            // workDirBrowseButton
+            // 
+            this.workDirBrowseButton.Location = new System.Drawing.Point(419, 3);
+            this.workDirBrowseButton.Name = "workDirBrowseButton";
+            this.workDirBrowseButton.Size = new System.Drawing.Size(47, 23);
+            this.workDirBrowseButton.TabIndex = 2;
+            this.workDirBrowseButton.Text = "参照";
+            this.workDirBrowseButton.UseVisualStyleBackColor = true;
+            this.workDirBrowseButton.Click += new System.EventHandler(this.workDirBrowseButton_Click);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 155);
+            this.ClientSize = new System.Drawing.Size(536, 174);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -408,13 +452,15 @@
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
-            this.flowLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.systemWaitCombo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.longWaitCombo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.midWaitCombo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shortWaitCombo)).EndInit();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel5.ResumeLayout(false);
+            this.flowLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -449,5 +495,9 @@
         private System.Windows.Forms.Button OkButton;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox workDirText;
+        private System.Windows.Forms.Button workDirBrowseButton;
     }
 }

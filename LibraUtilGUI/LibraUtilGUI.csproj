@@ -82,6 +82,7 @@
     <Compile Include="Background.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DateUtil.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

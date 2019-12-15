@@ -23,6 +23,7 @@ namespace LibraUtilGUI
         private string headless;
         private string guidelineLevel;
         private string basic_auth;
+        private string workDir;
 
 
         //環境設定
@@ -60,6 +61,8 @@ namespace LibraUtilGUI
                 headless = appSettings.headless;
                 guidelineLevel = appSettings.guidelineLevel;
                 basic_auth = appSettings.basic_auth;
+                workDir = appSettings.workDir;
+                if (appSettings.workDir == "") workDir = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
 
             }
             catch (Exception ex)

@@ -17,6 +17,7 @@ namespace LibraUtilGUI
         private string _headless;
         private string _guidelineLevel;
         private string _basic_auth;
+        private string _workDir;
 
         public string uid
         {
@@ -78,6 +79,12 @@ namespace LibraUtilGUI
             set { _basic_auth = value; }
         }
 
+        public string workDir
+        {
+            get { return _workDir; }
+            set { _workDir = value; }
+        }
+
         //コンストラクタ
         public Settings()
         {
@@ -91,6 +98,7 @@ namespace LibraUtilGUI
             _headless = "";
             _guidelineLevel = "";
             _basic_auth = "";
+            _workDir = "";
         }
 
     }

@@ -30,10 +30,15 @@ namespace LibraUtilGUI
         private void button1_Click(object sender, EventArgs e)
         {
             int[] appWait = { systemWait, longWait, midWait, shortWait };
-            LibraDriver ldr = new LibraDriver(uid, pswd, "600", appWait, driver, headless, basic_auth);
+            LibraDriver ldr = new LibraDriver(uid, pswd, "600", appWait, driver, headless, basic_auth, workDir);
             ldr.login();
-            Thread.Sleep(5000);
-            ldr.screenshot("test2");
+            DateUtil.app_sleep(5);
+            // ldr.screenshot(DateUtil.fetch_filename_from_datetime("png"));
+            string save_path = workDir + @"test-191\";
+            if (!Directory.Exists(save_path)) Directory.CreateDirectory(save_path);
+            save_path += DateUtil.fetch_filename_from_datetime("png");
+
+            ldr.screenshot_as(save_path);
             ldr.logout();
             ldr.shutdown();
 

@@ -33,9 +33,10 @@ namespace LibraUtilGUI
         private List<List<string>> rep_data;
         private string basic_auth_flag;
         private Boolean basic_authenicated;
+        private string workDir;
 
         //コンストラクタ
-        public LibraDriver(string uid, string pswd, string projectID, int[] appWait, string driver_type, string headless_flag, string basic_auth_flag)
+        public LibraDriver(string uid, string pswd, string projectID, int[] appWait, string driver_type, string headless_flag, string basic_auth_flag, string workDir)
         {
             this.uid = uid;
             this.pswd = pswd;
@@ -44,6 +45,7 @@ namespace LibraUtilGUI
             longWait = appWait[1];
             midWait = appWait[2];
             shortWait = appWait[3];
+            this.workDir = workDir;
 
             //レポートデータ初期化
 
@@ -99,8 +101,15 @@ namespace LibraUtilGUI
         public void screenshot(string filename)
         {
             Screenshot sc = ((ITakesScreenshot)wd).GetScreenshot();
-            string save_dir = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.DesktopDirectory), filename + ".png");
+            string save_dir = workDir + filename + ".png";
             sc.SaveAsFile(save_dir, OpenQA.Selenium.ScreenshotImageFormat.Png);
+        }
+
+        //スクリーンショットを撮る（ディレクトリ指定）
+        public void screenshot_as(string save_path)
+        {
+            Screenshot sc = ((ITakesScreenshot)wd).GetScreenshot();
+            sc.SaveAsFile(save_path, OpenQA.Selenium.ScreenshotImageFormat.Png);
         }
 
         //シャットダウン

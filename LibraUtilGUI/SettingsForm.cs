@@ -40,6 +40,8 @@ namespace LibraUtilGUI
                 appSettings.headless = (string)headlessCombo.SelectedItem;
                 appSettings.guidelineLevel = (string)guidelineLevelCombo.SelectedItem;
                 appSettings.basic_auth = (string)basicAuthCombo.SelectedItem;
+                appSettings.workDir = workDirText.Text;
+                if (workDirText.Text == "") appSettings.workDir = getDefaultWorkDir();
 
                 XmlSerializer xsz = new XmlSerializer(typeof(Settings));
                 StreamWriter sw = new StreamWriter(
@@ -79,6 +81,8 @@ namespace LibraUtilGUI
                 headlessCombo.Text = appSettings.headless;
                 guidelineLevelCombo.Text = appSettings.guidelineLevel;
                 basicAuthCombo.Text = appSettings.basic_auth;
+                workDirText.Text = appSettings.workDir;
+                if (appSettings.workDir == "") workDirText.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
 
             }
             catch(Exception ex)
@@ -102,6 +106,7 @@ namespace LibraUtilGUI
                 appSettings.headless = "";
                 appSettings.guidelineLevel = "";
                 appSettings.basic_auth = "";
+                appSettings.workDir = "";
 
                 XmlSerializer xsz = new XmlSerializer(typeof(Settings));
                 StreamWriter sw = new StreamWriter(
@@ -122,6 +127,7 @@ namespace LibraUtilGUI
                 headlessCombo.Text = "";
                 guidelineLevelCombo.Text = "";
                 basicAuthCombo.Text = "";
+                workDirText.Text = "";
                 MessageBox.Show("設定が削除できました。");
 
             }
@@ -129,6 +135,25 @@ namespace LibraUtilGUI
             {
                 MessageBox.Show("設定が保存でませんでした。" + ex.Message);
             }
+        }
+
+        //作業ディレクトリをセットする
+        private void setWorkDir()
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "フォルダを指定してください";
+            fbd.RootFolder = Environment.SpecialFolder.Desktop;
+            fbd.ShowNewFolderButton = true;
+            if(fbd.ShowDialog(this) == DialogResult.OK)
+            {
+                workDirText.Text = fbd.SelectedPath + @"\";
+            }
+        }
+
+        //デフォルトの作業ディレクトリを取得
+        private string getDefaultWorkDir()
+        {
+            return Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -145,6 +170,11 @@ namespace LibraUtilGUI
         private void ClearButton_Click(object sender, EventArgs e)
         {
             deleteSettings();
+        }
+
+        private void workDirBrowseButton_Click(object sender, EventArgs e)
+        {
+            setWorkDir();
         }
     }
 }
