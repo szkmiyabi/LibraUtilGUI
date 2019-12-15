@@ -112,6 +112,34 @@ namespace LibraUtilGUI
             sc.SaveAsFile(save_path, OpenQA.Selenium.ScreenshotImageFormat.Png);
         }
 
+        //fullpage screenshotを撮る
+        public void fullpage_screenshot(string filename)
+        {
+            IJavaScriptExecutor jsexe = (IJavaScriptExecutor)wd;
+            string ret = jsexe.ExecuteScript("return document.body.parentNode.scrollHeight;").ToString();
+            int require_height = Int32.Parse(ret);
+            wd.Manage().Window.Size = new System.Drawing.Size(1280, require_height);
+            DateUtil.app_sleep(longWait);
+            Screenshot sc = ((ITakesScreenshot)wd).GetScreenshot();
+            string save_dir = workDir + @"screenshots\";
+            if (!Directory.Exists(save_dir)) Directory.CreateDirectory(save_dir);
+            sc.SaveAsFile(save_dir + filename + ".png", OpenQA.Selenium.ScreenshotImageFormat.Png);
+            wd.Manage().Window.Size = new System.Drawing.Size(1280, 900);
+        }
+
+        //fullpage screenshotを撮る（ディレクトリも指定）
+        public void fullpage_screenshot_as(string save_path)
+        {
+            IJavaScriptExecutor jsexe = (IJavaScriptExecutor)wd;
+            string ret = jsexe.ExecuteScript("return document.body.parentNode.scrollHeight;").ToString();
+            int require_height = Int32.Parse(ret);
+            wd.Manage().Window.Size = new System.Drawing.Size(1280, require_height);
+            DateUtil.app_sleep(longWait);
+            Screenshot sc = ((ITakesScreenshot)wd).GetScreenshot();
+            sc.SaveAsFile(save_path, OpenQA.Selenium.ScreenshotImageFormat.Png);
+            wd.Manage().Window.Size = new System.Drawing.Size(1280, 900);
+        }
+
         //シャットダウン
         public void shutdown()
         {

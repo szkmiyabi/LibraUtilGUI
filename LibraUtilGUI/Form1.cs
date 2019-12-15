@@ -34,11 +34,12 @@ namespace LibraUtilGUI
             ldr.login();
             DateUtil.app_sleep(5);
             // ldr.screenshot(DateUtil.fetch_filename_from_datetime("png"));
-            string save_path = workDir + @"test-191\";
-            if (!Directory.Exists(save_path)) Directory.CreateDirectory(save_path);
-            save_path += DateUtil.fetch_filename_from_datetime("png");
+            //string save_path = workDir + @"test-191\";
+            //if (!Directory.Exists(save_path)) Directory.CreateDirectory(save_path);
+            //save_path += DateUtil.fetch_filename_from_datetime("png");
 
-            ldr.screenshot_as(save_path);
+            //ldr.fullpage_screenshot_as(save_path);
+            ldr.fullpage_screenshot(DateUtil.fetch_filename_from_datetime("png"));
             ldr.logout();
             ldr.shutdown();
 
