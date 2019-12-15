@@ -23,6 +23,8 @@ namespace LibraUtilGUI
             InitializeComponent();
             settings_filename = Application.UserAppDataPath + @"\settings.config";
             loadAppSettings();
+
+            toolStripStatusLabel1.Text = "はじめに事前処理を実行してください。";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,6 +33,7 @@ namespace LibraUtilGUI
             LibraDriver ldr = new LibraDriver(uid, pswd, "600", appWait, driver, headless, basic_auth);
             ldr.login();
             Thread.Sleep(5000);
+            ldr.screenshot("test2");
             ldr.logout();
             ldr.shutdown();
 

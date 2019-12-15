@@ -96,6 +96,12 @@ namespace LibraUtilGUI
         }
 
         //スクリーンショットを撮る
+        public void screenshot(string filename)
+        {
+            Screenshot sc = ((ITakesScreenshot)wd).GetScreenshot();
+            string save_dir = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.DesktopDirectory), filename + ".png");
+            sc.SaveAsFile(save_dir, OpenQA.Selenium.ScreenshotImageFormat.Png);
+        }
 
         //シャットダウン
         public void shutdown()
