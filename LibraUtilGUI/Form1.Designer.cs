@@ -37,25 +37,25 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.PIDListBox = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.operationStatusReport = new System.Windows.Forms.TextBox();
+            this.cancelOperationButton = new System.Windows.Forms.Button();
+            this.doOperationButton = new System.Windows.Forms.Button();
+            this.preOperationButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.preOperationButton = new System.Windows.Forms.Button();
-            this.doOperationButton = new System.Windows.Forms.Button();
-            this.cancelOperationButton = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.operationStatusReport = new System.Windows.Forms.TextBox();
             this.appMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -148,6 +148,83 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "オペレーション";
             // 
+            // cancelOperationButton
+            // 
+            this.cancelOperationButton.Location = new System.Drawing.Point(479, 100);
+            this.cancelOperationButton.Name = "cancelOperationButton";
+            this.cancelOperationButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelOperationButton.TabIndex = 4;
+            this.cancelOperationButton.Text = "キャンセル";
+            this.cancelOperationButton.UseVisualStyleBackColor = true;
+            // 
+            // doOperationButton
+            // 
+            this.doOperationButton.Location = new System.Drawing.Point(479, 71);
+            this.doOperationButton.Name = "doOperationButton";
+            this.doOperationButton.Size = new System.Drawing.Size(75, 23);
+            this.doOperationButton.TabIndex = 3;
+            this.doOperationButton.Text = "実行";
+            this.doOperationButton.UseVisualStyleBackColor = true;
+            // 
+            // preOperationButton
+            // 
+            this.preOperationButton.Location = new System.Drawing.Point(479, 37);
+            this.preOperationButton.Name = "preOperationButton";
+            this.preOperationButton.Size = new System.Drawing.Size(75, 23);
+            this.preOperationButton.TabIndex = 2;
+            this.preOperationButton.Text = "事前処理";
+            this.preOperationButton.UseVisualStyleBackColor = true;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Location = new System.Drawing.Point(3, 15);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(470, 112);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(462, 86);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "URL";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(462, 86);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "REPORT";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(462, 86);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "PRESV";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(462, 86);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "SRC";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -184,83 +261,6 @@
             this.operationStatusReport.Size = new System.Drawing.Size(554, 82);
             this.operationStatusReport.TabIndex = 0;
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(3, 15);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(470, 112);
-            this.tabControl1.TabIndex = 1;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(462, 86);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "URL";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(418, 86);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "REPORT";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(418, 86);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "PRESV";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(418, 86);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "SRC";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // preOperationButton
-            // 
-            this.preOperationButton.Location = new System.Drawing.Point(479, 37);
-            this.preOperationButton.Name = "preOperationButton";
-            this.preOperationButton.Size = new System.Drawing.Size(75, 23);
-            this.preOperationButton.TabIndex = 2;
-            this.preOperationButton.Text = "事前処理";
-            this.preOperationButton.UseVisualStyleBackColor = true;
-            // 
-            // doOperationButton
-            // 
-            this.doOperationButton.Location = new System.Drawing.Point(479, 71);
-            this.doOperationButton.Name = "doOperationButton";
-            this.doOperationButton.Size = new System.Drawing.Size(75, 23);
-            this.doOperationButton.TabIndex = 3;
-            this.doOperationButton.Text = "実行";
-            this.doOperationButton.UseVisualStyleBackColor = true;
-            // 
-            // cancelOperationButton
-            // 
-            this.cancelOperationButton.Location = new System.Drawing.Point(479, 100);
-            this.cancelOperationButton.Name = "cancelOperationButton";
-            this.cancelOperationButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelOperationButton.TabIndex = 4;
-            this.cancelOperationButton.Text = "キャンセル";
-            this.cancelOperationButton.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -281,11 +281,11 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
