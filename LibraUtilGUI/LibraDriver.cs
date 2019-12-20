@@ -13,6 +13,7 @@ using System.Windows.Forms;
 
 using AngleSharp;
 using AngleSharp.Parser;
+using System.Text.RegularExpressions;
 
 namespace LibraUtilGUI
 {
@@ -196,41 +197,32 @@ namespace LibraUtilGUI
             return rep_detail_url_base + _projectID + "/controlID/" + pageID + "/guideline/" + guidelineID + "/";
         }
 
-        //DOMを取得
-        public AngleSharp.Dom.Html.IHtmlDocument get_dom()
-        {
-            AngleSharp.Parser.Html.HtmlParser parser = new AngleSharp.Parser.Html.HtmlParser();
-            AngleSharp.Dom.Html.IHtmlDocument dom = parser.Parse(_wd.PageSource);
-            return dom;
-        }
-
         //サイト一覧を取得
         public List<List<string>> get_site_list()
         {
             List<List<string>> data = new List<List<string>>();
-            IWebElement tbl = _wd.FindElement(By.Id("myTable"));
-            IEnumerable<IWebElement> trs = tbl.FindElements(By.TagName("tr")).Cast<IWebElement>();
-            int cnt = 0;
-            foreach(IWebElement tr in trs)
+            var parser = new AngleSharp.Parser.Html.HtmlParser();
+            var dom = parser.Parse(_wd.PageSource);
+            var tbl = dom.GetElementById("myTable");
+
+            var trs = tbl.GetElementsByTagName("tr");
+            int nx = trs.Count<AngleSharp.Dom.IElement>();
+            for(int i=1; i<nx; i++)
             {
-                if (cnt < 1) continue;
-                IEnumerable<IWebElement> tds = tr.FindElements(By.TagName("td")).Cast<IWebElement>();
-                IWebElement td1 = null;
-                IWebElement td2 = null;
-                int incnt = 0;
-                foreach(IWebElement td in tds)
-                {
-                    if (incnt == 0) td1 = td;
-                    if (incnt == 1) td2 = td;
-                    incnt++;
-                }
+                var tds = trs.ElementAt<AngleSharp.Dom.IElement>(i).GetElementsByTagName("td");
+
                 List<string> row = new List<string>();
-                row.Add(td1.Text);
-                row.Add(td2.Text);
+                string td1 = _text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(0).TextContent);
+                string td2 = _text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(1).TextContent);
+                row.Add(td1);
+                row.Add(td2);
                 data.Add(row);
-                cnt++;
             }
             return data;
+        }
+        private string _text_clean(string str)
+        {
+            return Regex.Replace(str, @"(\r\n|\n|\t)", "");
         }
 
 

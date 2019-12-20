@@ -174,6 +174,7 @@
             this.preOperationButton.TabIndex = 2;
             this.preOperationButton.Text = "事前処理";
             this.preOperationButton.UseVisualStyleBackColor = true;
+            this.preOperationButton.Click += new System.EventHandler(this.preOperationButton_Click);
             // 
             // tabControl1
             // 

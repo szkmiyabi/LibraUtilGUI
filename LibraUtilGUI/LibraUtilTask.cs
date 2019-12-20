@@ -8,7 +8,10 @@ namespace LibraUtilGUI
 {
     partial class Form1
     {
+
         //サンプルメソッド
+        public delegate void BufTxtWriteDelg();
+        public delegate void TxtWriteDelg(string txt);
         private void test_method()
         {
 
@@ -16,7 +19,7 @@ namespace LibraUtilGUI
             Task task = Task.Run(() =>
             {
                 //デリゲートのインスタンス生成
-                BufTxtWriteDelg btwdl = new BufTxtWriteDelg(buf_txt_write);
+                BufTxtWriteDelg btwdl = new BufTxtWriteDelg(_buf_txt_write);
 
                 int[] appWait = { systemWait, longWait, midWait, shortWait };
                 LibraDriver ldr = new LibraDriver(uid, pswd, appWait, driver, headless, basic_auth, workDir);
@@ -28,10 +31,11 @@ namespace LibraUtilGUI
                 txt_buf = "ログインしました。";
                 this.Invoke(btwdl);
 
-                AngleSharp.Dom.Html.IHtmlDocument dom = ldr.get_dom();
+                var parser = new AngleSharp.Parser.Html.HtmlParser();
+                var dom = parser.Parse(ldr.wd.PageSource);
                 string src = dom.DocumentElement.OuterHtml;
-                TxtWriteDelg twdl = new TxtWriteDelg(txt_write);
-                this.Invoke(twdl, new object[] { src });
+                TxtWriteDelg twdl = new TxtWriteDelg(_txt_write);
+                this.Invoke(twdl, src);
 
                 ldr.projectID = "600";
                 txt_buf = "プロジェクトIDセットしました。";
@@ -50,5 +54,50 @@ namespace LibraUtilGUI
 
             });
         }
+        public void _buf_txt_write()
+        {
+            operationStatusReport.AppendText(txt_buf);
+            operationStatusReport.AppendText("\r\n");
+        }
+
+        public void _txt_write(string txt)
+        {
+            operationStatusReport.AppendText(txt);
+            operationStatusReport.AppendText("\r\n");
+        }
+
+
+
+        //プロジェクトIDコンボをセット
+        public delegate void _set_projectID_combo_(List<List<string>> data);
+        private void set_projectID_combo()
+        {
+            Task.Run(() =>
+            {
+                _set_projectID_combo_ worker = new _set_projectID_combo_(_set_projectID_combo_worker);
+                int[] appWait = { systemWait, longWait, midWait, shortWait };
+                LibraDriver ldr = new LibraDriver(uid, pswd, appWait, driver, headless, basic_auth, workDir);
+                ldr.login();
+                DateUtil.app_sleep(5);
+
+                List<List<string>> data = ldr.get_site_list();
+                this.Invoke(worker, data);
+
+                ldr.logout();
+                ldr.shutdown();
+            });
+
+        }
+        private void _set_projectID_combo_worker(List<List<string>> data)
+        {
+            for(int i=0; i<data.Count; i++)
+            {
+                List<string> col = (List<string>) data[i];
+                string text = col[0] + " " + col[1];
+                projectIDListBox.Items.Add(text);
+            }
+        }
+
+
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using System.IO;
@@ -17,18 +18,13 @@ using System.Threading.Tasks;
 using AngleSharp;
 using AngleSharp.Parser;
 
+
 namespace LibraUtilGUI
 {
     public partial class Form1 : Form
     {
-        
-        //進捗状況の保持用バッファ
-        private string txt_buf = "";
 
-        //デリゲートの定義
-        //別スレッドからフォームを操作時必須
-        public delegate void BufTxtWriteDelg();
-        public delegate void TxtWriteDelg(string txt);
+        private string txt_buf = "";
 
         //コンストラクタ
         public Form1()
@@ -46,18 +42,7 @@ namespace LibraUtilGUI
             test_method();
         }
 
-        //ステータステキストの更新
-        public void buf_txt_write()
-        {
-            operationStatusReport.AppendText(txt_buf);
-            operationStatusReport.AppendText("\r\n");
-        }
 
-        public void txt_write(string txt)
-        {
-            operationStatusReport.AppendText(txt);
-            operationStatusReport.AppendText("\r\n");
-        }
 
         //設定メニュークリック
         private void FileMenuSettings_Click(object sender, EventArgs e)
@@ -65,6 +50,11 @@ namespace LibraUtilGUI
             showSettingsForm();
         }
 
+        //事前準備クリック
+        private void preOperationButton_Click(object sender, EventArgs e)
+        {
+            set_projectID_combo();
+        }
     }
 
 }
