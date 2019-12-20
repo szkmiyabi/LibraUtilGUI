@@ -14,6 +14,9 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
+using AngleSharp;
+using AngleSharp.Parser;
+
 namespace LibraUtilGUI
 {
     public partial class Form1 : Form
@@ -24,7 +27,8 @@ namespace LibraUtilGUI
 
         //デリゲートの定義
         //別スレッドからフォームを操作時必須
-        public delegate void statusTextUpdateDelegate();
+        public delegate void BufTxtWriteDelg();
+        public delegate void TxtWriteDelg(string txt);
 
         //コンストラクタ
         public Form1()
@@ -39,45 +43,20 @@ namespace LibraUtilGUI
         //実験用Button1メソッド
         private void button1_Click(object sender, EventArgs e)
         {
-
-            //非同期処理で実行
-            Task task = Task.Run(()=>
-            {
-                //デリゲートのインスタンス生成
-                statusTextUpdateDelegate dlg = new statusTextUpdateDelegate(status_text_update);
-
-                int[] appWait = { systemWait, longWait, midWait, shortWait };
-                LibraDriver ldr = new LibraDriver(uid, pswd, appWait, driver, headless, basic_auth, workDir);
-                ldr.login();
-                DateUtil.app_sleep(5);
-                ldr.fullpage_screenshot(DateUtil.fetch_filename_from_datetime("png"));
-                txt_buf = "ログインしました。";
-                this.Invoke(dlg);
-
-                ldr.setProjectID("600");
-                txt_buf = "プロジェクトIDセットしました。";
-                this.Invoke(dlg);
-
-                ldr.browse_repo();
-                DateUtil.app_sleep(5);
-                ldr.fullpage_screenshot(DateUtil.fetch_filename_from_datetime("png"));
-                txt_buf = "レポートインデックスページにアクセスしました。";
-                this.Invoke(dlg);
-
-                ldr.logout();
-                ldr.shutdown();
-                txt_buf = "処理が終了しました。";
-                this.Invoke(dlg);
-
-            });
+            test_method();
         }
 
         //ステータステキストの更新
-        public void status_text_update()
+        public void buf_txt_write()
         {
-            string cr = operationStatusReport.Text;
-            string new_cr = (operationStatusReport.Text == "") ? txt_buf : cr + "\r\n" + txt_buf;
-            operationStatusReport.Text = new_cr;
+            operationStatusReport.AppendText(txt_buf);
+            operationStatusReport.AppendText("\r\n");
+        }
+
+        public void txt_write(string txt)
+        {
+            operationStatusReport.AppendText(txt);
+            operationStatusReport.AppendText("\r\n");
         }
 
         //設定メニュークリック

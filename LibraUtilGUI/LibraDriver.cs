@@ -11,19 +11,23 @@ using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 
+using AngleSharp;
+using AngleSharp.Parser;
+
 namespace LibraUtilGUI
 {
     public class LibraDriver
     {
-        private string projectID;
-        private IWebDriver wd;
+        private string _projectID;
+        private IWebDriver _wd;
+        private IJavaScriptExecutor _jexe;
         private int systemWait;
         private int longWait;
         private int midWait;
         private int shortWait;
         private string uid;
         private string pswd;
-        private string windowID;
+        private string _windowID;
         private string app_url = "https://accessibility.jp/libra/";
         private string index_url = "https://jis.infocreate.co.jp/";
         private string rep_index_url_base = "http://jis.infocreate.co.jp/diagnose/indexv2/report/projID/";
@@ -31,8 +35,8 @@ namespace LibraUtilGUI
         private string sv_mainpage_url_base = "http://jis.infocreate.co.jp/diagnose/indexv2/index/projID/";
         private string guideline_file_name = "guideline_datas.txt";
         private List<List<string>> rep_data;
-        private string basic_auth_flag;
-        private Boolean basic_authenicated;
+        private string _basic_auth_flag;
+        private Boolean _basic_authenicated;
         private string workDir;
 
         //コンストラクタ
@@ -40,7 +44,7 @@ namespace LibraUtilGUI
         {
             this.uid = uid;
             this.pswd = pswd;
-            projectID = "";
+            _projectID = "";
             systemWait = appWait[0];
             longWait = appWait[1];
             midWait = appWait[2];
@@ -50,63 +54,58 @@ namespace LibraUtilGUI
             //レポートデータ初期化
 
             //basic認証フラグ
-            this.basic_auth_flag = basic_auth_flag;
-            basic_authenicated = false;
+            _basic_auth_flag = basic_auth_flag;
+            _basic_authenicated = false;
 
             if (driver_type.Equals("firefox"))
             {
                 FirefoxOptions fxopt = new FirefoxOptions();
                 if (headless_flag.Equals("yes")) fxopt.AddArguments("-headless");
-                wd = new FirefoxDriver(fxopt);
+                _wd = new FirefoxDriver(fxopt);
             }
             else if (driver_type.Equals("chrome"))
             {
                 ChromeOptions chopt = new ChromeOptions();
                 if (headless_flag.Equals("yes")) chopt.AddArguments("--headless");
-                wd = new ChromeDriver(chopt);
+                _wd = new ChromeDriver(chopt);
             }
 
-            wd.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(systemWait);
-            wd.Manage().Window.Size = new System.Drawing.Size(1280, 900);
-            wd.Navigate().GoToUrl(app_url);
-            windowID = wd.WindowHandles[0];
+            _wd.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(systemWait);
+            _wd.Manage().Window.Size = new System.Drawing.Size(1280, 900);
+            _wd.Navigate().GoToUrl(app_url);
+            _windowID = _wd.WindowHandles[0];
+            _jexe = (IJavaScriptExecutor)_wd;
         }
 
         //WebDriverのゲッター
-        public IWebDriver getWd()
+        public IWebDriver wd
         {
-            return wd;
+            get { return _wd; }
         }
 
         //projectIDのセッター
-        public void setProjectID(string id)
+        public string projectID
         {
-            projectID = id;
+            set { _projectID = value; }
         }
 
         //JavascriptExecutorのゲッター
-        public IJavaScriptExecutor getJsExe()
+        public IJavaScriptExecutor jexe
         {
-            IJavaScriptExecutor jsx = (IJavaScriptExecutor)wd;
-            return jsx;
+            get { return _jexe; }
         }
 
-        //basic認証済みフラグのゲッター
-        public Boolean getBasicAuthenicated()
+        //basic認証済みフラグのゲッター/セッター
+        public Boolean basic_authenicated
         {
-            return basic_authenicated;
-        }
-
-        //basic認証済みフラグのセッター
-        public void setBasicAuthenicated(Boolean flag)
-        {
-            basic_authenicated = flag;
+            get { return _basic_authenicated; }
+            set { _basic_authenicated = value; }
         }
 
         //スクリーンショットを撮る
         public void screenshot(string filename)
         {
-            Screenshot sc = ((ITakesScreenshot)wd).GetScreenshot();
+            Screenshot sc = ((ITakesScreenshot)_wd).GetScreenshot();
             string save_dir = workDir + filename + ".png";
             sc.SaveAsFile(save_dir, OpenQA.Selenium.ScreenshotImageFormat.Png);
         }
@@ -114,58 +113,58 @@ namespace LibraUtilGUI
         //スクリーンショットを撮る（ディレクトリ指定）
         public void screenshot_as(string save_path)
         {
-            Screenshot sc = ((ITakesScreenshot)wd).GetScreenshot();
+            Screenshot sc = ((ITakesScreenshot)_wd).GetScreenshot();
             sc.SaveAsFile(save_path, OpenQA.Selenium.ScreenshotImageFormat.Png);
         }
 
         //fullpage screenshotを撮る
         public void fullpage_screenshot(string filename)
         {
-            IJavaScriptExecutor jsexe = (IJavaScriptExecutor)wd;
-            string ret = jsexe.ExecuteScript("return document.body.parentNode.scrollHeight;").ToString();
+            //IJavaScriptExecutor jsexe = (IJavaScriptExecutor)wd;
+            string ret = jexe.ExecuteScript("return document.body.parentNode.scrollHeight;").ToString();
             int require_height = Int32.Parse(ret);
-            wd.Manage().Window.Size = new System.Drawing.Size(1280, require_height);
+            _wd.Manage().Window.Size = new System.Drawing.Size(1280, require_height);
             DateUtil.app_sleep(longWait);
-            Screenshot sc = ((ITakesScreenshot)wd).GetScreenshot();
+            Screenshot sc = ((ITakesScreenshot)_wd).GetScreenshot();
             string save_dir = workDir + @"screenshots\";
             if (!Directory.Exists(save_dir)) Directory.CreateDirectory(save_dir);
             sc.SaveAsFile(save_dir + filename + ".png", OpenQA.Selenium.ScreenshotImageFormat.Png);
-            wd.Manage().Window.Size = new System.Drawing.Size(1280, 900);
+            _wd.Manage().Window.Size = new System.Drawing.Size(1280, 900);
         }
 
         //fullpage screenshotを撮る（ディレクトリも指定）
         public void fullpage_screenshot_as(string save_path)
         {
-            IJavaScriptExecutor jsexe = (IJavaScriptExecutor)wd;
-            string ret = jsexe.ExecuteScript("return document.body.parentNode.scrollHeight;").ToString();
+            //IJavaScriptExecutor jsexe = (IJavaScriptExecutor)wd;
+            string ret = jexe.ExecuteScript("return document.body.parentNode.scrollHeight;").ToString();
             int require_height = Int32.Parse(ret);
-            wd.Manage().Window.Size = new System.Drawing.Size(1280, require_height);
+            _wd.Manage().Window.Size = new System.Drawing.Size(1280, require_height);
             DateUtil.app_sleep(longWait);
-            Screenshot sc = ((ITakesScreenshot)wd).GetScreenshot();
+            Screenshot sc = ((ITakesScreenshot)_wd).GetScreenshot();
             sc.SaveAsFile(save_path, OpenQA.Selenium.ScreenshotImageFormat.Png);
-            wd.Manage().Window.Size = new System.Drawing.Size(1280, 900);
+            _wd.Manage().Window.Size = new System.Drawing.Size(1280, 900);
         }
 
         //シャットダウン
         public void shutdown()
         {
-            wd.Quit();
+            _wd.Quit();
         }
 
         //ログイン
         public void login()
         {
-            wd.FindElement(By.Id("uid")).SendKeys(uid);
-            wd.FindElement(By.Id("pswd")).SendKeys(pswd);
-            wd.FindElement(By.Id("btn")).Click();
+            _wd.FindElement(By.Id("uid")).SendKeys(uid);
+            _wd.FindElement(By.Id("pswd")).SendKeys(pswd);
+            _wd.FindElement(By.Id("btn")).Click();
         }
 
         //ログアウト
         public void logout()
         {
-            wd.Navigate().GoToUrl(index_url);
-            Thread.Sleep(shortWait);
-            IWebElement btnWrap = wd.FindElement(By.Id("btn"));
+            _wd.Navigate().GoToUrl(index_url);
+            DateUtil.app_sleep(shortWait);
+            IWebElement btnWrap = _wd.FindElement(By.Id("btn"));
             IWebElement btnBase = btnWrap.FindElement(By.TagName("ul"));
             IWebElement btnBaseInner = btnBase.FindElement(By.ClassName("btn2"));
             IWebElement btnA = btnBaseInner.FindElement(By.TagName("a"));
@@ -175,27 +174,65 @@ namespace LibraUtilGUI
         //レポートインデックスページに遷移
         public void browse_repo()
         {
-            wd.Navigate().GoToUrl(rep_index_url_base + projectID);
+            _wd.Navigate().GoToUrl(rep_index_url_base + _projectID);
         }
 
         //検査メインページに移動
         public void browse_sv_mainpage()
         {
-            wd.Navigate().GoToUrl(sv_mainpage_url_base + projectID);
+            _wd.Navigate().GoToUrl(sv_mainpage_url_base + _projectID);
 
             //basic認証の処理
-            if(basic_auth_flag.Equals("yes") && basic_authenicated == false)
+            if(_basic_auth_flag.Equals("yes") && _basic_authenicated == false)
             {
                 MessageBox.Show("basicAuthオプションが有効化されています。ログインアラートで認証を済ませた後、Enterキーを入力してください。");
-                basic_authenicated = true;
+                _basic_authenicated = true;
             }
         }
 
         //レポート詳細ページのURL生成
         public string fetch_report_detail_path(string pageID, string guidelineID)
         {
-            return rep_detail_url_base + projectID + "/controlID/" + pageID + "/guideline/" + guidelineID + "/";
+            return rep_detail_url_base + _projectID + "/controlID/" + pageID + "/guideline/" + guidelineID + "/";
         }
+
+        //DOMを取得
+        public AngleSharp.Dom.Html.IHtmlDocument get_dom()
+        {
+            AngleSharp.Parser.Html.HtmlParser parser = new AngleSharp.Parser.Html.HtmlParser();
+            AngleSharp.Dom.Html.IHtmlDocument dom = parser.Parse(_wd.PageSource);
+            return dom;
+        }
+
+        //サイト一覧を取得
+        public List<List<string>> get_site_list()
+        {
+            List<List<string>> data = new List<List<string>>();
+            IWebElement tbl = _wd.FindElement(By.Id("myTable"));
+            IEnumerable<IWebElement> trs = tbl.FindElements(By.TagName("tr")).Cast<IWebElement>();
+            int cnt = 0;
+            foreach(IWebElement tr in trs)
+            {
+                if (cnt < 1) continue;
+                IEnumerable<IWebElement> tds = tr.FindElements(By.TagName("td")).Cast<IWebElement>();
+                IWebElement td1 = null;
+                IWebElement td2 = null;
+                int incnt = 0;
+                foreach(IWebElement td in tds)
+                {
+                    if (incnt == 0) td1 = td;
+                    if (incnt == 1) td2 = td;
+                    incnt++;
+                }
+                List<string> row = new List<string>();
+                row.Add(td1.Text);
+                row.Add(td2.Text);
+                data.Add(row);
+                cnt++;
+            }
+            return data;
+        }
+
 
     }
 }
