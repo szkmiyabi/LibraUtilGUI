@@ -36,11 +36,11 @@ namespace LibraUtilGUI
         private string workDir;
 
         //コンストラクタ
-        public LibraDriver(string uid, string pswd, string projectID, int[] appWait, string driver_type, string headless_flag, string basic_auth_flag, string workDir)
+        public LibraDriver(string uid, string pswd, int[] appWait, string driver_type, string headless_flag, string basic_auth_flag, string workDir)
         {
             this.uid = uid;
             this.pswd = pswd;
-            this.projectID = projectID;
+            projectID = "";
             systemWait = appWait[0];
             longWait = appWait[1];
             midWait = appWait[2];
@@ -76,6 +76,12 @@ namespace LibraUtilGUI
         public IWebDriver getWd()
         {
             return wd;
+        }
+
+        //projectIDのセッター
+        public void setProjectID(string id)
+        {
+            projectID = id;
         }
 
         //JavascriptExecutorのゲッター

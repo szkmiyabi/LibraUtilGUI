@@ -30,7 +30,7 @@ namespace LibraUtilGUI
         private void button1_Click(object sender, EventArgs e)
         {
             int[] appWait = { systemWait, longWait, midWait, shortWait };
-            LibraDriver ldr = new LibraDriver(uid, pswd, "600", appWait, driver, headless, basic_auth, workDir);
+            LibraDriver ldr = new LibraDriver(uid, pswd, appWait, driver, headless, basic_auth, workDir);
             ldr.login();
             DateUtil.app_sleep(5);
             // ldr.screenshot(DateUtil.fetch_filename_from_datetime("png"));
@@ -40,6 +40,11 @@ namespace LibraUtilGUI
 
             //ldr.fullpage_screenshot_as(save_path);
             ldr.fullpage_screenshot(DateUtil.fetch_filename_from_datetime("png"));
+            ldr.setProjectID("600");
+            ldr.browse_repo();
+            DateUtil.app_sleep(5);
+            ldr.fullpage_screenshot(DateUtil.fetch_filename_from_datetime("png"));
+
             ldr.logout();
             ldr.shutdown();
 
