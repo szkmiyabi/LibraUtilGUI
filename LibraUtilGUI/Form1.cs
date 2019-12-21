@@ -34,12 +34,8 @@ namespace LibraUtilGUI
             InitializeComponent();
             settings_filename = Application.UserAppDataPath + @"\settings.config";
             loadAppSettings();
-            toolStripStatusLabel1.Text = "はじめに事前処理を実行してください。";
-            preOperationButton.Enabled = false;
             doOperationButton.Enabled = false;
             cancelOperationButton.Enabled = false;
-
-            load_wd();
         }
 
         //wdインスタンス生成
@@ -55,7 +51,6 @@ namespace LibraUtilGUI
                 int[] appWait = { systemWait, longWait, midWait, shortWait };
                 ldr = new LibraDriver(uid, pswd, appWait, driver, headless, basic_auth, workDir);
                 ldr_activated = true;
-                preOperationButton.Enabled = true;
             }
             catch(Exception ex)
             {

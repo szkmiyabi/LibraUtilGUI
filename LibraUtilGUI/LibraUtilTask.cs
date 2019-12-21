@@ -14,17 +14,18 @@ namespace LibraUtilGUI
         public delegate void TxtWriteDelg(string txt);
         private void test_method()
         {
-            if (ldr == null)
-            {
-                operationStatusReport.AppendText("【エラー】WebDriverが起動していません。\r\n");
-                return;
-            }
+
 
             //非同期処理で実行
             Task task = Task.Run(() =>
             {
                 //デリゲートのインスタンス生成
                 BufTxtWriteDelg btwdl = new BufTxtWriteDelg(_buf_txt_write);
+
+                if (ldr_activated == false)
+                {
+                    load_wd();
+                }
 
                 ldr.home();
                 DateUtil.app_sleep(3);
@@ -81,6 +82,11 @@ namespace LibraUtilGUI
             Task.Run(() =>
             {
                 _set_projectID_combo_ worker = new _set_projectID_combo_(_set_projectID_combo_worker);
+
+                if (ldr_activated == false)
+                {
+                    load_wd();
+                }
 
                 ldr.home();
                 ldr.login();
