@@ -141,7 +141,7 @@ namespace LibraUtilGUI
             {
                 _set_pageID_combo_ worker = new _set_pageID_combo_(_set_pageID_combo_worker);
                 _get_projectID_gate_ gate = new _get_projectID_gate_(_get_projectID_gate_dispatcher);
-                _set_projectID_combo_msg_ message = new _set_projectID_combo_msg_(_set_projectID_combo_msg_dispatcher);
+                _set_pageID_combo_msg_ message = new _set_pageID_combo_msg_(_set_pageID_combo_msg_dispatcher);
 
                 if (ldr_activated == false)
                 {
@@ -175,7 +175,7 @@ namespace LibraUtilGUI
             for(int i=0; i<data.Count; i++)
             {
                 List<string> col = (List<string>)data[i];
-                string text = col[0] + "  " + col[1];
+                string text = col[0] + "   " + col[1];
                 itm = new pageIDComboItem(col[1], text);
                 ListBoxItem.Add(itm);
             }

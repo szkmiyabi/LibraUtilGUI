@@ -61,11 +61,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(513, 65);
+            this.button1.Location = new System.Drawing.Point(479, 18);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(56, 41);
+            this.button1.Size = new System.Drawing.Size(75, 41);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "Debug";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -75,7 +75,7 @@
             this.FileMenuList});
             this.appMenu.Location = new System.Drawing.Point(0, 0);
             this.appMenu.Name = "appMenu";
-            this.appMenu.Size = new System.Drawing.Size(587, 24);
+            this.appMenu.Size = new System.Drawing.Size(585, 24);
             this.appMenu.TabIndex = 1;
             this.appMenu.Text = "menuStrip1";
             // 
@@ -100,7 +100,7 @@
             this.groupBox1.Controls.Add(this.projectIDLoadButton);
             this.groupBox1.Location = new System.Drawing.Point(12, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(248, 118);
+            this.groupBox1.Size = new System.Drawing.Size(232, 118);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "サイト";
@@ -112,7 +112,7 @@
             this.projectIDListBox.Location = new System.Drawing.Point(3, 15);
             this.projectIDListBox.Name = "projectIDListBox";
             this.projectIDListBox.ScrollAlwaysVisible = true;
-            this.projectIDListBox.Size = new System.Drawing.Size(239, 64);
+            this.projectIDListBox.Size = new System.Drawing.Size(222, 64);
             this.projectIDListBox.TabIndex = 0;
             // 
             // projectIDLoadButton
@@ -129,9 +129,9 @@
             // 
             this.groupBox2.Controls.Add(this.pageIDLoadButton);
             this.groupBox2.Controls.Add(this.pageIDListBox);
-            this.groupBox2.Location = new System.Drawing.Point(266, 39);
+            this.groupBox2.Location = new System.Drawing.Point(250, 39);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(215, 118);
+            this.groupBox2.Size = new System.Drawing.Size(325, 118);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ページID";
@@ -144,17 +144,18 @@
             this.pageIDListBox.Name = "pageIDListBox";
             this.pageIDListBox.ScrollAlwaysVisible = true;
             this.pageIDListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.pageIDListBox.Size = new System.Drawing.Size(203, 64);
+            this.pageIDListBox.Size = new System.Drawing.Size(313, 64);
             this.pageIDListBox.TabIndex = 0;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.cancelOperationButton);
             this.groupBox3.Controls.Add(this.doOperationButton);
+            this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.tabControl1);
             this.groupBox3.Location = new System.Drawing.Point(12, 163);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(560, 133);
+            this.groupBox3.Size = new System.Drawing.Size(563, 133);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "オペレーション";
@@ -233,7 +234,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 407);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(587, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(585, 22);
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -247,7 +248,7 @@
             this.groupBox4.Controls.Add(this.operationStatusReport);
             this.groupBox4.Location = new System.Drawing.Point(12, 302);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(560, 100);
+            this.groupBox4.Size = new System.Drawing.Size(563, 100);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "処理状況";
@@ -259,7 +260,7 @@
             this.operationStatusReport.Multiline = true;
             this.operationStatusReport.Name = "operationStatusReport";
             this.operationStatusReport.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.operationStatusReport.Size = new System.Drawing.Size(554, 82);
+            this.operationStatusReport.Size = new System.Drawing.Size(557, 82);
             this.operationStatusReport.TabIndex = 0;
             // 
             // pageIDLoadButton
@@ -276,10 +277,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(587, 429);
+            this.ClientSize = new System.Drawing.Size(585, 429);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
