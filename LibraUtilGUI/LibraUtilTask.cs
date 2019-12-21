@@ -216,6 +216,9 @@ namespace LibraUtilGUI
             pageIDListBox.DisplayMember = "display_str";
             pageIDListBox.ValueMember = "id_str";
             pageIDListBox.DataSource = ListBoxItem;
+
+            pageIDListBoxSelectAllButton.Enabled = true;
+            pageIDListBoxSelectClearButton.Enabled = true;
             doOperationButton.Enabled = true;
             cancelOperationButton.Enabled = true;
         }

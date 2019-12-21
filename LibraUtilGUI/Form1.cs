@@ -17,12 +17,16 @@ using System.Threading.Tasks;
 
 using AngleSharp;
 using AngleSharp.Parser;
-
+using System.Runtime.InteropServices;
 
 namespace LibraUtilGUI
 {
     public partial class Form1 : Form
     {
+        //ListBoxの全選択/選択解除のWindowsAPI宣言
+        [DllImport("User32.dll", EntryPoint = "SendMessage")]
+        private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        private const int LB_SETSEL = 0x185;
 
         private string txt_buf = "";
         private LibraDriver ldr;
@@ -38,6 +42,8 @@ namespace LibraUtilGUI
             pageIDLoadButton.Enabled = false;
             loadPageIDFromRpPageRadio.Enabled = false;
             loadPageIDFromSvPageRadio.Enabled = false;
+            pageIDListBoxSelectAllButton.Enabled = false;
+            pageIDListBoxSelectClearButton.Enabled = false;
 
             doOperationButton.Enabled = false;
             cancelOperationButton.Enabled = false;
@@ -112,6 +118,20 @@ namespace LibraUtilGUI
         private void pageIDLoadButton_Click(object sender, EventArgs e)
         {
             set_pageID_combo();
+        }
+
+        //全選択クリック
+        private void pageIDListBoxSelectAllButton_Click(object sender, EventArgs e)
+        {
+            SendMessage(pageIDListBox.Handle, LB_SETSEL, 1, -1);
+            pageIDListBox.SetSelected(0, true);
+        }
+
+        //選択解除クリック
+        private void pageIDListBoxSelectClearButton_Click(object sender, EventArgs e)
+        {
+            SendMessage(pageIDListBox.Handle, LB_SETSEL, 0, -1);
+            pageIDListBox.SetSelected(0, false);
         }
     }
 

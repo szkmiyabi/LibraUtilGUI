@@ -52,6 +52,8 @@
             this.pageIDLoadButton = new System.Windows.Forms.Button();
             this.loadPageIDFromRpPageRadio = new System.Windows.Forms.RadioButton();
             this.loadPageIDFromSvPageRadio = new System.Windows.Forms.RadioButton();
+            this.pageIDListBoxSelectAllButton = new System.Windows.Forms.Button();
+            this.pageIDListBoxSelectClearButton = new System.Windows.Forms.Button();
             this.appMenu.SuspendLayout();
             this.projectIDGroup.SuspendLayout();
             this.pageIDGroup.SuspendLayout();
@@ -63,7 +65,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(479, 18);
+            this.button1.Location = new System.Drawing.Point(498, 18);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 41);
             this.button1.TabIndex = 0;
@@ -77,7 +79,7 @@
             this.FileMenuList});
             this.appMenu.Location = new System.Drawing.Point(0, 0);
             this.appMenu.Name = "appMenu";
-            this.appMenu.Size = new System.Drawing.Size(585, 24);
+            this.appMenu.Size = new System.Drawing.Size(613, 24);
             this.appMenu.TabIndex = 1;
             this.appMenu.Text = "menuStrip1";
             // 
@@ -129,13 +131,15 @@
             // 
             // pageIDGroup
             // 
+            this.pageIDGroup.Controls.Add(this.pageIDListBoxSelectClearButton);
+            this.pageIDGroup.Controls.Add(this.pageIDListBoxSelectAllButton);
             this.pageIDGroup.Controls.Add(this.loadPageIDFromSvPageRadio);
             this.pageIDGroup.Controls.Add(this.loadPageIDFromRpPageRadio);
             this.pageIDGroup.Controls.Add(this.pageIDLoadButton);
             this.pageIDGroup.Controls.Add(this.pageIDListBox);
             this.pageIDGroup.Location = new System.Drawing.Point(250, 39);
             this.pageIDGroup.Name = "pageIDGroup";
-            this.pageIDGroup.Size = new System.Drawing.Size(325, 118);
+            this.pageIDGroup.Size = new System.Drawing.Size(351, 118);
             this.pageIDGroup.TabIndex = 3;
             this.pageIDGroup.TabStop = false;
             this.pageIDGroup.Text = "ページID";
@@ -148,7 +152,7 @@
             this.pageIDListBox.Name = "pageIDListBox";
             this.pageIDListBox.ScrollAlwaysVisible = true;
             this.pageIDListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.pageIDListBox.Size = new System.Drawing.Size(313, 64);
+            this.pageIDListBox.Size = new System.Drawing.Size(339, 64);
             this.pageIDListBox.TabIndex = 0;
             // 
             // operationGroup
@@ -159,14 +163,14 @@
             this.operationGroup.Controls.Add(this.tabControl1);
             this.operationGroup.Location = new System.Drawing.Point(12, 163);
             this.operationGroup.Name = "operationGroup";
-            this.operationGroup.Size = new System.Drawing.Size(563, 133);
+            this.operationGroup.Size = new System.Drawing.Size(589, 133);
             this.operationGroup.TabIndex = 4;
             this.operationGroup.TabStop = false;
             this.operationGroup.Text = "オペレーション";
             // 
             // cancelOperationButton
             // 
-            this.cancelOperationButton.Location = new System.Drawing.Point(479, 100);
+            this.cancelOperationButton.Location = new System.Drawing.Point(498, 100);
             this.cancelOperationButton.Name = "cancelOperationButton";
             this.cancelOperationButton.Size = new System.Drawing.Size(75, 23);
             this.cancelOperationButton.TabIndex = 4;
@@ -175,7 +179,7 @@
             // 
             // doOperationButton
             // 
-            this.doOperationButton.Location = new System.Drawing.Point(479, 71);
+            this.doOperationButton.Location = new System.Drawing.Point(498, 71);
             this.doOperationButton.Name = "doOperationButton";
             this.doOperationButton.Size = new System.Drawing.Size(75, 23);
             this.doOperationButton.TabIndex = 3;
@@ -238,7 +242,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 407);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(585, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(613, 22);
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -252,7 +256,7 @@
             this.reportGroup.Controls.Add(this.operationStatusReport);
             this.reportGroup.Location = new System.Drawing.Point(12, 302);
             this.reportGroup.Name = "reportGroup";
-            this.reportGroup.Size = new System.Drawing.Size(563, 100);
+            this.reportGroup.Size = new System.Drawing.Size(589, 100);
             this.reportGroup.TabIndex = 6;
             this.reportGroup.TabStop = false;
             this.reportGroup.Text = "処理状況";
@@ -264,7 +268,7 @@
             this.operationStatusReport.Multiline = true;
             this.operationStatusReport.Name = "operationStatusReport";
             this.operationStatusReport.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.operationStatusReport.Size = new System.Drawing.Size(557, 82);
+            this.operationStatusReport.Size = new System.Drawing.Size(583, 82);
             this.operationStatusReport.TabIndex = 0;
             // 
             // pageIDLoadButton
@@ -301,11 +305,31 @@
             this.loadPageIDFromSvPageRadio.Text = "svpage";
             this.loadPageIDFromSvPageRadio.UseVisualStyleBackColor = true;
             // 
+            // pageIDListBoxSelectAllButton
+            // 
+            this.pageIDListBoxSelectAllButton.Location = new System.Drawing.Point(212, 85);
+            this.pageIDListBoxSelectAllButton.Name = "pageIDListBoxSelectAllButton";
+            this.pageIDListBoxSelectAllButton.Size = new System.Drawing.Size(56, 23);
+            this.pageIDListBoxSelectAllButton.TabIndex = 4;
+            this.pageIDListBoxSelectAllButton.Text = "全選択";
+            this.pageIDListBoxSelectAllButton.UseVisualStyleBackColor = true;
+            this.pageIDListBoxSelectAllButton.Click += new System.EventHandler(this.pageIDListBoxSelectAllButton_Click);
+            // 
+            // pageIDListBoxSelectClearButton
+            // 
+            this.pageIDListBoxSelectClearButton.Location = new System.Drawing.Point(274, 85);
+            this.pageIDListBoxSelectClearButton.Name = "pageIDListBoxSelectClearButton";
+            this.pageIDListBoxSelectClearButton.Size = new System.Drawing.Size(71, 23);
+            this.pageIDListBoxSelectClearButton.TabIndex = 5;
+            this.pageIDListBoxSelectClearButton.Text = "選択解除";
+            this.pageIDListBoxSelectClearButton.UseVisualStyleBackColor = true;
+            this.pageIDListBoxSelectClearButton.Click += new System.EventHandler(this.pageIDListBoxSelectClearButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 429);
+            this.ClientSize = new System.Drawing.Size(613, 429);
             this.Controls.Add(this.reportGroup);
             this.Controls.Add(this.pageIDGroup);
             this.Controls.Add(this.statusStrip1);
@@ -358,6 +382,8 @@
         private System.Windows.Forms.RadioButton loadPageIDFromSvPageRadio;
         private System.Windows.Forms.RadioButton loadPageIDFromRpPageRadio;
         public System.Windows.Forms.TextBox operationStatusReport;
+        private System.Windows.Forms.Button pageIDListBoxSelectAllButton;
+        private System.Windows.Forms.Button pageIDListBoxSelectClearButton;
     }
 }
 
