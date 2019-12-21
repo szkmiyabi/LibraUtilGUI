@@ -354,10 +354,10 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.GroupBox reportGroup;
-        private System.Windows.Forms.TextBox operationStatusReport;
         private System.Windows.Forms.Button pageIDLoadButton;
         private System.Windows.Forms.RadioButton loadPageIDFromSvPageRadio;
         private System.Windows.Forms.RadioButton loadPageIDFromRpPageRadio;
+        public System.Windows.Forms.TextBox operationStatusReport;
     }
 }
 

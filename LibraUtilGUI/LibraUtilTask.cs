@@ -76,24 +76,32 @@ namespace LibraUtilGUI
         }
 
 
-        //共通デリゲート
+
+        //基本認証オプション確認のデリゲート
         public delegate Boolean d_wrap_is_authenicate_check();
         public Boolean d_work_is_authenicate_check()
         {
             return is_authenicate_check();
         }
 
+        //進捗状況テキスト更新のデリゲート
+        public delegate void d_status_messanger(string msg);
+        public void w_status_messanger(string msg)
+        {
+            operationStatusReport.AppendText(msg + "\r\n");
+        }
+
+
 
         //プロジェクトIDコンボをセット
         public delegate void _set_projectID_combo_(List<List<string>> data);
-        public delegate void _set_projectID_combo_msg_(string msg);
         private void set_projectID_combo()
         {
 
             Task.Run(() =>
             {
                 _set_projectID_combo_ worker = new _set_projectID_combo_(_set_projectID_combo_worker);
-                _set_projectID_combo_msg_ message = new _set_projectID_combo_msg_(_set_projectID_combo_msg_dispatcher);
+                d_status_messanger message = new d_status_messanger(w_status_messanger);
 
                 if (ldr_activated == false)
                 {
@@ -112,6 +120,7 @@ namespace LibraUtilGUI
                 this.Invoke(message, "サイト名コンボが設定完了しました。（" + DateUtil.get_logtime() + "）");
                 ldr.logout();
             });
+
 
         }
         private void _set_projectID_combo_worker(List<List<string>> data)
@@ -135,10 +144,6 @@ namespace LibraUtilGUI
             loadPageIDFromSvPageRadio.Enabled = true;
 
         }
-        private void _set_projectID_combo_msg_dispatcher(string msg)
-        {
-            operationStatusReport.AppendText(msg + "\r\n");
-        }
 
 
 
@@ -146,7 +151,6 @@ namespace LibraUtilGUI
         public delegate void _set_pageID_combo_(List<List<string>> data);
         public delegate string _get_projectID_gate_();
         public delegate string _get_pageID_which_();
-        public delegate void _set_pageID_combo_msg_(string msg);
         private void set_pageID_combo()
         {
 
@@ -155,7 +159,7 @@ namespace LibraUtilGUI
                 _set_pageID_combo_ worker = new _set_pageID_combo_(_set_pageID_combo_worker);
                 _get_projectID_gate_ gate = new _get_projectID_gate_(_get_projectID_gate_dispatcher);
                 _get_pageID_which_ which = new _get_pageID_which_(_get_pageID_which_dispatcher);
-                _set_pageID_combo_msg_ message = new _set_pageID_combo_msg_(_set_pageID_combo_msg_dispatcher);
+                d_status_messanger message = new d_status_messanger(w_status_messanger);
 
                 if (ldr_activated == false)
                 {
@@ -227,10 +231,7 @@ namespace LibraUtilGUI
             else cr = "svpage";
             return cr;
         }
-        private void _set_pageID_combo_msg_dispatcher(string msg)
-        {
-            operationStatusReport.AppendText(msg + "\r\n");
-        }
+
 
     }
 

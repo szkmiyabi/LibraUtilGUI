@@ -73,7 +73,6 @@ namespace LibraUtilGUI
         private string basic_auth;
         private string workDir;
 
-
         //環境設定
         private void showSettingsForm()
         {

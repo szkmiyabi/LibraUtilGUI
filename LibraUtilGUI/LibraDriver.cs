@@ -19,6 +19,7 @@ namespace LibraUtilGUI
 {
     public class LibraDriver
     {
+        private Form1 form1;
         private string _projectID;
         private IWebDriver _wd;
         private IJavaScriptExecutor _jexe;
@@ -40,9 +41,11 @@ namespace LibraUtilGUI
         private Boolean _basic_authenicated;
         private string workDir;
 
+
         //コンストラクタ
-        public LibraDriver(string uid, string pswd, int[] appWait, string driver_type, string headless_flag, string basic_auth_flag, string workDir)
+        public LibraDriver(Form1 form1, string uid, string pswd, int[] appWait, string driver_type, string headless_flag, string basic_auth_flag, string workDir)
         {
+            this.form1 = form1;
             this.uid = uid;
             this.pswd = pswd;
             _projectID = "";
@@ -75,6 +78,13 @@ namespace LibraUtilGUI
             _wd.Manage().Window.Size = new System.Drawing.Size(1280, 900);
             _windowID = _wd.WindowHandles[0];
             _jexe = (IJavaScriptExecutor)_wd;
+        }
+
+        //operationStatusReportのデリゲート
+        public delegate void d_messanger(string msg);
+        public void w_messanger(string msg)
+        {
+            form1.operationStatusReport.AppendText(msg + "\r\n");
         }
 
         //WebDriverのゲッター
@@ -183,17 +193,18 @@ namespace LibraUtilGUI
             _wd.Navigate().GoToUrl(rep_index_url_base + _projectID);
         }
 
+
         //検査メインページに移動
         public void browse_sv_mainpage()
         {
-            _wd.Navigate().GoToUrl(sv_mainpage_url_base + _projectID);
-
             //basic認証の処理
-            if(_basic_auth_flag.Equals("yes") && _basic_authenicated == false)
+            if (_basic_auth_flag.Equals("yes") && _basic_authenicated == false)
             {
-                MessageBox.Show("基本認証オプションが有効化されています。ログインアラートで認証してください。");
+                d_messanger message = new d_messanger(w_messanger);
+                form1.Invoke(message, "【お知らせ】基本認証オプションが有効化されています。ログインアラートで認証してください。");
                 _basic_authenicated = true;
             }
+            _wd.Navigate().GoToUrl(sv_mainpage_url_base + _projectID);
         }
 
         //レポート詳細ページのURL生成

@@ -54,7 +54,7 @@ namespace LibraUtilGUI
             try
             {
                 int[] appWait = { systemWait, longWait, midWait, shortWait };
-                ldr = new LibraDriver(uid, pswd, appWait, driver, headless, basic_auth, workDir);
+                ldr = new LibraDriver(this, uid, pswd, appWait, driver, headless, basic_auth, workDir);
                 ldr_activated = true;
             }
             catch(Exception ex)
@@ -70,7 +70,7 @@ namespace LibraUtilGUI
         }
 
         //基本認証の設定チェック
-        private Boolean is_authenicate_check()
+        public Boolean is_authenicate_check()
         {
             Boolean flg = true;
             if(basic_auth == "yes" && headless == "yes")
@@ -80,6 +80,7 @@ namespace LibraUtilGUI
             }
             return flg;
         }
+
 
         //実験用Button1メソッド
         private void button1_Click(object sender, EventArgs e)
