@@ -34,6 +34,8 @@ namespace LibraUtilGUI
             InitializeComponent();
             settings_filename = Application.UserAppDataPath + @"\settings.config";
             loadAppSettings();
+
+            pageIDLoadButton.Enabled = false;
             doOperationButton.Enabled = false;
             cancelOperationButton.Enabled = false;
         }
@@ -78,17 +80,22 @@ namespace LibraUtilGUI
             showSettingsForm();
         }
 
-        //事前準備クリック
-        private void preOperationButton_Click(object sender, EventArgs e)
-        {
-            //set_projectID_combo();
-            set_pageID_combo();
-        }
-
         //フォームを閉じようとしたとき
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             destroy_wd();
+        }
+
+        //サイトID読込クリック
+        private void projectIDLoadButton_Click(object sender, EventArgs e)
+        {
+            set_projectID_combo();
+        }
+
+        //ページID読込クリック
+        private void pageIDLoadButton_Click(object sender, EventArgs e)
+        {
+            set_pageID_combo();
         }
     }
 
