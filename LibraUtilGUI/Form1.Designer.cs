@@ -32,12 +32,12 @@
             this.appMenu = new System.Windows.Forms.MenuStrip();
             this.FileMenuList = new System.Windows.Forms.ToolStripMenuItem();
             this.FileMenuSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.projectIDGroup = new System.Windows.Forms.GroupBox();
             this.projectIDListBox = new System.Windows.Forms.ListBox();
             this.projectIDLoadButton = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pageIDGroup = new System.Windows.Forms.GroupBox();
             this.pageIDListBox = new System.Windows.Forms.ListBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.operationGroup = new System.Windows.Forms.GroupBox();
             this.cancelOperationButton = new System.Windows.Forms.Button();
             this.doOperationButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -47,16 +47,18 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.reportGroup = new System.Windows.Forms.GroupBox();
             this.operationStatusReport = new System.Windows.Forms.TextBox();
             this.pageIDLoadButton = new System.Windows.Forms.Button();
+            this.loadPageIDFromRpPageRadio = new System.Windows.Forms.RadioButton();
+            this.loadPageIDFromSvPageRadio = new System.Windows.Forms.RadioButton();
             this.appMenu.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.projectIDGroup.SuspendLayout();
+            this.pageIDGroup.SuspendLayout();
+            this.operationGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.reportGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -94,16 +96,16 @@
             this.FileMenuSettings.Text = "環境設定";
             this.FileMenuSettings.Click += new System.EventHandler(this.FileMenuSettings_Click);
             // 
-            // groupBox1
+            // projectIDGroup
             // 
-            this.groupBox1.Controls.Add(this.projectIDListBox);
-            this.groupBox1.Controls.Add(this.projectIDLoadButton);
-            this.groupBox1.Location = new System.Drawing.Point(12, 39);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(232, 118);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "サイト";
+            this.projectIDGroup.Controls.Add(this.projectIDListBox);
+            this.projectIDGroup.Controls.Add(this.projectIDLoadButton);
+            this.projectIDGroup.Location = new System.Drawing.Point(12, 39);
+            this.projectIDGroup.Name = "projectIDGroup";
+            this.projectIDGroup.Size = new System.Drawing.Size(232, 118);
+            this.projectIDGroup.TabIndex = 2;
+            this.projectIDGroup.TabStop = false;
+            this.projectIDGroup.Text = "サイト";
             // 
             // projectIDListBox
             // 
@@ -125,16 +127,18 @@
             this.projectIDLoadButton.UseVisualStyleBackColor = true;
             this.projectIDLoadButton.Click += new System.EventHandler(this.projectIDLoadButton_Click);
             // 
-            // groupBox2
+            // pageIDGroup
             // 
-            this.groupBox2.Controls.Add(this.pageIDLoadButton);
-            this.groupBox2.Controls.Add(this.pageIDListBox);
-            this.groupBox2.Location = new System.Drawing.Point(250, 39);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(325, 118);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "ページID";
+            this.pageIDGroup.Controls.Add(this.loadPageIDFromSvPageRadio);
+            this.pageIDGroup.Controls.Add(this.loadPageIDFromRpPageRadio);
+            this.pageIDGroup.Controls.Add(this.pageIDLoadButton);
+            this.pageIDGroup.Controls.Add(this.pageIDListBox);
+            this.pageIDGroup.Location = new System.Drawing.Point(250, 39);
+            this.pageIDGroup.Name = "pageIDGroup";
+            this.pageIDGroup.Size = new System.Drawing.Size(325, 118);
+            this.pageIDGroup.TabIndex = 3;
+            this.pageIDGroup.TabStop = false;
+            this.pageIDGroup.Text = "ページID";
             // 
             // pageIDListBox
             // 
@@ -147,18 +151,18 @@
             this.pageIDListBox.Size = new System.Drawing.Size(313, 64);
             this.pageIDListBox.TabIndex = 0;
             // 
-            // groupBox3
+            // operationGroup
             // 
-            this.groupBox3.Controls.Add(this.cancelOperationButton);
-            this.groupBox3.Controls.Add(this.doOperationButton);
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.tabControl1);
-            this.groupBox3.Location = new System.Drawing.Point(12, 163);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(563, 133);
-            this.groupBox3.TabIndex = 4;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "オペレーション";
+            this.operationGroup.Controls.Add(this.cancelOperationButton);
+            this.operationGroup.Controls.Add(this.doOperationButton);
+            this.operationGroup.Controls.Add(this.button1);
+            this.operationGroup.Controls.Add(this.tabControl1);
+            this.operationGroup.Location = new System.Drawing.Point(12, 163);
+            this.operationGroup.Name = "operationGroup";
+            this.operationGroup.Size = new System.Drawing.Size(563, 133);
+            this.operationGroup.TabIndex = 4;
+            this.operationGroup.TabStop = false;
+            this.operationGroup.Text = "オペレーション";
             // 
             // cancelOperationButton
             // 
@@ -243,15 +247,15 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
-            // groupBox4
+            // reportGroup
             // 
-            this.groupBox4.Controls.Add(this.operationStatusReport);
-            this.groupBox4.Location = new System.Drawing.Point(12, 302);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(563, 100);
-            this.groupBox4.TabIndex = 6;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "処理状況";
+            this.reportGroup.Controls.Add(this.operationStatusReport);
+            this.reportGroup.Location = new System.Drawing.Point(12, 302);
+            this.reportGroup.Name = "reportGroup";
+            this.reportGroup.Size = new System.Drawing.Size(563, 100);
+            this.reportGroup.TabIndex = 6;
+            this.reportGroup.TabStop = false;
+            this.reportGroup.Text = "処理状況";
             // 
             // operationStatusReport
             // 
@@ -273,16 +277,40 @@
             this.pageIDLoadButton.UseVisualStyleBackColor = true;
             this.pageIDLoadButton.Click += new System.EventHandler(this.pageIDLoadButton_Click);
             // 
+            // loadPageIDFromRpPageRadio
+            // 
+            this.loadPageIDFromRpPageRadio.AutoSize = true;
+            this.loadPageIDFromRpPageRadio.Location = new System.Drawing.Point(94, 88);
+            this.loadPageIDFromRpPageRadio.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.loadPageIDFromRpPageRadio.Name = "loadPageIDFromRpPageRadio";
+            this.loadPageIDFromRpPageRadio.Size = new System.Drawing.Size(53, 16);
+            this.loadPageIDFromRpPageRadio.TabIndex = 2;
+            this.loadPageIDFromRpPageRadio.TabStop = true;
+            this.loadPageIDFromRpPageRadio.Text = "report";
+            this.loadPageIDFromRpPageRadio.UseVisualStyleBackColor = true;
+            // 
+            // loadPageIDFromSvPageRadio
+            // 
+            this.loadPageIDFromSvPageRadio.AutoSize = true;
+            this.loadPageIDFromSvPageRadio.Location = new System.Drawing.Point(147, 88);
+            this.loadPageIDFromSvPageRadio.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.loadPageIDFromSvPageRadio.Name = "loadPageIDFromSvPageRadio";
+            this.loadPageIDFromSvPageRadio.Size = new System.Drawing.Size(59, 16);
+            this.loadPageIDFromSvPageRadio.TabIndex = 3;
+            this.loadPageIDFromSvPageRadio.TabStop = true;
+            this.loadPageIDFromSvPageRadio.Text = "svpage";
+            this.loadPageIDFromSvPageRadio.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 429);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.reportGroup);
+            this.Controls.Add(this.pageIDGroup);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.operationGroup);
+            this.Controls.Add(this.projectIDGroup);
             this.Controls.Add(this.appMenu);
             this.MainMenuStrip = this.appMenu;
             this.Name = "Form1";
@@ -290,14 +318,15 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.appMenu.ResumeLayout(false);
             this.appMenu.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
+            this.projectIDGroup.ResumeLayout(false);
+            this.pageIDGroup.ResumeLayout(false);
+            this.pageIDGroup.PerformLayout();
+            this.operationGroup.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.reportGroup.ResumeLayout(false);
+            this.reportGroup.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,11 +338,11 @@
         private System.Windows.Forms.MenuStrip appMenu;
         private System.Windows.Forms.ToolStripMenuItem FileMenuList;
         private System.Windows.Forms.ToolStripMenuItem FileMenuSettings;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox projectIDGroup;
         private System.Windows.Forms.ListBox projectIDListBox;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox pageIDGroup;
         private System.Windows.Forms.ListBox pageIDListBox;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox operationGroup;
         private System.Windows.Forms.Button cancelOperationButton;
         private System.Windows.Forms.Button doOperationButton;
         private System.Windows.Forms.Button projectIDLoadButton;
@@ -324,9 +353,11 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox reportGroup;
         private System.Windows.Forms.TextBox operationStatusReport;
         private System.Windows.Forms.Button pageIDLoadButton;
+        private System.Windows.Forms.RadioButton loadPageIDFromSvPageRadio;
+        private System.Windows.Forms.RadioButton loadPageIDFromRpPageRadio;
     }
 }
 

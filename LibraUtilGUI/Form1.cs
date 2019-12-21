@@ -36,6 +36,9 @@ namespace LibraUtilGUI
             loadAppSettings();
 
             pageIDLoadButton.Enabled = false;
+            loadPageIDFromRpPageRadio.Enabled = false;
+            loadPageIDFromSvPageRadio.Enabled = false;
+
             doOperationButton.Enabled = false;
             cancelOperationButton.Enabled = false;
         }
@@ -56,7 +59,7 @@ namespace LibraUtilGUI
             }
             catch(Exception ex)
             {
-                operationStatusReport.AppendText("【エラー】ブラウザドライバの起動に失敗しました。考えられる理由は、ブラウザのドライバが古いことです。ブラウザのドライバを更新してください。");
+                operationStatusReport.AppendText("【エラー】ブラウザドライバの起動に失敗しました。考えられる理由は、ブラウザのドライバが古いことです。ブラウザのドライバを更新してください。\r\n");
             }
         }
         
@@ -64,6 +67,18 @@ namespace LibraUtilGUI
         private void destroy_wd()
         {
             if(ldr != null) ldr.shutdown();
+        }
+
+        //基本認証の設定チェック
+        private Boolean is_authenicate_check()
+        {
+            Boolean flg = true;
+            if(basic_auth == "yes" && headless == "yes")
+            {
+                flg = false;
+                operationStatusReport.AppendText("【エラー】基本認証⇒「はい」を選択した場合、ヘッドレス起動⇒「いいえ」に設定しないと動作しません。基本設定を確認してください。\r\n");
+            }
+            return flg;
         }
 
         //実験用Button1メソッド

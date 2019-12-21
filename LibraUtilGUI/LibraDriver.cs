@@ -191,7 +191,7 @@ namespace LibraUtilGUI
             //basic認証の処理
             if(_basic_auth_flag.Equals("yes") && _basic_authenicated == false)
             {
-                MessageBox.Show("basicAuthオプションが有効化されています。ログインアラートで認証を済ませた後、Enterキーを入力してください。");
+                MessageBox.Show("基本認証オプションが有効化されています。ログインアラートで認証してください。");
                 _basic_authenicated = true;
             }
         }
@@ -267,6 +267,37 @@ namespace LibraUtilGUI
             }
 
             return data;
+        }
+        
+        //PID+URL一覧データを生成（検査メイン画面から）
+        public List<List<string>> get_page_list_data_from_svpage()
+        {
+            List<List<string>> data = new List<List<string>>();
+            var url_ddl = _wd.FindElement(By.Id("urlList"));
+            var opts = url_ddl.FindElements(By.TagName("option"));
+            for(int i=0; i<opts.Count<IWebElement>(); i++)
+            {
+                IWebElement opt = opts.ElementAt<IWebElement>(i);
+                List<string> row = new List<string>();
+                string v1 = opt.GetAttribute("value");
+                string v2 = _get_option_urltext(opt);
+                row.Add(v1);
+                row.Add(v2);
+                data.Add(row);
+            }
+            return data;
+        }
+        private string _get_option_urltext(IWebElement opt)
+        {
+            string ret = "";
+            string val = opt.Text;
+            Regex pt = new Regex(@"(\[[a-zA-Z0-9\-]+\] )(.+)");
+            if (pt.IsMatch(val))
+            {
+                MatchCollection mc = pt.Matches(val);
+                ret = mc[0].Groups[2].Value;
+            }
+            return ret;
         }
 
 

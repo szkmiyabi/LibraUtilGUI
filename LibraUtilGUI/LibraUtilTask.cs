@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LibraUtilGUI
 {
@@ -75,6 +76,13 @@ namespace LibraUtilGUI
         }
 
 
+        //共通デリゲート
+        public delegate Boolean d_wrap_is_authenicate_check();
+        public Boolean d_work_is_authenicate_check()
+        {
+            return is_authenicate_check();
+        }
+
 
         //プロジェクトIDコンボをセット
         public delegate void _set_projectID_combo_(List<List<string>> data);
@@ -120,7 +128,11 @@ namespace LibraUtilGUI
             projectIDListBox.DisplayMember = "display_str";
             projectIDListBox.ValueMember = "id_str";
             projectIDListBox.DataSource = ListBoxItem;
+
             pageIDLoadButton.Enabled = true;
+            loadPageIDFromRpPageRadio.Enabled = true;
+            loadPageIDFromRpPageRadio.Checked = true;
+            loadPageIDFromSvPageRadio.Enabled = true;
 
         }
         private void _set_projectID_combo_msg_dispatcher(string msg)
@@ -133,6 +145,7 @@ namespace LibraUtilGUI
         //ページIDコンボをセット
         public delegate void _set_pageID_combo_(List<List<string>> data);
         public delegate string _get_projectID_gate_();
+        public delegate string _get_pageID_which_();
         public delegate void _set_pageID_combo_msg_(string msg);
         private void set_pageID_combo()
         {
@@ -141,6 +154,7 @@ namespace LibraUtilGUI
             {
                 _set_pageID_combo_ worker = new _set_pageID_combo_(_set_pageID_combo_worker);
                 _get_projectID_gate_ gate = new _get_projectID_gate_(_get_projectID_gate_dispatcher);
+                _get_pageID_which_ which = new _get_pageID_which_(_get_pageID_which_dispatcher);
                 _set_pageID_combo_msg_ message = new _set_pageID_combo_msg_(_set_pageID_combo_msg_dispatcher);
 
                 if (ldr_activated == false)
@@ -157,12 +171,28 @@ namespace LibraUtilGUI
                 string cr = (string) this.Invoke(gate);
                 ldr.projectID = cr;
 
-                this.Invoke(message, "レポートインデックスページにアクセスしています。（" + DateUtil.get_logtime() + "）");
-                ldr.browse_repo();
-                DateUtil.app_sleep(shortWait);
+                string flg = (string)this.Invoke(which);
+                if(flg == "report")
+                {
+                    this.Invoke(message, "レポートインデックスページにアクセスしています。（" + DateUtil.get_logtime() + "）");
+                    ldr.browse_repo();
+                    DateUtil.app_sleep(shortWait);
+                    List<List<string>> data = ldr.get_page_list_data();
+                    this.Invoke(worker, data);
+                }
+                else if(flg == "svpage")
+                {
+                    d_wrap_is_authenicate_check instance_authenicate_check = new d_wrap_is_authenicate_check(d_work_is_authenicate_check);
+                    Boolean auth_param_check = (Boolean) this.Invoke(instance_authenicate_check);
+                    if (auth_param_check == false) return;
 
-                List<List<string>> data = ldr.get_page_list_data();
-                this.Invoke(worker, data);
+                    this.Invoke(message, "検査メイン画面ページにアクセスしています。（" + DateUtil.get_logtime() + "）");
+                    ldr.browse_sv_mainpage();
+                    DateUtil.app_sleep(longWait);
+                    List<List<string>> data = ldr.get_page_list_data_from_svpage();
+                    this.Invoke(worker, data);
+                }
+
                 this.Invoke(message, "ページIDコンボが設定完了しました。（" + DateUtil.get_logtime() + "）");
 
                 ldr.logout();
@@ -188,6 +218,13 @@ namespace LibraUtilGUI
         private string _get_projectID_gate_dispatcher()
         {
             string cr = projectIDListBox.SelectedValue.ToString();
+            return cr;
+        }
+        private string _get_pageID_which_dispatcher()
+        {
+            string cr = "";
+            if (loadPageIDFromRpPageRadio.Checked == true) cr = "report";
+            else cr = "svpage";
             return cr;
         }
         private void _set_pageID_combo_msg_dispatcher(string msg)
