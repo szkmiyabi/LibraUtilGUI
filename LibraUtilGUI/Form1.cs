@@ -25,6 +25,8 @@ namespace LibraUtilGUI
     {
 
         private string txt_buf = "";
+        private LibraDriver ldr;
+        private Boolean ldr_activated = false;
 
         //コンストラクタ
         public Form1()
@@ -32,8 +34,39 @@ namespace LibraUtilGUI
             InitializeComponent();
             settings_filename = Application.UserAppDataPath + @"\settings.config";
             loadAppSettings();
-
             toolStripStatusLabel1.Text = "はじめに事前処理を実行してください。";
+            preOperationButton.Enabled = false;
+            doOperationButton.Enabled = false;
+            cancelOperationButton.Enabled = false;
+
+            load_wd();
+        }
+
+        //wdインスタンス生成
+        private void load_wd()
+        {
+            if(checkSettings() == false)
+            {
+                operationStatusReport.AppendText(txt_buf);
+                return;
+            }
+            try
+            {
+                int[] appWait = { systemWait, longWait, midWait, shortWait };
+                ldr = new LibraDriver(uid, pswd, appWait, driver, headless, basic_auth, workDir);
+                ldr_activated = true;
+                preOperationButton.Enabled = true;
+            }
+            catch(Exception ex)
+            {
+                operationStatusReport.AppendText("【エラー】ブラウザドライバの起動に失敗しました。考えられる理由は、ブラウザのドライバが古いことです。ブラウザのドライバを更新してください。");
+            }
+        }
+        
+        //wdインスタンス解放
+        private void destroy_wd()
+        {
+            if(ldr != null) ldr.shutdown();
         }
 
         //実験用Button1メソッド
@@ -54,6 +87,12 @@ namespace LibraUtilGUI
         private void preOperationButton_Click(object sender, EventArgs e)
         {
             set_projectID_combo();
+        }
+
+        //フォームを閉じようとしたとき
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            destroy_wd();
         }
     }
 

@@ -70,5 +70,57 @@ namespace LibraUtilGUI
             }
         }
 
+        //環境設定パラメータチェック
+        private Boolean checkSettings()
+        {
+            Boolean flag = true;
+            StringBuilder sb = new StringBuilder();
+            string err_txt = "";
+
+            if (uid == "")
+            {
+                flag = false;
+                sb.Append("・ユーザIDが未設定です。\r\n");
+            }
+            if (pswd == "")
+            {
+                flag = false;
+                sb.Append("・パスワードが未設定です。\r\n");
+            }
+            if (headless == "")
+            {
+                flag = false;
+                sb.Append("・ヘッドレス起動の有無効が未設定です。\r\n");
+            }
+            if(systemWait < 60)
+            {
+                flag = false;
+                sb.Append("・システム待時間が60秒未満です。\r\n");
+            }
+            if (shortWait < 3)
+            {
+                flag = false;
+                sb.Append("・待時間【小】が3秒未満です。\r\n");
+            }
+            if (midWait < 3)
+            {
+                flag = false;
+                sb.Append("・待時間【中】が3秒未満です。\r\n");
+            }
+            if (longWait < 3)
+            {
+                flag = false;
+                sb.Append("・待時間【大】が3秒未満です。\r\n");
+            }
+
+            err_txt = sb.ToString();
+            if(flag == false)
+            {
+                err_txt = "【エラー】ブラウザドライバの起動要件を満たしません。\r\n考えられる理由は、初回起動である、あるいは環境設定の不具合です。環境設定をご確認ください。\r\n" + err_txt;
+            }
+            txt_buf = err_txt;
+            return flag;
+        }
+
     }
 }

@@ -277,6 +277,7 @@
             this.MainMenuStrip = this.appMenu;
             this.Name = "Form1";
             this.Text = "LibraUtilGUI";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.appMenu.ResumeLayout(false);
             this.appMenu.PerformLayout();
             this.groupBox1.ResumeLayout(false);

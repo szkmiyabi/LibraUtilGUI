@@ -14,6 +14,11 @@ namespace LibraUtilGUI
         public delegate void TxtWriteDelg(string txt);
         private void test_method()
         {
+            if (ldr == null)
+            {
+                operationStatusReport.AppendText("【エラー】WebDriverが起動していません。\r\n");
+                return;
+            }
 
             //非同期処理で実行
             Task task = Task.Run(() =>
@@ -21,8 +26,9 @@ namespace LibraUtilGUI
                 //デリゲートのインスタンス生成
                 BufTxtWriteDelg btwdl = new BufTxtWriteDelg(_buf_txt_write);
 
-                int[] appWait = { systemWait, longWait, midWait, shortWait };
-                LibraDriver ldr = new LibraDriver(uid, pswd, appWait, driver, headless, basic_auth, workDir);
+                ldr.home();
+                DateUtil.app_sleep(3);
+
                 ldr.login();
                 DateUtil.app_sleep(5);
                 ldr.fullpage_screenshot(DateUtil.fetch_filename_from_datetime("png"));
@@ -48,7 +54,7 @@ namespace LibraUtilGUI
                 this.Invoke(btwdl);
 
                 ldr.logout();
-                ldr.shutdown();
+
                 txt_buf = "処理が終了しました。";
                 this.Invoke(btwdl);
 
@@ -67,16 +73,16 @@ namespace LibraUtilGUI
         }
 
 
-
         //プロジェクトIDコンボをセット
         public delegate void _set_projectID_combo_(List<List<string>> data);
         private void set_projectID_combo()
         {
+
             Task.Run(() =>
             {
                 _set_projectID_combo_ worker = new _set_projectID_combo_(_set_projectID_combo_worker);
-                int[] appWait = { systemWait, longWait, midWait, shortWait };
-                LibraDriver ldr = new LibraDriver(uid, pswd, appWait, driver, headless, basic_auth, workDir);
+
+                ldr.home();
                 ldr.login();
                 DateUtil.app_sleep(5);
 
@@ -84,7 +90,7 @@ namespace LibraUtilGUI
                 this.Invoke(worker, data);
 
                 ldr.logout();
-                ldr.shutdown();
+
             });
 
         }
@@ -97,6 +103,8 @@ namespace LibraUtilGUI
                 projectIDListBox.Items.Add(text);
             }
         }
+
+
 
 
     }

@@ -73,7 +73,6 @@ namespace LibraUtilGUI
 
             _wd.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(systemWait);
             _wd.Manage().Window.Size = new System.Drawing.Size(1280, 900);
-            _wd.Navigate().GoToUrl(app_url);
             _windowID = _wd.WindowHandles[0];
             _jexe = (IJavaScriptExecutor)_wd;
         }
@@ -144,6 +143,12 @@ namespace LibraUtilGUI
             Screenshot sc = ((ITakesScreenshot)_wd).GetScreenshot();
             sc.SaveAsFile(save_path, OpenQA.Selenium.ScreenshotImageFormat.Png);
             _wd.Manage().Window.Size = new System.Drawing.Size(1280, 900);
+        }
+
+        //ホームページを開く
+        public void home()
+        {
+            _wd.Navigate().GoToUrl(app_url);
         }
 
         //シャットダウン
