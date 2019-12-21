@@ -35,7 +35,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.projectIDListBox = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.PIDListBox = new System.Windows.Forms.ListBox();
+            this.pageIDListBox = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cancelOperationButton = new System.Windows.Forms.Button();
             this.doOperationButton = new System.Windows.Forms.Button();
@@ -116,7 +116,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.PIDListBox);
+            this.groupBox2.Controls.Add(this.pageIDListBox);
             this.groupBox2.Location = new System.Drawing.Point(266, 39);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(215, 118);
@@ -124,16 +124,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "ページID";
             // 
-            // PIDListBox
+            // pageIDListBox
             // 
-            this.PIDListBox.FormattingEnabled = true;
-            this.PIDListBox.ItemHeight = 12;
-            this.PIDListBox.Location = new System.Drawing.Point(6, 15);
-            this.PIDListBox.Name = "PIDListBox";
-            this.PIDListBox.ScrollAlwaysVisible = true;
-            this.PIDListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.PIDListBox.Size = new System.Drawing.Size(203, 76);
-            this.PIDListBox.TabIndex = 0;
+            this.pageIDListBox.FormattingEnabled = true;
+            this.pageIDListBox.ItemHeight = 12;
+            this.pageIDListBox.Location = new System.Drawing.Point(6, 15);
+            this.pageIDListBox.Name = "pageIDListBox";
+            this.pageIDListBox.ScrollAlwaysVisible = true;
+            this.pageIDListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.pageIDListBox.Size = new System.Drawing.Size(203, 76);
+            this.pageIDListBox.TabIndex = 0;
             // 
             // groupBox3
             // 
@@ -301,7 +301,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox projectIDListBox;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListBox PIDListBox;
+        private System.Windows.Forms.ListBox pageIDListBox;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button cancelOperationButton;
         private System.Windows.Forms.Button doOperationButton;

@@ -217,17 +217,56 @@ namespace LibraUtilGUI
                 var tds = trs.ElementAt<AngleSharp.Dom.IElement>(i).GetElementsByTagName("td");
 
                 List<string> row = new List<string>();
-                string td1 = _text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(0).TextContent);
-                string td2 = _text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(1).TextContent);
+                string td1 = TextUtil.text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(0).TextContent);
+                string td2 = TextUtil.text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(1).TextContent);
                 row.Add(td1);
                 row.Add(td2);
                 data.Add(row);
             }
             return data;
         }
-        private string _text_clean(string str)
+
+
+        //PID+URL一覧データを生成
+        public List<List<string>> get_page_list_data()
         {
-            return Regex.Replace(str, @"(\r\n|\n|\t)", "");
+            List<List<string>> data = new List<List<string>>();
+            var parser = new AngleSharp.Parser.Html.HtmlParser();
+            var dom = parser.Parse(_wd.PageSource);
+            var tbls = dom.GetElementsByTagName("table");
+            var tbl = tbls.ElementAt<AngleSharp.Dom.IElement>(2);
+
+            List<string> col1 = new List<string>();
+            List<string> col2 = new List<string>();
+
+            var first_tds = tbl.QuerySelectorAll("tr td:first-child");
+            int fnx = first_tds.Count<AngleSharp.Dom.IElement>();
+            for(int i=0; i<fnx; i++)
+            {
+                string pageID = TextUtil.text_clean(first_tds.ElementAt<AngleSharp.Dom.IElement>(i).TextContent);
+                col1.Add(pageID);
+            }
+            var second_tds = tbl.QuerySelectorAll("tr td:nth-child(2)");
+            int snx = second_tds.Count<AngleSharp.Dom.IElement>();
+            for(int i=0; i<snx; i++)
+            {
+                string pageURL = TextUtil.text_clean(second_tds.ElementAt<AngleSharp.Dom.IElement>(i).TextContent);
+                col2.Add(pageURL);
+            }
+
+            int nx = 0;
+            if (fnx == snx) nx = fnx;
+            for(int n=0; n<fnx; n++)
+            {
+                List<string> data_row = new List<string>();
+                string vl1 = col1[n];
+                string vl2 = col2[n];
+                data_row.Add(vl1);
+                data_row.Add(vl2);
+                data.Add(data_row);
+            }
+
+            return data;
         }
 
 

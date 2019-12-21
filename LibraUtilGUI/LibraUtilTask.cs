@@ -90,7 +90,7 @@ namespace LibraUtilGUI
 
                 ldr.home();
                 ldr.login();
-                DateUtil.app_sleep(5);
+                DateUtil.app_sleep(shortWait);
 
                 List<List<string>> data = ldr.get_site_list();
                 this.Invoke(worker, data);
@@ -111,7 +111,44 @@ namespace LibraUtilGUI
         }
 
 
+        //ページIDコンボをセット
+        public delegate void _set_pageID_combo_(List<List<string>> data);
+        private void set_pageID_combo()
+        {
+            Task.Run(() =>
+            {
+                _set_pageID_combo_ worker = new _set_pageID_combo_(_set_pageID_combo_worker);
 
+                if (ldr_activated == false)
+                {
+                    load_wd();
+                }
+
+                ldr.home();
+                ldr.login();
+                DateUtil.app_sleep(shortWait);
+
+                ldr.projectID = "600";
+
+                ldr.browse_repo();
+                DateUtil.app_sleep(shortWait);
+
+                List<List<string>> data = ldr.get_page_list_data();
+                this.Invoke(worker, data);
+
+                ldr.logout();
+
+            });
+        }
+        private void _set_pageID_combo_worker(List<List<string>> data)
+        {
+            for(int i=0; i<data.Count; i++)
+            {
+                List<string> col = (List<string>)data[i];
+                string text = col[0] + " " + col[1];
+                pageIDListBox.Items.Add(text);
+            }
+        }
 
     }
 }

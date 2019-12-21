@@ -81,7 +81,8 @@ namespace LibraUtilGUI
         //事前準備クリック
         private void preOperationButton_Click(object sender, EventArgs e)
         {
-            set_projectID_combo();
+            //set_projectID_combo();
+            set_pageID_combo();
         }
 
         //フォームを閉じようとしたとき
