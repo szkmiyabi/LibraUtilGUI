@@ -10,9 +10,6 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
-
-using AngleSharp;
-using AngleSharp.Parser;
 using System.Text.RegularExpressions;
 
 namespace LibraUtilGUI
@@ -217,8 +214,8 @@ namespace LibraUtilGUI
         public List<List<string>> get_site_list()
         {
             List<List<string>> data = new List<List<string>>();
-            var parser = new AngleSharp.Parser.Html.HtmlParser();
-            var dom = parser.Parse(_wd.PageSource);
+            var parser = new AngleSharp.Html.Parser.HtmlParser();
+            var dom = parser.ParseDocument(_wd.PageSource);
             var tbl = dom.GetElementById("myTable");
 
             var trs = tbl.GetElementsByTagName("tr");
@@ -241,8 +238,8 @@ namespace LibraUtilGUI
         public string get_site_name()
         {
             string sname = "";
-            var parser = new AngleSharp.Parser.Html.HtmlParser();
-            var dom = parser.Parse(_wd.PageSource);
+            var parser = new AngleSharp.Html.Parser.HtmlParser();
+            var dom = parser.ParseDocument(_wd.PageSource);
             var tbls = dom.GetElementsByTagName("table");
             var tbl = tbls.ElementAt<AngleSharp.Dom.IElement>(1);
             var tds = tbl.QuerySelectorAll("tr td");
@@ -262,8 +259,8 @@ namespace LibraUtilGUI
         public List<List<string>> get_page_list_data()
         {
             List<List<string>> data = new List<List<string>>();
-            var parser = new AngleSharp.Parser.Html.HtmlParser();
-            var dom = parser.Parse(_wd.PageSource);
+            var parser = new AngleSharp.Html.Parser.HtmlParser();
+            var dom = parser.ParseDocument(_wd.PageSource);
             var tbls = dom.GetElementsByTagName("table");
             var tbl = tbls.ElementAt<AngleSharp.Dom.IElement>(2);
 

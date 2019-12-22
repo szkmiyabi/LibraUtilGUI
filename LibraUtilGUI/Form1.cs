@@ -14,9 +14,6 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-
-using AngleSharp;
-using AngleSharp.Parser;
 using System.Runtime.InteropServices;
 
 namespace LibraUtilGUI
