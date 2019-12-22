@@ -81,8 +81,8 @@ namespace LibraUtilGUI
         }
 
         //operationStatusReportのデリゲート
-        public delegate void d_messanger(string msg);
-        public void w_messanger(string msg)
+        public delegate void d_messenger(string msg);
+        public void w_messenger(string msg)
         {
             form1.operationStatusReport.AppendText(msg + "\r\n");
         }
@@ -200,7 +200,7 @@ namespace LibraUtilGUI
             //basic認証の処理
             if (_basic_auth_flag.Equals("yes") && _basic_authenicated == false)
             {
-                d_messanger message = new d_messanger(w_messanger);
+                d_messenger message = new d_messenger(w_messenger);
                 form1.Invoke(message, "【お知らせ】基本認証オプションが有効化されています。ログインアラートで認証してください。");
                 _basic_authenicated = true;
             }
@@ -235,6 +235,26 @@ namespace LibraUtilGUI
                 data.Add(row);
             }
             return data;
+        }
+
+        //サイト名を取得
+        public string get_site_name()
+        {
+            string sname = "";
+            var parser = new AngleSharp.Parser.Html.HtmlParser();
+            var dom = parser.Parse(_wd.PageSource);
+            var tbls = dom.GetElementsByTagName("table");
+            var tbl = tbls.ElementAt<AngleSharp.Dom.IElement>(1);
+            var tds = tbl.QuerySelectorAll("tr td");
+            var td = tds.ElementAt<AngleSharp.Dom.IElement>(0);
+            string td_val = td.TextContent;
+            Regex pt = new Regex(@"(\[)([a-zA-Z0-9]+)(\])(\s*)(.+)");
+            if (pt.IsMatch(td_val))
+            {
+                Match mt = pt.Match(td_val);
+                sname = mt.Groups[5].Value;
+            }
+            return sname;
         }
 
 

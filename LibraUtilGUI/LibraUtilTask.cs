@@ -85,8 +85,8 @@ namespace LibraUtilGUI
         }
 
         //進捗状況テキスト更新のデリゲート
-        public delegate void d_status_messanger(string msg);
-        public void w_status_messanger(string msg)
+        public delegate void d_status_messenger(string msg);
+        public void w_status_messenger(string msg)
         {
             operationStatusReport.AppendText(msg + "\r\n");
         }
@@ -101,7 +101,7 @@ namespace LibraUtilGUI
             Task.Run(() =>
             {
                 _set_projectID_combo_ worker = new _set_projectID_combo_(_set_projectID_combo_worker);
-                d_status_messanger message = new d_status_messanger(w_status_messanger);
+                d_status_messenger message = new d_status_messenger(w_status_messenger);
 
                 if (ldr_activated == false)
                 {
@@ -159,7 +159,7 @@ namespace LibraUtilGUI
                 _set_pageID_combo_ worker = new _set_pageID_combo_(_set_pageID_combo_worker);
                 _get_projectID_gate_ gate = new _get_projectID_gate_(_get_projectID_gate_dispatcher);
                 _get_pageID_which_ which = new _get_pageID_which_(_get_pageID_which_dispatcher);
-                d_status_messanger message = new d_status_messanger(w_status_messanger);
+                d_status_messenger message = new d_status_messenger(w_status_messenger);
 
                 if (ldr_activated == false)
                 {
