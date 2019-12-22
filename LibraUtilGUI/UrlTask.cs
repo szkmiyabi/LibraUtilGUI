@@ -134,6 +134,10 @@ namespace LibraUtilGUI
                     site_name = ldr.get_site_name();
                 }
 
+                //ヘッダー行の処理
+                List<string> head_row = new List<string>() { "PID", "URL" };
+                data.Insert(0, head_row);
+
                 string save_dir = (string)this.Invoke(_d_get_workDir);
                 string save_filename = save_dir + projectID + "_" + site_name + " URL.xlsx";
 
