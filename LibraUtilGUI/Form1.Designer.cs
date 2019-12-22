@@ -66,6 +66,11 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.guidelineListBox = new System.Windows.Forms.ListBox();
+            this.guidelineSelectAllButton = new System.Windows.Forms.Button();
+            this.guidelineSelectClearButton = new System.Windows.Forms.Button();
             this.appMenu.SuspendLayout();
             this.pageIDGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -78,6 +83,7 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // appMenu
@@ -86,7 +92,7 @@
             this.FileMenuList});
             this.appMenu.Location = new System.Drawing.Point(0, 0);
             this.appMenu.Name = "appMenu";
-            this.appMenu.Size = new System.Drawing.Size(663, 24);
+            this.appMenu.Size = new System.Drawing.Size(648, 24);
             this.appMenu.TabIndex = 1;
             this.appMenu.Text = "menuStrip1";
             // 
@@ -109,7 +115,7 @@
             // 
             this.projectIDListBox.FormattingEnabled = true;
             this.projectIDListBox.ItemHeight = 12;
-            this.projectIDListBox.Location = new System.Drawing.Point(5, 15);
+            this.projectIDListBox.Location = new System.Drawing.Point(3, 15);
             this.projectIDListBox.Name = "projectIDListBox";
             this.projectIDListBox.ScrollAlwaysVisible = true;
             this.projectIDListBox.Size = new System.Drawing.Size(222, 64);
@@ -210,7 +216,7 @@
             this.tabControl1.Location = new System.Drawing.Point(5, 15);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(630, 124);
+            this.tabControl1.Size = new System.Drawing.Size(483, 124);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -222,7 +228,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(622, 98);
+            this.tabPage1.Size = new System.Drawing.Size(475, 98);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "URL";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -264,7 +270,7 @@
             // 
             this.groupBox2.Controls.Add(this.UrlTaskFormatExcel);
             this.groupBox2.Controls.Add(this.UrlTaskFormatText);
-            this.groupBox2.Location = new System.Drawing.Point(299, 6);
+            this.groupBox2.Location = new System.Drawing.Point(319, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(150, 34);
             this.groupBox2.TabIndex = 2;
@@ -295,7 +301,7 @@
             // 
             // doUrlTaskButton
             // 
-            this.doUrlTaskButton.Location = new System.Drawing.Point(530, 59);
+            this.doUrlTaskButton.Location = new System.Drawing.Point(391, 69);
             this.doUrlTaskButton.Name = "doUrlTaskButton";
             this.doUrlTaskButton.Size = new System.Drawing.Size(75, 23);
             this.doUrlTaskButton.TabIndex = 1;
@@ -307,7 +313,7 @@
             // 
             this.groupBox1.Controls.Add(this.UrlTaskTypePID);
             this.groupBox1.Controls.Add(this.UrlTaskTypePIDURL);
-            this.groupBox1.Location = new System.Drawing.Point(170, 6);
+            this.groupBox1.Location = new System.Drawing.Point(180, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(123, 34);
             this.groupBox1.TabIndex = 0;
@@ -341,7 +347,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(527, 98);
+            this.tabPage2.Size = new System.Drawing.Size(622, 98);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "REPORT";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -350,7 +356,7 @@
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(527, 98);
+            this.tabPage3.Size = new System.Drawing.Size(622, 98);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "PRESV";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -359,7 +365,7 @@
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(527, 98);
+            this.tabPage4.Size = new System.Drawing.Size(622, 98);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "SRC";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -370,7 +376,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 461);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(663, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(648, 22);
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -381,11 +387,11 @@
             // 
             // operationStatusReport
             // 
-            this.operationStatusReport.Location = new System.Drawing.Point(9, 15);
+            this.operationStatusReport.Location = new System.Drawing.Point(3, 15);
             this.operationStatusReport.Multiline = true;
             this.operationStatusReport.Name = "operationStatusReport";
             this.operationStatusReport.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.operationStatusReport.Size = new System.Drawing.Size(620, 94);
+            this.operationStatusReport.Size = new System.Drawing.Size(614, 94);
             this.operationStatusReport.TabIndex = 0;
             // 
             // label1
@@ -423,7 +429,7 @@
             this.panel1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.panel1.Location = new System.Drawing.Point(12, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(237, 124);
+            this.panel1.Size = new System.Drawing.Size(230, 124);
             this.panel1.TabIndex = 10;
             // 
             // panel2
@@ -434,18 +440,18 @@
             this.panel2.Controls.Add(this.pageIDGroup);
             this.panel2.Controls.Add(this.pageIDListBoxSelectAllButton);
             this.panel2.Controls.Add(this.pageIDListBoxSelectClearButton);
-            this.panel2.Location = new System.Drawing.Point(255, 27);
+            this.panel2.Location = new System.Drawing.Point(243, 27);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(395, 124);
+            this.panel2.Size = new System.Drawing.Size(392, 124);
             this.panel2.TabIndex = 11;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.tabControl1);
-            this.panel3.Location = new System.Drawing.Point(12, 167);
+            this.panel3.Location = new System.Drawing.Point(144, 168);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(638, 143);
+            this.panel3.Size = new System.Drawing.Size(491, 143);
             this.panel3.TabIndex = 12;
             // 
             // panel4
@@ -454,7 +460,7 @@
             this.panel4.Controls.Add(this.label4);
             this.panel4.Location = new System.Drawing.Point(12, 334);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(638, 116);
+            this.panel4.Size = new System.Drawing.Size(623, 116);
             this.panel4.TabIndex = 13;
             // 
             // label4
@@ -466,11 +472,63 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "処理状況";
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.guidelineSelectClearButton);
+            this.panel5.Controls.Add(this.guidelineSelectAllButton);
+            this.panel5.Controls.Add(this.guidelineListBox);
+            this.panel5.Controls.Add(this.label5);
+            this.panel5.Location = new System.Drawing.Point(12, 168);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(130, 143);
+            this.panel5.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 12);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "達成基準";
+            // 
+            // guidelineListBox
+            // 
+            this.guidelineListBox.FormattingEnabled = true;
+            this.guidelineListBox.ItemHeight = 12;
+            this.guidelineListBox.Location = new System.Drawing.Point(3, 15);
+            this.guidelineListBox.Name = "guidelineListBox";
+            this.guidelineListBox.ScrollAlwaysVisible = true;
+            this.guidelineListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.guidelineListBox.Size = new System.Drawing.Size(123, 88);
+            this.guidelineListBox.TabIndex = 1;
+            // 
+            // guidelineSelectAllButton
+            // 
+            this.guidelineSelectAllButton.Location = new System.Drawing.Point(5, 112);
+            this.guidelineSelectAllButton.Name = "guidelineSelectAllButton";
+            this.guidelineSelectAllButton.Size = new System.Drawing.Size(51, 23);
+            this.guidelineSelectAllButton.TabIndex = 2;
+            this.guidelineSelectAllButton.Text = "全選択";
+            this.guidelineSelectAllButton.UseVisualStyleBackColor = true;
+            this.guidelineSelectAllButton.Click += new System.EventHandler(this.guidelineSelectAllButton_Click);
+            // 
+            // guidelineSelectClearButton
+            // 
+            this.guidelineSelectClearButton.Location = new System.Drawing.Point(61, 112);
+            this.guidelineSelectClearButton.Name = "guidelineSelectClearButton";
+            this.guidelineSelectClearButton.Size = new System.Drawing.Size(65, 23);
+            this.guidelineSelectClearButton.TabIndex = 3;
+            this.guidelineSelectClearButton.Text = "選択解除";
+            this.guidelineSelectClearButton.UseVisualStyleBackColor = true;
+            this.guidelineSelectClearButton.Click += new System.EventHandler(this.guidelineSelectClearButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 483);
+            this.ClientSize = new System.Drawing.Size(648, 483);
+            this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -503,6 +561,8 @@
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -547,6 +607,11 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton UrlTaskSrcSurvey;
         private System.Windows.Forms.RadioButton UrlTaskSrcReport;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.ListBox guidelineListBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button guidelineSelectClearButton;
+        private System.Windows.Forms.Button guidelineSelectAllButton;
     }
 }
 

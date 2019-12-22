@@ -9,53 +9,6 @@ using System.Xml.Serialization;
 namespace LibraUtilGUI
 {
 
-    //projectIDListBoxのデータバインドサブクラス
-    public class projectIDComboItem
-    {
-        private string _id_str;
-        private string _display_str;
-        public projectIDComboItem() { }
-        public projectIDComboItem(string id, string display)
-        {
-            _id_str = id;
-            _display_str = display;
-        }
-        public string id_str
-        {
-            get { return _id_str; }
-            set { _id_str = value; }
-        }
-        public string display_str
-        {
-            get { return _display_str; }
-            set { _display_str = value; }
-        }
-    }
-
-    //pageIDListBoxのデータバインドサブクラス
-    public class pageIDComboItem
-    {
-        private string _id_str;
-        private string _display_str;
-        public pageIDComboItem() { }
-        public pageIDComboItem(string id, string display)
-        {
-            _id_str = id;
-            _display_str = display;
-        }
-        public string id_str
-        {
-            get { return _id_str; }
-            set { _id_str = value; }
-        }
-        public string display_str
-        {
-            get { return _display_str; }
-            set { _display_str = value; }
-        }
-    }
-
-    //Backgroundクラス本体
     partial class Form1
     {
         private Settings appSettings;
@@ -73,7 +26,7 @@ namespace LibraUtilGUI
         private string basic_auth;
         private string workDir;
 
-        //環境設定
+        //環境設定ダイアログを開く
         private void showSettingsForm()
         {
             SettingsForm sf = new SettingsForm();
