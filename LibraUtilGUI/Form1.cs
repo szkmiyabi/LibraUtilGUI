@@ -91,7 +91,10 @@ namespace LibraUtilGUI
         //実験用Button1メソッド
         private void button1_Click(object sender, EventArgs e)
         {
-            test_method();
+            //test_method();
+
+            string cr = projectIDListBox.SelectedValue.ToString();
+            do_create_pid_url_list(cr);
         }
 
 

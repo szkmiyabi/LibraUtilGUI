@@ -28,6 +28,7 @@ namespace LibraUtilGUI
         //2次元配列をTSVファイルとして書き込み
         public void write_tsv_data(List<List<string>> data, string filename)
         {
+            d_messenger message = new d_messenger(w_messenger);
             Encoding enc = new System.Text.UTF8Encoding(false);
             StreamWriter sw = new StreamWriter(filename, false, enc);
             for(int i=0; i<data.Count; i++)
@@ -37,8 +38,7 @@ namespace LibraUtilGUI
                 sw.Write(row_data);
             }
             sw.Close();
-            d_messenger message = new d_messenger(w_messenger);
-            form1.Invoke(message, "保存に成功しました。（" + DateUtil.get_logtime() + "）");
+            form1.Invoke(message, "保存に成功しました。（" + filename + "）");
         }
     }
 }
