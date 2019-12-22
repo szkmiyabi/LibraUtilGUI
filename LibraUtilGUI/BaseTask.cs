@@ -76,19 +76,49 @@ namespace LibraUtilGUI
         }
 
 
+        //デリゲート（基本認証ON/OFFチェック）
+        public delegate Boolean d_get_basic_auth_cond();
 
-        //基本認証オプション確認のデリゲート
-        public delegate Boolean d_wrap_is_authenicate_check();
-        public Boolean d_work_is_authenicate_check()
+        public Boolean w_get_basic_auth_cond()
         {
-            return is_authenicate_check();
+            Boolean flg = true;
+            if (basic_auth == "yes" && headless == "yes")
+            {
+                flg = false;
+                operationStatusReport.AppendText("【エラー】基本認証⇒「はい」を選択した場合、ヘッドレス起動⇒「いいえ」に設定しないと動作しません。基本設定を確認してください。\r\n");
+            }
+            return flg;
         }
 
-        //進捗状況テキスト更新のデリゲート
+        //デリゲート（処理状況テキストの更新）
         public delegate void d_status_messenger(string msg);
         public void w_status_messenger(string msg)
         {
             operationStatusReport.AppendText(msg + "\r\n");
+        }
+
+        //デリゲート（保存先フォルダ参照）
+        private delegate string d_get_workDir();
+        private string w_get_workDir()
+        {
+            return workDir;
+        }
+
+        //デリゲート（プロジェクトID参照）
+        private delegate string d_get_projectID();
+        private string w_get_projectID()
+        {
+            return projectIDListBox.SelectedValue.ToString();
+        }
+
+        //デリゲート（参照タイプ参照）
+        private delegate string d_get_source_flag();
+        private string w_get_source_flag()
+        {
+            string flag = "";
+            if (BaseTaskSrcSurvey.Checked) flag = "svpage";
+            else flag = "report";
+            return flag;
         }
 
 
@@ -139,9 +169,8 @@ namespace LibraUtilGUI
             projectIDListBox.DataSource = ListBoxItem;
 
             pageIDLoadButton.Enabled = true;
-            loadPageIDFromRpPageRadio.Enabled = true;
-            loadPageIDFromRpPageRadio.Checked = true;
-            loadPageIDFromSvPageRadio.Enabled = true;
+            BaseTaskSrcReport.Enabled = true;
+            BaseTaskSrcSurvey.Enabled = true;
 
         }
 
@@ -157,9 +186,10 @@ namespace LibraUtilGUI
             Task.Run(() =>
             {
                 _set_pageID_combo_ worker = new _set_pageID_combo_(_set_pageID_combo_worker);
-                _get_projectID_gate_ gate = new _get_projectID_gate_(_get_projectID_gate_dispatcher);
-                _get_pageID_which_ which = new _get_pageID_which_(_get_pageID_which_dispatcher);
                 d_status_messenger message = new d_status_messenger(w_status_messenger);
+                d_get_projectID _d_get_projectID = new d_get_projectID(w_get_projectID);
+                d_get_basic_auth_cond _d_get_basic_auth_cond = new d_get_basic_auth_cond(w_get_basic_auth_cond);
+                d_get_source_flag _d_get_source_flag = new d_get_source_flag(w_get_source_flag);
 
                 if (ldr_activated == false)
                 {
@@ -172,10 +202,10 @@ namespace LibraUtilGUI
                 ldr.login();
                 DateUtil.app_sleep(shortWait);
 
-                string cr = (string) this.Invoke(gate);
+                string cr = (string) this.Invoke(_d_get_projectID);
                 ldr.projectID = cr;
 
-                string flg = (string)this.Invoke(which);
+                string flg = (string)this.Invoke(_d_get_source_flag);
                 if(flg == "report")
                 {
                     this.Invoke(message, "レポートインデックスページにアクセスしています。（" + DateUtil.get_logtime() + "）");
@@ -186,8 +216,8 @@ namespace LibraUtilGUI
                 }
                 else if(flg == "svpage")
                 {
-                    d_wrap_is_authenicate_check instance_authenicate_check = new d_wrap_is_authenicate_check(d_work_is_authenicate_check);
-                    Boolean auth_param_check = (Boolean) this.Invoke(instance_authenicate_check);
+
+                    Boolean auth_param_check = (Boolean)this.Invoke(_d_get_basic_auth_cond);
                     if (auth_param_check == false) return;
 
                     this.Invoke(message, "検査メイン画面ページにアクセスしています。（" + DateUtil.get_logtime() + "）");
@@ -219,20 +249,7 @@ namespace LibraUtilGUI
 
             pageIDListBoxSelectAllButton.Enabled = true;
             pageIDListBoxSelectClearButton.Enabled = true;
-            doOperationButton.Enabled = true;
-            cancelOperationButton.Enabled = true;
-        }
-        private string _get_projectID_gate_dispatcher()
-        {
-            string cr = projectIDListBox.SelectedValue.ToString();
-            return cr;
-        }
-        private string _get_pageID_which_dispatcher()
-        {
-            string cr = "";
-            if (loadPageIDFromRpPageRadio.Checked == true) cr = "report";
-            else cr = "svpage";
-            return cr;
+
         }
 
 
