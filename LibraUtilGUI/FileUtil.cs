@@ -24,6 +24,20 @@ namespace LibraUtilGUI
             form1.operationStatusReport.AppendText(msg + "\r\n");
         }
 
+        //配列をテキストファイルとして書き込み
+        public void write_text_data(List<string> data, string filename)
+        {
+            d_messenger message = new d_messenger(w_messenger);
+            Encoding enc = new System.Text.UTF8Encoding(false);
+            StreamWriter sw = new StreamWriter(filename, false, enc);
+            for (int i = 0; i < data.Count; i++)
+            {
+                string row = (string)data[i] + "\r\n";
+                sw.Write(row);
+            }
+            sw.Close();
+            form1.Invoke(message, "保存に成功しました。（" + filename + "）");
+        }
 
         //2次元配列をTSVファイルとして書き込み
         public void write_tsv_data(List<List<string>> data, string filename)

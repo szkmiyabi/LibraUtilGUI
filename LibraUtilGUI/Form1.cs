@@ -93,8 +93,6 @@ namespace LibraUtilGUI
         {
             //test_method();
 
-            string cr = projectIDListBox.SelectedValue.ToString();
-            do_create_pid_url_list(cr);
         }
 
 
@@ -135,6 +133,24 @@ namespace LibraUtilGUI
         {
             SendMessage(pageIDListBox.Handle, LB_SETSEL, 0, -1);
             pageIDListBox.SetSelected(0, false);
+        }
+
+        //URLオペレーション処理実行
+        private void doUrlTaskButton_Click(object sender, EventArgs e)
+        {
+            string type = "";
+            if (UrlTaskTypePID.Checked) type = "pid-only";
+            else type = "pid-url";
+            switch (type)
+            {
+                case "pid-only":
+                    do_create_pid_list();
+                    break;
+                case "pid-url":
+                    do_create_pid_url_list();
+                    break;
+            }
+
         }
     }
 

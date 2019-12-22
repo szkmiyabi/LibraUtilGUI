@@ -59,14 +59,20 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.UrlTaskTypePIDURL = new System.Windows.Forms.RadioButton();
+            this.UrlTaskTypePID = new System.Windows.Forms.RadioButton();
+            this.doUrlTaskButton = new System.Windows.Forms.Button();
             this.appMenu.SuspendLayout();
             this.pageIDGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -232,6 +238,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.doUrlTaskButton);
+            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -373,6 +381,49 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "処理状況";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.UrlTaskTypePID);
+            this.groupBox1.Controls.Add(this.UrlTaskTypePIDURL);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(134, 47);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "出力タイプ";
+            // 
+            // UrlTaskTypePIDURL
+            // 
+            this.UrlTaskTypePIDURL.AutoSize = true;
+            this.UrlTaskTypePIDURL.Location = new System.Drawing.Point(3, 15);
+            this.UrlTaskTypePIDURL.Name = "UrlTaskTypePIDURL";
+            this.UrlTaskTypePIDURL.Size = new System.Drawing.Size(71, 16);
+            this.UrlTaskTypePIDURL.TabIndex = 0;
+            this.UrlTaskTypePIDURL.TabStop = true;
+            this.UrlTaskTypePIDURL.Text = "PIDとURL";
+            this.UrlTaskTypePIDURL.UseVisualStyleBackColor = true;
+            // 
+            // UrlTaskTypePID
+            // 
+            this.UrlTaskTypePID.AutoSize = true;
+            this.UrlTaskTypePID.Location = new System.Drawing.Point(80, 15);
+            this.UrlTaskTypePID.Name = "UrlTaskTypePID";
+            this.UrlTaskTypePID.Size = new System.Drawing.Size(41, 16);
+            this.UrlTaskTypePID.TabIndex = 1;
+            this.UrlTaskTypePID.TabStop = true;
+            this.UrlTaskTypePID.Text = "PID";
+            this.UrlTaskTypePID.UseVisualStyleBackColor = true;
+            // 
+            // doUrlTaskButton
+            // 
+            this.doUrlTaskButton.Location = new System.Drawing.Point(454, 60);
+            this.doUrlTaskButton.Name = "doUrlTaskButton";
+            this.doUrlTaskButton.Size = new System.Drawing.Size(75, 23);
+            this.doUrlTaskButton.TabIndex = 1;
+            this.doUrlTaskButton.Text = "処理実行";
+            this.doUrlTaskButton.UseVisualStyleBackColor = true;
+            this.doUrlTaskButton.Click += new System.EventHandler(this.doUrlTaskButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -393,6 +444,7 @@
             this.pageIDGroup.ResumeLayout(false);
             this.pageIDGroup.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -403,6 +455,8 @@
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -441,6 +495,10 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button doUrlTaskButton;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton UrlTaskTypePID;
+        private System.Windows.Forms.RadioButton UrlTaskTypePIDURL;
     }
 }
 
