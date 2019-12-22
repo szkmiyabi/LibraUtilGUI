@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.appMenu = new System.Windows.Forms.MenuStrip();
             this.FileMenuList = new System.Windows.Forms.ToolStripMenuItem();
             this.FileMenuSettings = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,8 +40,6 @@
             this.pageIDListBoxSelectAllButton = new System.Windows.Forms.Button();
             this.pageIDLoadButton = new System.Windows.Forms.Button();
             this.pageIDListBox = new System.Windows.Forms.ListBox();
-            this.cancelOperationButton = new System.Windows.Forms.Button();
-            this.doOperationButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -82,16 +79,6 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(554, 36);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 41);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Debug";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // appMenu
             // 
@@ -214,24 +201,6 @@
             this.pageIDListBox.Size = new System.Drawing.Size(381, 64);
             this.pageIDListBox.TabIndex = 0;
             // 
-            // cancelOperationButton
-            // 
-            this.cancelOperationButton.Location = new System.Drawing.Point(554, 112);
-            this.cancelOperationButton.Name = "cancelOperationButton";
-            this.cancelOperationButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelOperationButton.TabIndex = 4;
-            this.cancelOperationButton.Text = "キャンセル";
-            this.cancelOperationButton.UseVisualStyleBackColor = true;
-            // 
-            // doOperationButton
-            // 
-            this.doOperationButton.Location = new System.Drawing.Point(554, 83);
-            this.doOperationButton.Name = "doOperationButton";
-            this.doOperationButton.Size = new System.Drawing.Size(75, 23);
-            this.doOperationButton.TabIndex = 3;
-            this.doOperationButton.Text = "実行";
-            this.doOperationButton.UseVisualStyleBackColor = true;
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -241,7 +210,7 @@
             this.tabControl1.Location = new System.Drawing.Point(5, 15);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(535, 124);
+            this.tabControl1.Size = new System.Drawing.Size(630, 124);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -253,7 +222,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(527, 98);
+            this.tabPage1.Size = new System.Drawing.Size(622, 98);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "URL";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -326,7 +295,7 @@
             // 
             // doUrlTaskButton
             // 
-            this.doUrlTaskButton.Location = new System.Drawing.Point(412, 60);
+            this.doUrlTaskButton.Location = new System.Drawing.Point(530, 59);
             this.doUrlTaskButton.Name = "doUrlTaskButton";
             this.doUrlTaskButton.Size = new System.Drawing.Size(75, 23);
             this.doUrlTaskButton.TabIndex = 1;
@@ -472,11 +441,8 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.tabControl1);
-            this.panel3.Controls.Add(this.cancelOperationButton);
-            this.panel3.Controls.Add(this.doOperationButton);
             this.panel3.Location = new System.Drawing.Point(12, 167);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(638, 143);
@@ -543,16 +509,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.MenuStrip appMenu;
         private System.Windows.Forms.ToolStripMenuItem FileMenuList;
         private System.Windows.Forms.ToolStripMenuItem FileMenuSettings;
         private System.Windows.Forms.ListBox projectIDListBox;
         private System.Windows.Forms.GroupBox pageIDGroup;
         private System.Windows.Forms.ListBox pageIDListBox;
-        private System.Windows.Forms.Button cancelOperationButton;
-        private System.Windows.Forms.Button doOperationButton;
         private System.Windows.Forms.Button projectIDLoadButton;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;

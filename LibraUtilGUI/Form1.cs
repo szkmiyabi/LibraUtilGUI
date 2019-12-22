@@ -23,12 +23,13 @@ namespace LibraUtilGUI
 {
     public partial class Form1 : Form
     {
+
         //ListBoxの全選択/選択解除のWindowsAPI宣言
         [DllImport("User32.dll", EntryPoint = "SendMessage")]
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         private const int LB_SETSEL = 0x185;
 
-        private string txt_buf = "";
+        //LibraDriverインスタンス監視
         private LibraDriver ldr;
         private Boolean ldr_activated = false;
 
@@ -52,7 +53,6 @@ namespace LibraUtilGUI
         {
             if(checkSettings() == false)
             {
-                operationStatusReport.AppendText(txt_buf);
                 return;
             }
             try
@@ -72,16 +72,6 @@ namespace LibraUtilGUI
         {
             if(ldr != null) ldr.shutdown();
         }
-
-
-        //実験用Button1メソッド
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //test_method();
-
-        }
-
-
 
         //設定メニュークリック
         private void FileMenuSettings_Click(object sender, EventArgs e)

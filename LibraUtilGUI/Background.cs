@@ -120,6 +120,7 @@ namespace LibraUtilGUI
         //環境設定パラメータチェック
         private Boolean checkSettings()
         {
+            d_status_messenger message = new d_status_messenger(w_status_messenger);
             Boolean flag = true;
             StringBuilder sb = new StringBuilder();
             string err_txt = "";
@@ -164,8 +165,8 @@ namespace LibraUtilGUI
             if(flag == false)
             {
                 err_txt = "【エラー】ブラウザドライバの起動要件を満たしません。\r\n考えられる理由は、初回起動である、あるいは環境設定の不具合です。環境設定をご確認ください。\r\n" + err_txt;
+                this.Invoke(message, err_txt);
             }
-            txt_buf = err_txt;
             return flag;
         }
 
