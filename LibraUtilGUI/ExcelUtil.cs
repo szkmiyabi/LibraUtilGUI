@@ -1,0 +1,73 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using ClosedXML.Excel;
+
+namespace LibraUtilGUI
+{
+    class ExcelUtil
+    {
+        private Form1 form1;
+
+        //コンストラクタ
+        public ExcelUtil(Form1 form1)
+        {
+            this.form1 = form1;
+        }
+
+        //デリゲート
+        public delegate void d_messenger(string msg);
+        public void w_messenger(string msg)
+        {
+            form1.operationStatusReport.AppendText(msg + "\r\n");
+        }
+
+        //最大文字数32767に収める
+        private string fetch_overflow_characters(string data)
+        {
+            if(data.Length > 32767)
+            {
+                string prefix = "【注意】セルに入力可能な文字数の上限を超えました。32767文字以降は切り捨てられます。\n\n";
+                int prefix_cnt = prefix.Length + 1;
+                return prefix + data.Substring(0, (32767 - prefix_cnt));
+            }
+            else
+            {
+                return data;
+            }
+        }
+
+        //Excelファイルに出力
+        public void save_xlsx_as(List<List<string>> data, string filename)
+        {
+            d_messenger message = new d_messenger(w_messenger);
+
+            var wb = new ClosedXML.Excel.XLWorkbook();
+            var ws = wb.Worksheets.Add("Sheet1");
+
+            //行のループ
+            for (int i = 0; i < data.Count; i++)
+            {
+                List<string> row = (List<string>)data[i];
+
+                //列のループ
+                for(int j=0; j<row.Count; j++)
+                {
+                    string col = (string)row[j];
+                    ws.Cell(i+1, j+1).Value = fetch_overflow_characters(col);
+
+                }
+
+            }
+
+            wb.SaveAs(filename);
+            form1.Invoke(message, "保存に成功しました。（" + filename + "）");
+
+        }
+
+
+    }
+}

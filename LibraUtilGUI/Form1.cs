@@ -141,13 +141,19 @@ namespace LibraUtilGUI
             string type = "";
             if (UrlTaskTypePID.Checked) type = "pid-only";
             else type = "pid-url";
+
+            string format = "";
+            if (UrlTaskFormatExcel.Checked) format = "excel";
+            else format = "text";
+
             switch (type)
             {
                 case "pid-only":
                     do_create_pid_list();
                     break;
                 case "pid-url":
-                    do_create_pid_url_list();
+                    if (format == "excel") do_create_pid_url_list_xlsx();
+                    else do_create_pid_url_list();
                     break;
             }
 

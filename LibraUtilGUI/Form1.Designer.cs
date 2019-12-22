@@ -63,6 +63,9 @@
             this.UrlTaskTypePIDURL = new System.Windows.Forms.RadioButton();
             this.UrlTaskTypePID = new System.Windows.Forms.RadioButton();
             this.doUrlTaskButton = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.UrlTaskFormatText = new System.Windows.Forms.RadioButton();
+            this.UrlTaskFormatExcel = new System.Windows.Forms.RadioButton();
             this.appMenu.SuspendLayout();
             this.pageIDGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -73,6 +76,7 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -238,6 +242,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.doUrlTaskButton);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -385,9 +390,9 @@
             // 
             this.groupBox1.Controls.Add(this.UrlTaskTypePID);
             this.groupBox1.Controls.Add(this.UrlTaskTypePIDURL);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(12, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(134, 47);
+            this.groupBox1.Size = new System.Drawing.Size(123, 34);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "出力タイプ";
@@ -395,7 +400,7 @@
             // UrlTaskTypePIDURL
             // 
             this.UrlTaskTypePIDURL.AutoSize = true;
-            this.UrlTaskTypePIDURL.Location = new System.Drawing.Point(3, 15);
+            this.UrlTaskTypePIDURL.Location = new System.Drawing.Point(6, 15);
             this.UrlTaskTypePIDURL.Name = "UrlTaskTypePIDURL";
             this.UrlTaskTypePIDURL.Size = new System.Drawing.Size(71, 16);
             this.UrlTaskTypePIDURL.TabIndex = 0;
@@ -406,7 +411,7 @@
             // UrlTaskTypePID
             // 
             this.UrlTaskTypePID.AutoSize = true;
-            this.UrlTaskTypePID.Location = new System.Drawing.Point(80, 15);
+            this.UrlTaskTypePID.Location = new System.Drawing.Point(74, 15);
             this.UrlTaskTypePID.Name = "UrlTaskTypePID";
             this.UrlTaskTypePID.Size = new System.Drawing.Size(41, 16);
             this.UrlTaskTypePID.TabIndex = 1;
@@ -423,6 +428,39 @@
             this.doUrlTaskButton.Text = "処理実行";
             this.doUrlTaskButton.UseVisualStyleBackColor = true;
             this.doUrlTaskButton.Click += new System.EventHandler(this.doUrlTaskButton_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.UrlTaskFormatExcel);
+            this.groupBox2.Controls.Add(this.UrlTaskFormatText);
+            this.groupBox2.Location = new System.Drawing.Point(141, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 34);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "フォーマット";
+            // 
+            // UrlTaskFormatText
+            // 
+            this.UrlTaskFormatText.AutoSize = true;
+            this.UrlTaskFormatText.Location = new System.Drawing.Point(6, 15);
+            this.UrlTaskFormatText.Name = "UrlTaskFormatText";
+            this.UrlTaskFormatText.Size = new System.Drawing.Size(59, 16);
+            this.UrlTaskFormatText.TabIndex = 0;
+            this.UrlTaskFormatText.TabStop = true;
+            this.UrlTaskFormatText.Text = "テキスト";
+            this.UrlTaskFormatText.UseVisualStyleBackColor = true;
+            // 
+            // UrlTaskFormatExcel
+            // 
+            this.UrlTaskFormatExcel.AutoSize = true;
+            this.UrlTaskFormatExcel.Location = new System.Drawing.Point(62, 15);
+            this.UrlTaskFormatExcel.Name = "UrlTaskFormatExcel";
+            this.UrlTaskFormatExcel.Size = new System.Drawing.Size(85, 16);
+            this.UrlTaskFormatExcel.TabIndex = 1;
+            this.UrlTaskFormatExcel.TabStop = true;
+            this.UrlTaskFormatExcel.Text = "Excelファイル";
+            this.UrlTaskFormatExcel.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -457,6 +495,8 @@
             this.panel4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -499,6 +539,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton UrlTaskTypePID;
         private System.Windows.Forms.RadioButton UrlTaskTypePIDURL;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton UrlTaskFormatExcel;
+        private System.Windows.Forms.RadioButton UrlTaskFormatText;
     }
 }
 
