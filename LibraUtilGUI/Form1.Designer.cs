@@ -67,10 +67,11 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.guidelineListBox = new System.Windows.Forms.ListBox();
-            this.guidelineSelectAllButton = new System.Windows.Forms.Button();
             this.guidelineSelectClearButton = new System.Windows.Forms.Button();
+            this.guidelineSelectAllButton = new System.Windows.Forms.Button();
+            this.guidelineListBox = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.createSiteInfoBookButton = new System.Windows.Forms.Button();
             this.appMenu.SuspendLayout();
             this.pageIDGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -347,7 +348,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(622, 98);
+            this.tabPage2.Size = new System.Drawing.Size(475, 98);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "REPORT";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -356,7 +357,7 @@
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(622, 98);
+            this.tabPage3.Size = new System.Drawing.Size(475, 98);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "PRESV";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -365,7 +366,7 @@
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(622, 98);
+            this.tabPage4.Size = new System.Drawing.Size(475, 98);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "SRC";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -423,6 +424,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.createSiteInfoBookButton);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.projectIDListBox);
             this.panel1.Controls.Add(this.projectIDLoadButton);
@@ -483,14 +485,25 @@
             this.panel5.Size = new System.Drawing.Size(130, 143);
             this.panel5.TabIndex = 14;
             // 
-            // label5
+            // guidelineSelectClearButton
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 12);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "達成基準";
+            this.guidelineSelectClearButton.Location = new System.Drawing.Point(61, 112);
+            this.guidelineSelectClearButton.Name = "guidelineSelectClearButton";
+            this.guidelineSelectClearButton.Size = new System.Drawing.Size(65, 23);
+            this.guidelineSelectClearButton.TabIndex = 3;
+            this.guidelineSelectClearButton.Text = "選択解除";
+            this.guidelineSelectClearButton.UseVisualStyleBackColor = true;
+            this.guidelineSelectClearButton.Click += new System.EventHandler(this.guidelineSelectClearButton_Click);
+            // 
+            // guidelineSelectAllButton
+            // 
+            this.guidelineSelectAllButton.Location = new System.Drawing.Point(5, 112);
+            this.guidelineSelectAllButton.Name = "guidelineSelectAllButton";
+            this.guidelineSelectAllButton.Size = new System.Drawing.Size(51, 23);
+            this.guidelineSelectAllButton.TabIndex = 2;
+            this.guidelineSelectAllButton.Text = "全選択";
+            this.guidelineSelectAllButton.UseVisualStyleBackColor = true;
+            this.guidelineSelectAllButton.Click += new System.EventHandler(this.guidelineSelectAllButton_Click);
             // 
             // guidelineListBox
             // 
@@ -503,25 +516,24 @@
             this.guidelineListBox.Size = new System.Drawing.Size(123, 88);
             this.guidelineListBox.TabIndex = 1;
             // 
-            // guidelineSelectAllButton
+            // label5
             // 
-            this.guidelineSelectAllButton.Location = new System.Drawing.Point(5, 112);
-            this.guidelineSelectAllButton.Name = "guidelineSelectAllButton";
-            this.guidelineSelectAllButton.Size = new System.Drawing.Size(51, 23);
-            this.guidelineSelectAllButton.TabIndex = 2;
-            this.guidelineSelectAllButton.Text = "全選択";
-            this.guidelineSelectAllButton.UseVisualStyleBackColor = true;
-            this.guidelineSelectAllButton.Click += new System.EventHandler(this.guidelineSelectAllButton_Click);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 12);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "達成基準";
             // 
-            // guidelineSelectClearButton
+            // createSiteInfoBookButton
             // 
-            this.guidelineSelectClearButton.Location = new System.Drawing.Point(61, 112);
-            this.guidelineSelectClearButton.Name = "guidelineSelectClearButton";
-            this.guidelineSelectClearButton.Size = new System.Drawing.Size(65, 23);
-            this.guidelineSelectClearButton.TabIndex = 3;
-            this.guidelineSelectClearButton.Text = "選択解除";
-            this.guidelineSelectClearButton.UseVisualStyleBackColor = true;
-            this.guidelineSelectClearButton.Click += new System.EventHandler(this.guidelineSelectClearButton_Click);
+            this.createSiteInfoBookButton.Location = new System.Drawing.Point(150, 93);
+            this.createSiteInfoBookButton.Name = "createSiteInfoBookButton";
+            this.createSiteInfoBookButton.Size = new System.Drawing.Size(75, 23);
+            this.createSiteInfoBookButton.TabIndex = 8;
+            this.createSiteInfoBookButton.Text = "Excel出力";
+            this.createSiteInfoBookButton.UseVisualStyleBackColor = true;
+            this.createSiteInfoBookButton.Click += new System.EventHandler(this.createSiteInfoBookButton_Click);
             // 
             // Form1
             // 
@@ -612,6 +624,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button guidelineSelectClearButton;
         private System.Windows.Forms.Button guidelineSelectAllButton;
+        private System.Windows.Forms.Button createSiteInfoBookButton;
     }
 }
 

@@ -169,6 +169,12 @@ namespace LibraUtilGUI
             SendMessage(guidelineListBox.Handle, LB_SETSEL, 0, -1);
             guidelineListBox.SetSelected(0, false);
         }
+
+        //Excel出力クリック
+        private void createSiteInfoBookButton_Click(object sender, EventArgs e)
+        {
+            create_site_info_book();
+        }
     }
 
 }

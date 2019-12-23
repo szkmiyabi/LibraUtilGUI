@@ -254,6 +254,34 @@ namespace LibraUtilGUI
             return sname;
         }
 
+        //サイトID＋サイト名＋備考＋期間データを取得
+        public List<List<string>> get_site_info_data()
+        {
+            List<List<string>> data = new List<List<string>>();
+            var parser = new AngleSharp.Html.Parser.HtmlParser();
+            var dom = parser.ParseDocument(_wd.PageSource);
+            var tbl = dom.GetElementById("myTable");
+
+            var trs = tbl.GetElementsByTagName("tr");
+            int nx = trs.Count<AngleSharp.Dom.IElement>();
+            for (int i = 1; i < nx; i++)
+            {
+                var tds = trs.ElementAt<AngleSharp.Dom.IElement>(i).GetElementsByTagName("td");
+
+                List<string> row = new List<string>();
+                string id = TextUtil.text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(0).TextContent);
+                string name = TextUtil.text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(1).TextContent);
+                string note = TextUtil.text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(2).TextContent);
+                string period = TextUtil.text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(4).TextContent);
+                row.Add(id);
+                row.Add(name);
+                row.Add(note);
+                row.Add(period);
+                data.Add(row);
+            }
+            return data;
+        }
+
 
         //PID+URL一覧データを生成
         public List<List<string>> get_page_list_data()
