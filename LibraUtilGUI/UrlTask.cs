@@ -31,10 +31,13 @@ namespace LibraUtilGUI
                 d_get_projectID _d_get_projectID = new d_get_projectID(w_get_projectID);
                 d_get_UrlTask_source_flag _d_get_UrlTask_source_flag = new d_get_UrlTask_source_flag(w_get_UrlTask_source_flag);
 
+                d_ldr_activate ldr_activate = new d_ldr_activate(w_ldr_activate);
+                d_task_cancel canceler = new d_task_cancel(w_task_cancel);
+
                 if (ldr_activated == false)
                 {
-                    load_wd();
-                    this.Invoke(message, "ブラウザドライバを起動しています。（" + DateUtil.get_logtime() + "）");
+                    //Libraドライバ起動しエラーの場合早期退出
+                    if (!(Boolean)this.Invoke(ldr_activate)) return;
                 }
 
                 ldr.home();
@@ -49,11 +52,17 @@ namespace LibraUtilGUI
                 List<List<string>> data = new List<List<string>>();
                 string site_name = "";
 
-                if(flag == "report")
+                //タスクのキャンセル判定
+                if ((Boolean)this.Invoke(canceler)) return;
+
+                if (flag == "report")
                 {
                     this.Invoke(message, "レポートインデックスページに移動します。（" + DateUtil.get_logtime() + "）");
                     ldr.browse_repo();
                     DateUtil.app_sleep(shortWait);
+
+                    //タスクのキャンセル判定
+                    if ((Boolean)this.Invoke(canceler)) return;
 
                     site_name = ldr.get_site_name();
                     data = ldr.get_page_list_data();
@@ -65,10 +74,16 @@ namespace LibraUtilGUI
                     DateUtil.app_sleep(longWait);
                     data = ldr.get_page_list_data_from_svpage();
 
+                    //タスクのキャンセル判定
+                    if ((Boolean)this.Invoke(canceler)) return;
+
                     this.Invoke(message, "レポートインデックスページに移動します。（" + DateUtil.get_logtime() + "）");
                     ldr.browse_repo();
                     DateUtil.app_sleep(shortWait);
                     site_name = ldr.get_site_name();
+
+                    //タスクのキャンセル判定
+                    if ((Boolean)this.Invoke(canceler)) return;
                 }
 
                 string save_dir = (string)this.Invoke(_d_get_workDir);
@@ -94,10 +109,13 @@ namespace LibraUtilGUI
                 d_get_projectID _d_get_projectID = new d_get_projectID(w_get_projectID);
                 d_get_UrlTask_source_flag _d_get_UrlTask_source_flag = new d_get_UrlTask_source_flag(w_get_UrlTask_source_flag);
 
+                d_ldr_activate ldr_activate = new d_ldr_activate(w_ldr_activate);
+                d_task_cancel canceler = new d_task_cancel(w_task_cancel);
+
                 if (ldr_activated == false)
                 {
-                    load_wd();
-                    this.Invoke(message, "ブラウザドライバを起動しています。（" + DateUtil.get_logtime() + "）");
+                    //Libraドライバ起動しエラーの場合早期退出
+                    if (!(Boolean)this.Invoke(ldr_activate)) return;
                 }
 
                 ldr.home();
@@ -118,6 +136,9 @@ namespace LibraUtilGUI
                     ldr.browse_repo();
                     DateUtil.app_sleep(shortWait);
 
+                    //タスクのキャンセル判定
+                    if ((Boolean)this.Invoke(canceler)) return;
+
                     site_name = ldr.get_site_name();
                     data = ldr.get_page_list_data();
                 }
@@ -128,10 +149,16 @@ namespace LibraUtilGUI
                     DateUtil.app_sleep(longWait);
                     data = ldr.get_page_list_data_from_svpage();
 
+                    //タスクのキャンセル判定
+                    if ((Boolean)this.Invoke(canceler)) return;
+
                     this.Invoke(message, "レポートインデックスページに移動します。（" + DateUtil.get_logtime() + "）");
                     ldr.browse_repo();
                     DateUtil.app_sleep(shortWait);
                     site_name = ldr.get_site_name();
+
+                    //タスクのキャンセル判定
+                    if ((Boolean)this.Invoke(canceler)) return;
                 }
 
                 //ヘッダー行の処理
@@ -140,6 +167,9 @@ namespace LibraUtilGUI
 
                 string save_dir = (string)this.Invoke(_d_get_workDir);
                 string save_filename = save_dir + projectID + "_" + site_name + " URL.xlsx";
+
+                //タスクのキャンセル判定
+                if ((Boolean)this.Invoke(canceler)) return;
 
                 ExcelUtil eu = new ExcelUtil();
                 eu.save_xlsx_as(data, save_filename);
@@ -161,16 +191,22 @@ namespace LibraUtilGUI
                 d_get_projectID _d_get_projectID = new d_get_projectID(w_get_projectID);
                 d_get_UrlTask_source_flag _d_get_UrlTask_source_flag = new d_get_UrlTask_source_flag(w_get_UrlTask_source_flag);
 
+                d_ldr_activate ldr_activate = new d_ldr_activate(w_ldr_activate);
+                d_task_cancel canceler = new d_task_cancel(w_task_cancel);
+
                 if (ldr_activated == false)
                 {
-                    load_wd();
-                    this.Invoke(message, "ブラウザドライバを起動しています。（" + DateUtil.get_logtime() + "）");
+                    //Libraドライバ起動しエラーの場合早期退出
+                    if (!(Boolean)this.Invoke(ldr_activate)) return;
                 }
 
                 ldr.home();
                 this.Invoke(message, "Libraにログインします。（" + DateUtil.get_logtime() + "）");
                 ldr.login();
                 DateUtil.app_sleep(shortWait);
+
+                //タスクのキャンセル判定
+                if ((Boolean)this.Invoke(canceler)) return;
 
                 string projectID = (string)this.Invoke(_d_get_projectID);
                 ldr.projectID = projectID;
@@ -185,6 +221,9 @@ namespace LibraUtilGUI
                     ldr.browse_repo();
                     DateUtil.app_sleep(shortWait);
 
+                    //タスクのキャンセル判定
+                    if ((Boolean)this.Invoke(canceler)) return;
+
                     site_name = ldr.get_site_name();
                     data = ldr.get_page_list_data();
                 }
@@ -195,10 +234,16 @@ namespace LibraUtilGUI
                     DateUtil.app_sleep(longWait);
                     data = ldr.get_page_list_data_from_svpage();
 
+                    //タスクのキャンセル判定
+                    if ((Boolean)this.Invoke(canceler)) return;
+
                     this.Invoke(message, "レポートインデックスページに移動します。（" + DateUtil.get_logtime() + "）");
                     ldr.browse_repo();
                     DateUtil.app_sleep(shortWait);
                     site_name = ldr.get_site_name();
+
+                    //タスクのキャンセル判定
+                    if ((Boolean)this.Invoke(canceler)) return;
                 }
 
                 string save_dir = (string)this.Invoke(_d_get_workDir);
@@ -211,6 +256,9 @@ namespace LibraUtilGUI
                     string col = (string)cols[0];
                     fetch_data.Add(col);
                 }
+
+                //タスクのキャンセル判定
+                if ((Boolean)this.Invoke(canceler)) return;
 
                 FileUtil fu = new FileUtil();
                 fu.write_text_data(fetch_data, save_filename);

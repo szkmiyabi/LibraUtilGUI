@@ -72,6 +72,7 @@
             this.guidelineSelectAllButton = new System.Windows.Forms.Button();
             this.guidelineListBox = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.cancelUrlTaskButton = new System.Windows.Forms.Button();
             this.appMenu.SuspendLayout();
             this.pageIDGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -222,6 +223,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.cancelUrlTaskButton);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.doUrlTaskButton);
@@ -302,7 +304,7 @@
             // 
             // doUrlTaskButton
             // 
-            this.doUrlTaskButton.Location = new System.Drawing.Point(391, 69);
+            this.doUrlTaskButton.Location = new System.Drawing.Point(313, 69);
             this.doUrlTaskButton.Name = "doUrlTaskButton";
             this.doUrlTaskButton.Size = new System.Drawing.Size(75, 23);
             this.doUrlTaskButton.TabIndex = 1;
@@ -535,6 +537,16 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "達成基準";
             // 
+            // cancelUrlTaskButton
+            // 
+            this.cancelUrlTaskButton.Location = new System.Drawing.Point(394, 69);
+            this.cancelUrlTaskButton.Name = "cancelUrlTaskButton";
+            this.cancelUrlTaskButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelUrlTaskButton.TabIndex = 4;
+            this.cancelUrlTaskButton.Text = "キャンセル";
+            this.cancelUrlTaskButton.UseVisualStyleBackColor = true;
+            this.cancelUrlTaskButton.Click += new System.EventHandler(this.cancelUrlTaskButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -625,6 +637,7 @@
         private System.Windows.Forms.Button guidelineSelectClearButton;
         private System.Windows.Forms.Button guidelineSelectAllButton;
         private System.Windows.Forms.Button createSiteInfoBookButton;
+        private System.Windows.Forms.Button cancelUrlTaskButton;
     }
 }
 

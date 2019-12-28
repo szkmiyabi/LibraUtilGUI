@@ -177,6 +177,11 @@ namespace LibraUtilGUI
             if (UrlTaskFormatExcel.Checked) format = "excel";
             else format = "text";
 
+            //CancellationTokenを発行
+            token_src = new CancellationTokenSource();
+            token = token_src.Token;
+
+            //条件分岐で処理実行
             switch (type)
             {
                 case "pid-only":
@@ -188,6 +193,12 @@ namespace LibraUtilGUI
                     break;
             }
 
+        }
+
+        //URLオペレーション処理キャンセル
+        private void cancelUrlTaskButton_Click(object sender, EventArgs e)
+        {
+            token_src.Cancel();
         }
 
         //ガイドライン全選択クリック
@@ -213,6 +224,7 @@ namespace LibraUtilGUI
             //処理実行
             create_site_info_book();
         }
+
 
     }
 
