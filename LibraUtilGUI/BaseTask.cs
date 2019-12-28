@@ -66,6 +66,8 @@ namespace LibraUtilGUI
                 operationStatusReport.AppendText("処理をキャンセルします。（" + DateUtil.get_logtime() + "）" + "\r\n");
                 token_src.Dispose();
                 token_src = null;
+                if (ldr != null) ldr.logout();
+                operationStatusReport.AppendText("処理をキャンセルしLibraからログアウトしました。（" + DateUtil.get_logtime() + "）" + "\r\n");
                 flag = true;
             }
             return flag;
@@ -101,6 +103,8 @@ namespace LibraUtilGUI
                 this.Invoke(worker, data);
                 this.Invoke(message, "サイト名コンボが設定完了しました。（" + DateUtil.get_logtime() + "）");
                 ldr.logout();
+                this.Invoke(message, "処理が完了しました。（" + DateUtil.get_logtime() + "）");
+
             });
 
         }
@@ -177,6 +181,8 @@ namespace LibraUtilGUI
                 this.Invoke(message, "ページIDコンボが設定完了しました。（" + DateUtil.get_logtime() + "）");
 
                 ldr.logout();
+                this.Invoke(message, "処理が完了しました。（" + DateUtil.get_logtime() + "）");
+
             });
         }
         private delegate void d_set_pageID_combo(List<List<string>> data);
