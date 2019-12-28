@@ -84,7 +84,7 @@ namespace LibraUtilGUI
             try
             {
                 int[] appWait = { systemWait, longWait, midWait, shortWait };
-                ldr = new LibraDriver(uid, pswd, appWait, driver, headless, basic_auth, workDir);
+                ldr = new LibraDriver(uid, pswd, appWait, driver, headless, basic_auth, workDir, debugMode);
                 ldr_activated = true;
                 flag = true;
             }
@@ -104,7 +104,6 @@ namespace LibraUtilGUI
         //ガイドラインIDコンボの設定
         private void init_guideline_combo()
         {
-            if (guidelineLevel == "") return;
             List<guidelineComboItem> ListBoxItem = new List<guidelineComboItem>();
             List<string> guideline_arr = guidelineComboItem.get_guideline_list(guidelineLevel);
             guidelineComboItem itm;

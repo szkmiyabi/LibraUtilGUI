@@ -40,8 +40,8 @@ namespace LibraUtilGUI
                 appSettings.headless = (string)headlessCombo.SelectedItem;
                 appSettings.guidelineLevel = (string)guidelineLevelCombo.SelectedItem;
                 appSettings.basic_auth = (string)basicAuthCombo.SelectedItem;
-                appSettings.workDir = workDirText.Text;
-                if (workDirText.Text == "") appSettings.workDir = getDefaultWorkDir();
+                appSettings.workDir = (workDirText.Text == "") ? getDefaultWorkDir() : workDirText.Text;
+                appSettings.debugMode = (debugModeCheck.Checked == true) ? "yes" : "no";
 
                 XmlSerializer xsz = new XmlSerializer(typeof(Settings));
                 StreamWriter sw = new StreamWriter(
@@ -79,10 +79,10 @@ namespace LibraUtilGUI
                 shortWaitCombo.Value = (decimal)appSettings.shortWait;
                 driverCombo.Text = appSettings.driver;
                 headlessCombo.Text = appSettings.headless;
-                guidelineLevelCombo.Text = appSettings.guidelineLevel;
+                guidelineLevelCombo.Text = (appSettings.guidelineLevel == "") ? "AA" : appSettings.guidelineLevel;
                 basicAuthCombo.Text = appSettings.basic_auth;
-                workDirText.Text = appSettings.workDir;
-                if (appSettings.workDir == "") workDirText.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
+                workDirText.Text = (appSettings.workDir == "") ? Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\" : appSettings.workDir;
+                debugModeCheck.Checked = (appSettings.debugMode == "yes") ? true : false;
 
             }
             catch(Exception ex)
@@ -107,6 +107,7 @@ namespace LibraUtilGUI
                 appSettings.guidelineLevel = "";
                 appSettings.basic_auth = "";
                 appSettings.workDir = "";
+                appSettings.debugMode = "";
 
                 XmlSerializer xsz = new XmlSerializer(typeof(Settings));
                 StreamWriter sw = new StreamWriter(
@@ -128,6 +129,7 @@ namespace LibraUtilGUI
                 guidelineLevelCombo.Text = "";
                 basicAuthCombo.Text = "";
                 workDirText.Text = "";
+                debugModeCheck.Checked = false;
                 MessageBox.Show("設定が削除できました。");
 
             }

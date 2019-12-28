@@ -92,6 +92,7 @@ namespace LibraUtilGUI
         //達成基準のリストを生成
         public static List<string> get_guideline_list(string type)
         {
+            if (type == "" || type == null) type = "AA";
             List<string> ret = new List<string>();
             if(type == "A")
             {

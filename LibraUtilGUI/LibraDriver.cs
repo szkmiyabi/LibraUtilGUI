@@ -40,7 +40,7 @@ namespace LibraUtilGUI
 
 
         //コンストラクタ
-        public LibraDriver(string uid, string pswd, int[] appWait, string driver_type, string headless_flag, string basic_auth_flag, string workDir)
+        public LibraDriver(string uid, string pswd, int[] appWait, string driver_type, string headless_flag, string basic_auth_flag, string workDir, string debugMode)
         {
             main_form = Form1.main_form;
             this.uid = uid;
@@ -63,7 +63,7 @@ namespace LibraUtilGUI
                 FirefoxOptions fxopt = new FirefoxOptions();
                 FirefoxDriverService fxserv = FirefoxDriverService.CreateDefaultService(workDir);
                 fxserv.FirefoxBinaryPath = get_firefox_binary_path();
-                fxserv.HideCommandPromptWindow = true;
+                if(debugMode == "no") fxserv.HideCommandPromptWindow = true;
                 if (headless_flag.Equals("yes")) fxopt.AddArguments("-headless");
                 _wd = new FirefoxDriver(fxserv, fxopt);
             }
@@ -71,7 +71,7 @@ namespace LibraUtilGUI
             {
                 ChromeOptions chopt = new ChromeOptions();
                 ChromeDriverService chserv = ChromeDriverService.CreateDefaultService(workDir);
-                chserv.HideCommandPromptWindow = true;
+                if(debugMode == "no") chserv.HideCommandPromptWindow = true;
                 if (headless_flag.Equals("yes")) chopt.AddArguments("--headless");
                 _wd = new ChromeDriver(chserv, chopt);
             }

@@ -25,6 +25,7 @@ namespace LibraUtilGUI
         private string guidelineLevel;
         private string basic_auth;
         private string workDir;
+        private string debugMode;
 
         //環境設定ダイアログを開く
         private void showSettingsForm()
@@ -61,8 +62,8 @@ namespace LibraUtilGUI
                 headless = appSettings.headless;
                 guidelineLevel = appSettings.guidelineLevel;
                 basic_auth = appSettings.basic_auth;
-                workDir = appSettings.workDir;
-                if (appSettings.workDir == "") workDir = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
+                workDir = (appSettings.workDir == "") ? Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\" : appSettings.workDir;
+                debugMode = (appSettings.debugMode == "" || appSettings.debugMode == "no") ? "no" : "yes";
 
             }
             catch (Exception ex)

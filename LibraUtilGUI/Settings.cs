@@ -18,6 +18,7 @@ namespace LibraUtilGUI
         private string _guidelineLevel;
         private string _basic_auth;
         private string _workDir;
+        private string _debugMode;
 
         public string uid
         {
@@ -85,6 +86,12 @@ namespace LibraUtilGUI
             set { _workDir = value; }
         }
 
+        public string debugMode
+        {
+            get { return _debugMode; }
+            set { _debugMode = value; }
+        }
+
         //コンストラクタ
         public Settings()
         {
@@ -99,6 +106,7 @@ namespace LibraUtilGUI
             _guidelineLevel = "";
             _basic_auth = "";
             _workDir = "";
+            _debugMode = "";
         }
 
     }
