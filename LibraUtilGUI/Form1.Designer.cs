@@ -72,7 +72,6 @@
             this.guidelineSelectAllButton = new System.Windows.Forms.Button();
             this.guidelineListBox = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.projectIDCancelButton = new System.Windows.Forms.Button();
             this.appMenu.SuspendLayout();
             this.pageIDGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -125,7 +124,7 @@
             // 
             // projectIDLoadButton
             // 
-            this.projectIDLoadButton.Location = new System.Drawing.Point(5, 93);
+            this.projectIDLoadButton.Location = new System.Drawing.Point(5, 90);
             this.projectIDLoadButton.Name = "projectIDLoadButton";
             this.projectIDLoadButton.Size = new System.Drawing.Size(75, 23);
             this.projectIDLoadButton.TabIndex = 2;
@@ -425,7 +424,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.projectIDCancelButton);
             this.panel1.Controls.Add(this.createSiteInfoBookButton);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.projectIDListBox);
@@ -438,7 +436,7 @@
             // 
             // createSiteInfoBookButton
             // 
-            this.createSiteInfoBookButton.Location = new System.Drawing.Point(150, 93);
+            this.createSiteInfoBookButton.Location = new System.Drawing.Point(150, 90);
             this.createSiteInfoBookButton.Name = "createSiteInfoBookButton";
             this.createSiteInfoBookButton.Size = new System.Drawing.Size(75, 23);
             this.createSiteInfoBookButton.TabIndex = 8;
@@ -537,16 +535,6 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "達成基準";
             // 
-            // projectIDCancelButton
-            // 
-            this.projectIDCancelButton.Location = new System.Drawing.Point(86, 93);
-            this.projectIDCancelButton.Name = "projectIDCancelButton";
-            this.projectIDCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.projectIDCancelButton.TabIndex = 9;
-            this.projectIDCancelButton.Text = "button1";
-            this.projectIDCancelButton.UseVisualStyleBackColor = true;
-            this.projectIDCancelButton.Click += new System.EventHandler(this.projectIDCancelButton_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -637,7 +625,6 @@
         private System.Windows.Forms.Button guidelineSelectClearButton;
         private System.Windows.Forms.Button guidelineSelectAllButton;
         private System.Windows.Forms.Button createSiteInfoBookButton;
-        private System.Windows.Forms.Button projectIDCancelButton;
     }
 }
 

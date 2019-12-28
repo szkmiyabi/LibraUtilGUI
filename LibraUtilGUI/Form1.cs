@@ -204,10 +204,6 @@ namespace LibraUtilGUI
             create_site_info_book();
         }
 
-        private void projectIDCancelButton_Click(object sender, EventArgs e)
-        {
-            token_src.Cancel();
-        }
     }
 
 }
