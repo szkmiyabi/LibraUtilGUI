@@ -16,7 +16,7 @@ namespace LibraUtilGUI
 {
     public class LibraDriver
     {
-        private Form1 form1;
+        private Form1 main_form;
         private string _projectID;
         private IWebDriver _wd;
         private IJavaScriptExecutor _jexe;
@@ -40,9 +40,9 @@ namespace LibraUtilGUI
 
 
         //コンストラクタ
-        public LibraDriver(Form1 form1, string uid, string pswd, int[] appWait, string driver_type, string headless_flag, string basic_auth_flag, string workDir)
+        public LibraDriver(string uid, string pswd, int[] appWait, string driver_type, string headless_flag, string basic_auth_flag, string workDir)
         {
-            this.form1 = form1;
+            main_form = Form1.main_form;
             this.uid = uid;
             this.pswd = pswd;
             _projectID = "";
@@ -81,7 +81,7 @@ namespace LibraUtilGUI
         public delegate void d_messenger(string msg);
         public void w_messenger(string msg)
         {
-            form1.operationStatusReport.AppendText(msg + "\r\n");
+            main_form.operationStatusReport.AppendText(msg + "\r\n");
         }
 
         //WebDriverのゲッター
@@ -198,7 +198,7 @@ namespace LibraUtilGUI
             if (_basic_auth_flag.Equals("yes") && _basic_authenicated == false)
             {
                 d_messenger message = new d_messenger(w_messenger);
-                form1.Invoke(message, "【お知らせ】基本認証オプションが有効化されています。ログインアラートで認証してください。");
+                main_form.Invoke(message, "【お知らせ】基本認証オプションが有効化されています。ログインアラートで認証してください。");
                 _basic_authenicated = true;
             }
             _wd.Navigate().GoToUrl(sv_mainpage_url_base + _projectID);

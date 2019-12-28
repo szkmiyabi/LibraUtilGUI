@@ -10,19 +10,19 @@ namespace LibraUtilGUI
 {
     class ExcelUtil
     {
-        private Form1 form1;
+        private Form1 main_form;
 
         //コンストラクタ
-        public ExcelUtil(Form1 form1)
+        public ExcelUtil()
         {
-            this.form1 = form1;
+            main_form = Form1.main_form;
         }
 
         //デリゲート
         public delegate void d_messenger(string msg);
         public void w_messenger(string msg)
         {
-            form1.operationStatusReport.AppendText(msg + "\r\n");
+            main_form.operationStatusReport.AppendText(msg + "\r\n");
         }
 
         //最大文字数32767に収める
@@ -69,7 +69,7 @@ namespace LibraUtilGUI
             }
 
             wb.SaveAs(filename);
-            form1.Invoke(message, "保存に成功しました。（" + filename + "）");
+            main_form.Invoke(message, "保存に成功しました。（" + filename + "）");
 
         }
 

@@ -30,6 +30,9 @@ namespace LibraUtilGUI
         private LibraDriver ldr;
         private Boolean ldr_activated = false;
 
+        //Form1インスタンス
+        private static Form1 _main_form;
+
         //コンストラクタ
         public Form1()
         {
@@ -49,6 +52,16 @@ namespace LibraUtilGUI
             pageIDListBoxSelectAllButton.Enabled = false;
             pageIDListBoxSelectClearButton.Enabled = false;
 
+            //静的プロパティに自身を代入
+            _main_form = this;
+
+        }
+
+        //Formのゲッターとセッター
+        public static Form1 main_form
+        {
+            get { return _main_form; }
+            set { _main_form = value; }
         }
 
         //wdインスタンス生成
@@ -59,7 +72,7 @@ namespace LibraUtilGUI
             try
             {
                 int[] appWait = { systemWait, longWait, midWait, shortWait };
-                ldr = new LibraDriver(this, uid, pswd, appWait, driver, headless, basic_auth, workDir);
+                ldr = new LibraDriver(uid, pswd, appWait, driver, headless, basic_auth, workDir);
                 ldr_activated = true;
             }
             catch(Exception ex)

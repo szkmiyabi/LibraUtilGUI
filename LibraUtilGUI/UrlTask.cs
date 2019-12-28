@@ -74,7 +74,7 @@ namespace LibraUtilGUI
                 string save_dir = (string)this.Invoke(_d_get_workDir);
                 string save_filename = save_dir + projectID + "_" + site_name + " URL.txt";
 
-                FileUtil fu = new FileUtil(this);
+                FileUtil fu = new FileUtil();
                 fu.write_tsv_data(data, save_filename);
                 
                 ldr.logout();
@@ -141,7 +141,7 @@ namespace LibraUtilGUI
                 string save_dir = (string)this.Invoke(_d_get_workDir);
                 string save_filename = save_dir + projectID + "_" + site_name + " URL.xlsx";
 
-                ExcelUtil eu = new ExcelUtil(this);
+                ExcelUtil eu = new ExcelUtil();
                 eu.save_xlsx_as(data, save_filename);
 
                 ldr.logout();
@@ -212,7 +212,7 @@ namespace LibraUtilGUI
                     fetch_data.Add(col);
                 }
 
-                FileUtil fu = new FileUtil(this);
+                FileUtil fu = new FileUtil();
                 fu.write_text_data(fetch_data, save_filename);
 
                 ldr.logout();

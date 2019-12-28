@@ -210,7 +210,7 @@ namespace LibraUtilGUI
 
                 string save_dir = (string)this.Invoke(_d_get_workDir);
                 string save_filename = save_dir + "Libra検査サイト一覧_" + DateUtil.fetch_filename_logtime() + ".xlsx";
-                ExcelUtil eu = new ExcelUtil(this);
+                ExcelUtil eu = new ExcelUtil();
                 eu.save_xlsx_as(data, save_filename);
 
                 ldr.logout();

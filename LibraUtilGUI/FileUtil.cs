@@ -9,19 +9,19 @@ namespace LibraUtilGUI
 {
     class FileUtil
     {
-        private Form1 form1;
+        private Form1 main_form;
 
         //コンストラクタ
-        public FileUtil(Form1 form1)
+        public FileUtil()
         {
-            this.form1 = form1;
+            main_form = Form1.main_form;
         }
 
         //デリゲート
         public delegate void d_messenger(string msg);
         public void w_messenger(string msg)
         {
-            form1.operationStatusReport.AppendText(msg + "\r\n");
+            main_form.operationStatusReport.AppendText(msg + "\r\n");
         }
 
         //配列をテキストファイルとして書き込み
@@ -36,7 +36,7 @@ namespace LibraUtilGUI
                 sw.Write(row);
             }
             sw.Close();
-            form1.Invoke(message, "保存に成功しました。（" + filename + "）");
+            main_form.Invoke(message, "保存に成功しました。（" + filename + "）");
         }
 
         //2次元配列をTSVファイルとして書き込み
@@ -52,7 +52,7 @@ namespace LibraUtilGUI
                 sw.Write(row_data);
             }
             sw.Close();
-            form1.Invoke(message, "保存に成功しました。（" + filename + "）");
+            main_form.Invoke(message, "保存に成功しました。（" + filename + "）");
         }
     }
 }
