@@ -33,6 +33,10 @@ namespace LibraUtilGUI
         //Form1インスタンス
         private static Form1 _main_form;
 
+        //Taskのキャンセル
+        private CancellationTokenSource token_src;
+        private CancellationToken token;
+
         //コンストラクタ
         public Form1()
         {
@@ -122,6 +126,8 @@ namespace LibraUtilGUI
         //サイトID読込クリック
         private void projectIDLoadButton_Click(object sender, EventArgs e)
         {
+            token_src = new CancellationTokenSource();
+            token = token_src.Token;
             set_projectID_combo();
         }
 
@@ -187,6 +193,11 @@ namespace LibraUtilGUI
         private void createSiteInfoBookButton_Click(object sender, EventArgs e)
         {
             create_site_info_book();
+        }
+
+        private void projectIDCancelButton_Click(object sender, EventArgs e)
+        {
+            token_src.Cancel();
         }
     }
 

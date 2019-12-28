@@ -62,6 +62,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.createSiteInfoBookButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -71,7 +72,7 @@
             this.guidelineSelectAllButton = new System.Windows.Forms.Button();
             this.guidelineListBox = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.createSiteInfoBookButton = new System.Windows.Forms.Button();
+            this.projectIDCancelButton = new System.Windows.Forms.Button();
             this.appMenu.SuspendLayout();
             this.pageIDGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -424,6 +425,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.projectIDCancelButton);
             this.panel1.Controls.Add(this.createSiteInfoBookButton);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.projectIDListBox);
@@ -433,6 +435,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(230, 124);
             this.panel1.TabIndex = 10;
+            // 
+            // createSiteInfoBookButton
+            // 
+            this.createSiteInfoBookButton.Location = new System.Drawing.Point(150, 93);
+            this.createSiteInfoBookButton.Name = "createSiteInfoBookButton";
+            this.createSiteInfoBookButton.Size = new System.Drawing.Size(75, 23);
+            this.createSiteInfoBookButton.TabIndex = 8;
+            this.createSiteInfoBookButton.Text = "Excel出力";
+            this.createSiteInfoBookButton.UseVisualStyleBackColor = true;
+            this.createSiteInfoBookButton.Click += new System.EventHandler(this.createSiteInfoBookButton_Click);
             // 
             // panel2
             // 
@@ -525,15 +537,15 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "達成基準";
             // 
-            // createSiteInfoBookButton
+            // projectIDCancelButton
             // 
-            this.createSiteInfoBookButton.Location = new System.Drawing.Point(150, 93);
-            this.createSiteInfoBookButton.Name = "createSiteInfoBookButton";
-            this.createSiteInfoBookButton.Size = new System.Drawing.Size(75, 23);
-            this.createSiteInfoBookButton.TabIndex = 8;
-            this.createSiteInfoBookButton.Text = "Excel出力";
-            this.createSiteInfoBookButton.UseVisualStyleBackColor = true;
-            this.createSiteInfoBookButton.Click += new System.EventHandler(this.createSiteInfoBookButton_Click);
+            this.projectIDCancelButton.Location = new System.Drawing.Point(86, 93);
+            this.projectIDCancelButton.Name = "projectIDCancelButton";
+            this.projectIDCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.projectIDCancelButton.TabIndex = 9;
+            this.projectIDCancelButton.Text = "button1";
+            this.projectIDCancelButton.UseVisualStyleBackColor = true;
+            this.projectIDCancelButton.Click += new System.EventHandler(this.projectIDCancelButton_Click);
             // 
             // Form1
             // 
@@ -625,6 +637,7 @@
         private System.Windows.Forms.Button guidelineSelectClearButton;
         private System.Windows.Forms.Button guidelineSelectAllButton;
         private System.Windows.Forms.Button createSiteInfoBookButton;
+        private System.Windows.Forms.Button projectIDCancelButton;
     }
 }
 

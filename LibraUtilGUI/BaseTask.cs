@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -55,6 +56,21 @@ namespace LibraUtilGUI
             return flag;
         }
 
+        //デリゲート（タスクのキャンセル判定とキャンセル実行処理）
+        private delegate Boolean d_task_cancel();
+        private Boolean w_task_cancel()
+        {
+            Boolean flag = false;
+            if (token.IsCancellationRequested)
+            {
+                operationStatusReport.AppendText("処理をキャンセルします。（" + DateUtil.get_logtime() + "）" + "\r\n");
+                token_src.Dispose();
+                token_src = null;
+                flag = true;
+            }
+            return flag;
+        }
+
 
         //プロジェクトIDコンボをセット
         private void set_projectID_combo()
@@ -64,25 +80,28 @@ namespace LibraUtilGUI
             {
                 d_set_projectID_combo worker = new d_set_projectID_combo(w_set_projectID_combo);
                 d_status_messenger message = new d_status_messenger(w_status_messenger);
+                d_task_cancel canceler = new d_task_cancel(w_task_cancel);
 
                 if (ldr_activated == false)
                 {
                     load_wd();
                     this.Invoke(message, "ブラウザドライバを起動しています。（" + DateUtil.get_logtime() + "）");
                 }
-
                 ldr.home();
                 this.Invoke(message, "Libraにログインします。（" + DateUtil.get_logtime() + "）");
                 ldr.login();
                 DateUtil.app_sleep(shortWait);
 
                 List<List<string>> data = ldr.get_site_list();
+
+                //タスクのキャンセル判定
+                if ((Boolean)this.Invoke(canceler)) return;
+
                 this.Invoke(message, "サイト一覧を取得しています。（" + DateUtil.get_logtime() + "）");
                 this.Invoke(worker, data);
                 this.Invoke(message, "サイト名コンボが設定完了しました。（" + DateUtil.get_logtime() + "）");
                 ldr.logout();
             });
-
 
         }
         private delegate void d_set_projectID_combo(List<List<string>> data);
