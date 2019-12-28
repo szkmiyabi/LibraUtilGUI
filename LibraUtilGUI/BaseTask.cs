@@ -12,6 +12,23 @@ namespace LibraUtilGUI
     partial class Form1
     {
 
+        //デリゲート（Libraドライバの起動とエラー処理）
+        private delegate Boolean d_ldr_activate();
+        private Boolean w_ldr_activate()
+        {
+            if (load_wd())
+            {
+                operationStatusReport.AppendText("ブラウザドライバを起動しています。（" + DateUtil.get_logtime() + "）" + "\r\n");
+                return true;
+            }
+            else
+            {
+                operationStatusReport.AppendText("【エラー】ブラウザドライバの起動に失敗しました。考えられる理由は、ブラウザのドライバのバージョンが現行のブラウザ用より古いか、新しすぎるかのどちらかです。サポートされているバージョンのブラウザのドライバに差し換えてください。黒い画面が立ち上がっている場合はその画面を閉じてこのアプリ画面も閉じてください。\r\n");
+                operationStatusReport.AppendText(error_buff + "\r\n");
+                return false;
+            }
+        }
+
         //デリゲート（基本認証ON/OFFチェック）
         public delegate Boolean d_get_basic_auth_cond();
         public Boolean w_get_basic_auth_cond()
@@ -74,6 +91,7 @@ namespace LibraUtilGUI
         }
 
 
+
         //プロジェクトIDコンボをセット
         private void set_projectID_combo()
         {
@@ -82,12 +100,13 @@ namespace LibraUtilGUI
             {
                 d_set_projectID_combo worker = new d_set_projectID_combo(w_set_projectID_combo);
                 d_status_messenger message = new d_status_messenger(w_status_messenger);
+                d_ldr_activate ldr_activate = new d_ldr_activate(w_ldr_activate);
                 d_task_cancel canceler = new d_task_cancel(w_task_cancel);
 
                 if (ldr_activated == false)
                 {
-                    load_wd();
-                    this.Invoke(message, "ブラウザドライバを起動しています。（" + DateUtil.get_logtime() + "）");
+                    //Libraドライバ起動しエラーの場合早期退出
+                    if (!(Boolean)this.Invoke(ldr_activate)) return;
                 }
                 ldr.home();
                 this.Invoke(message, "Libraにログインします。（" + DateUtil.get_logtime() + "）");

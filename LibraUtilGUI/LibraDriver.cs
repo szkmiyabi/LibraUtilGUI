@@ -68,7 +68,7 @@ namespace LibraUtilGUI
             {
                 ChromeOptions chopt = new ChromeOptions();
                 if (headless_flag.Equals("yes")) chopt.AddArguments("--headless");
-                _wd = new ChromeDriver(chopt);
+                _wd = new ChromeDriver(workDir, chopt);
             }
 
             _wd.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(systemWait);

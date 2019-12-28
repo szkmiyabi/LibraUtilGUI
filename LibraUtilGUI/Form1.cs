@@ -37,6 +37,9 @@ namespace LibraUtilGUI
         private CancellationTokenSource token_src;
         private CancellationToken token;
 
+        //Errorバッファ
+        private string error_buff;
+
         //コンストラクタ
         public Form1()
         {
@@ -59,6 +62,9 @@ namespace LibraUtilGUI
             //静的プロパティに自身を代入
             _main_form = this;
 
+            //Errorバッファ初期化
+            error_buff = "";
+
         }
 
         //Formのゲッターとセッター
@@ -69,20 +75,24 @@ namespace LibraUtilGUI
         }
 
         //wdインスタンス生成
-        private void load_wd()
+        private Boolean load_wd()
         {
-            if (checkSettings() == false) return;
+            Boolean flag = false;
+
+            if (checkSettings() == false) return flag;
 
             try
             {
                 int[] appWait = { systemWait, longWait, midWait, shortWait };
                 ldr = new LibraDriver(uid, pswd, appWait, driver, headless, basic_auth, workDir);
                 ldr_activated = true;
+                flag = true;
             }
             catch(Exception ex)
             {
-                operationStatusReport.AppendText("【エラー】ブラウザドライバの起動に失敗しました。考えられる理由は、ブラウザのドライバが古いことです。ブラウザのドライバを更新してください。\r\n");
+                error_buff = ex.Message;
             }
+            return flag;
         }
         
         //wdインスタンス解放
