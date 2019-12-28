@@ -61,20 +61,36 @@ namespace LibraUtilGUI
             if (driver_type.Equals("firefox"))
             {
                 FirefoxOptions fxopt = new FirefoxOptions();
+                FirefoxDriverService fxserv = FirefoxDriverService.CreateDefaultService(workDir);
+                fxserv.FirefoxBinaryPath = get_firefox_binary_path();
+                fxserv.HideCommandPromptWindow = true;
                 if (headless_flag.Equals("yes")) fxopt.AddArguments("-headless");
-                _wd = new FirefoxDriver(fxopt);
+                _wd = new FirefoxDriver(fxserv, fxopt);
             }
             else if (driver_type.Equals("chrome"))
             {
                 ChromeOptions chopt = new ChromeOptions();
+                ChromeDriverService chserv = ChromeDriverService.CreateDefaultService(workDir);
+                chserv.HideCommandPromptWindow = true;
                 if (headless_flag.Equals("yes")) chopt.AddArguments("--headless");
-                _wd = new ChromeDriver(workDir, chopt);
+                _wd = new ChromeDriver(chserv, chopt);
             }
 
             _wd.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(systemWait);
             _wd.Manage().Window.Size = new System.Drawing.Size(1280, 900);
             _windowID = _wd.WindowHandles[0];
             _jexe = (IJavaScriptExecutor)_wd;
+        }
+
+        //Firefoxバイナリパスの取得
+        private string get_firefox_binary_path()
+        {
+            string ffpath = "";
+            string ffpath1 = @"C:\Program Files\Mozilla Firefox\firefox.exe";
+            string ffpath2 = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+            if (System.IO.File.Exists(ffpath1)) ffpath = ffpath1;
+            else if (System.IO.File.Exists(ffpath2)) ffpath = ffpath2;
+            return ffpath;
         }
 
         //operationStatusReportのデリゲート
