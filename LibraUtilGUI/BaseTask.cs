@@ -90,6 +90,37 @@ namespace LibraUtilGUI
             return flag;
         }
 
+        //デリゲート（コントロールの有効無効制御）
+        private delegate void d_ctrl_toggle(string ctrl_name);
+        private void ctrl_toggle(string ctrl_name)
+        {
+            List<Control> controls = GetAllControls<Control>(this);
+            foreach(var ctrl in controls)
+            {
+                if(ctrl.Name == ctrl_name)
+                {
+                    ctrl.Enabled = !ctrl.Enabled;
+                    break;
+                }
+            }
+        }
+
+        //デリゲート（コントロールの有効制御）
+        private delegate void d_ctrl_activate(string ctrl_name);
+        private void ctrl_activate(string ctrl_name)
+        {
+            List<Control> controls = GetAllControls<Control>(this);
+            foreach (var ctrl in controls)
+            {
+                if (ctrl.Name == ctrl_name)
+                {
+                    ctrl.Enabled = true;
+                    break;
+                }
+            }
+        }
+
+
 
 
         //プロジェクトIDコンボをセット
@@ -102,6 +133,17 @@ namespace LibraUtilGUI
                 d_status_messenger message = new d_status_messenger(w_status_messenger);
                 d_ldr_activate ldr_activate = new d_ldr_activate(w_ldr_activate);
                 d_task_cancel canceler = new d_task_cancel(w_task_cancel);
+
+                d_ctrl_toggle w_ctrl_toggle = new d_ctrl_toggle(ctrl_toggle);
+                d_ctrl_activate w_ctrl_activate = new d_ctrl_activate(ctrl_activate);
+
+
+                //2重実行防止
+                this.Invoke(w_ctrl_toggle, "projectIDLoadButton");
+                this.Invoke(w_ctrl_toggle, "pageIDLoadButton");
+   
+                this.Invoke(w_ctrl_toggle, "doUrlTaskButton");
+                this.Invoke(w_ctrl_toggle, "cancelUrlTaskButton");
 
                 if (ldr_activated == false)
                 {
@@ -124,6 +166,16 @@ namespace LibraUtilGUI
                 ldr.logout();
                 this.Invoke(message, "処理が完了しました。（" + DateUtil.get_logtime() + "）");
 
+                this.Invoke(w_ctrl_toggle, "projectIDLoadButton");
+                this.Invoke(w_ctrl_toggle, "pageIDLoadButton");
+
+                this.Invoke(w_ctrl_toggle, "doUrlTaskButton");
+                this.Invoke(w_ctrl_toggle, "cancelUrlTaskButton");
+
+                this.Invoke(w_ctrl_activate, "createSiteInfoBookButton");
+
+
+
             });
 
         }
@@ -143,9 +195,6 @@ namespace LibraUtilGUI
             projectIDListBox.ValueMember = "id_str";
             projectIDListBox.DataSource = ListBoxItem;
 
-            pageIDLoadButton.Enabled = true;
-            BaseTaskSrcReport.Enabled = true;
-            BaseTaskSrcSurvey.Enabled = true;
         }
 
 
@@ -163,6 +212,15 @@ namespace LibraUtilGUI
 
                 d_ldr_activate ldr_activate = new d_ldr_activate(w_ldr_activate);
                 d_task_cancel canceler = new d_task_cancel(w_task_cancel);
+
+                d_ctrl_toggle w_ctrl_toggle = new d_ctrl_toggle(ctrl_toggle);
+                d_ctrl_activate w_ctrl_activate = new d_ctrl_activate(ctrl_activate);
+
+
+                //2重実行防止
+                this.Invoke(w_ctrl_toggle, "pageIDLoadButton");
+                this.Invoke(w_ctrl_toggle, "doRepoTaskButton");
+                this.Invoke(w_ctrl_toggle, "cancelRepoTaskButton");
 
                 if (ldr_activated == false)
                 {
@@ -213,6 +271,13 @@ namespace LibraUtilGUI
                 ldr.logout();
                 this.Invoke(message, "処理が完了しました。（" + DateUtil.get_logtime() + "）");
 
+                this.Invoke(w_ctrl_toggle, "pageIDLoadButton");
+                this.Invoke(w_ctrl_toggle, "doRepoTaskButton");
+                this.Invoke(w_ctrl_toggle, "cancelRepoTaskButton");
+
+                this.Invoke(w_ctrl_activate, "pageIDListBoxSelectAllButton");
+                this.Invoke(w_ctrl_activate, "pageIDListBoxSelectClearButton");
+
             });
         }
         private delegate void d_set_pageID_combo(List<List<string>> data);
@@ -234,8 +299,6 @@ namespace LibraUtilGUI
             SendMessage(pageIDListBox.Handle, LB_SETSEL, 0, -1);
             pageIDListBox.SetSelected(0, false);
 
-            pageIDListBoxSelectAllButton.Enabled = true;
-            pageIDListBoxSelectClearButton.Enabled = true;
 
         }
 

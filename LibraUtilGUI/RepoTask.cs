@@ -223,13 +223,13 @@ namespace LibraUtilGUI
                 string guideline_sufix = (string)this.Invoke(get_guideline_sufix);
                 string pageID_sufix = (string)this.Invoke(get_pageID_sufix);
                 string save_dir = (string)this.Invoke(_d_get_workDir);
-                string save_filename = save_dir + projectID + "_" + site_name + "_" + guideline_sufix + "_" + pageID_sufix + "_" + " 検査結果.xlsx";
+                string save_filename = save_dir + projectID + "_" + site_name + "_" + guideline_sufix + "_" + pageID_sufix + " " + " 検査結果.xlsx";
 
                 //タスクのキャンセル判定
                 if ((Boolean)this.Invoke(canceler)) return;
 
                 ExcelUtil eu = new ExcelUtil();
-                eu.save_xlsx_as(rep_data, save_filename);
+                eu.repo_task_save_xlsx(rep_data, save_filename);
                 ldr.logout();
                 this.Invoke(message, "処理が完了しました。（" + DateUtil.get_logtime() + "）");
 

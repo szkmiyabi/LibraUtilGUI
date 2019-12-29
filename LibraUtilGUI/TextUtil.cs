@@ -16,6 +16,12 @@ namespace LibraUtilGUI
             return Regex.Replace(str, @"(\r\n|\n|\t)", "");
         }
 
+        //行頭行末の空文字除去
+        public static string trim(string str)
+        {
+            return str.TrimStart().TrimEnd();
+        }
+
         //brタグを改行コード変換
         public static string br_decode(string str)
         {

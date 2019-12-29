@@ -124,5 +124,17 @@ namespace LibraUtilGUI
             return flag;
         }
 
+        //フォーム上の全コントロールを列挙するジェネリックメソッド
+        public static List<T> GetAllControls<T>(Control top) where T : Control
+        {
+            List<T> buf = new List<T>();
+            foreach (Control ctrl in top.Controls)
+            {
+                if (ctrl is T) buf.Add((T)ctrl);
+                buf.AddRange(GetAllControls<T>(ctrl));
+            }
+            return buf;
+        }
+
     }
 }

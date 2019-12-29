@@ -52,18 +52,15 @@ namespace LibraUtilGUI
             //ガイドラインIDコンボの処理
             init_guideline_combo();
 
-            //起動直後のコントロール無効化
-            pageIDLoadButton.Enabled = false;
-            BaseTaskSrcReport.Enabled = false;
-            BaseTaskSrcSurvey.Enabled = false;
-            pageIDListBoxSelectAllButton.Enabled = false;
-            pageIDListBoxSelectClearButton.Enabled = false;
-
             //静的プロパティに自身を代入
             _main_form = this;
 
             //Errorバッファ初期化
             error_buff = "";
+
+            pageIDListBoxSelectAllButton.Enabled = false;
+            pageIDListBoxSelectClearButton.Enabled = false;
+            createSiteInfoBookButton.Enabled = false;
 
         }
 
