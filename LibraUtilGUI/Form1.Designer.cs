@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.appMenu = new System.Windows.Forms.MenuStrip();
             this.FileMenuList = new System.Windows.Forms.ToolStripMenuItem();
             this.FileMenuSettings = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +43,7 @@
             this.pageIDListBox = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cancelUrlTaskButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.UrlTaskSrcSurvey = new System.Windows.Forms.RadioButton();
             this.UrlTaskSrcReport = new System.Windows.Forms.RadioButton();
@@ -72,7 +74,6 @@
             this.guidelineSelectAllButton = new System.Windows.Forms.Button();
             this.guidelineListBox = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cancelUrlTaskButton = new System.Windows.Forms.Button();
             this.appMenu.SuspendLayout();
             this.pageIDGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -235,6 +236,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "URL";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // cancelUrlTaskButton
+            // 
+            this.cancelUrlTaskButton.Location = new System.Drawing.Point(394, 69);
+            this.cancelUrlTaskButton.Name = "cancelUrlTaskButton";
+            this.cancelUrlTaskButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelUrlTaskButton.TabIndex = 4;
+            this.cancelUrlTaskButton.Text = "キャンセル";
+            this.cancelUrlTaskButton.UseVisualStyleBackColor = true;
+            this.cancelUrlTaskButton.Click += new System.EventHandler(this.cancelUrlTaskButton_Click);
             // 
             // groupBox3
             // 
@@ -537,16 +548,6 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "達成基準";
             // 
-            // cancelUrlTaskButton
-            // 
-            this.cancelUrlTaskButton.Location = new System.Drawing.Point(394, 69);
-            this.cancelUrlTaskButton.Name = "cancelUrlTaskButton";
-            this.cancelUrlTaskButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelUrlTaskButton.TabIndex = 4;
-            this.cancelUrlTaskButton.Text = "キャンセル";
-            this.cancelUrlTaskButton.UseVisualStyleBackColor = true;
-            this.cancelUrlTaskButton.Click += new System.EventHandler(this.cancelUrlTaskButton_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -559,6 +560,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.appMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.appMenu;
             this.Name = "Form1";
             this.Text = "LibraUtilGUI";
