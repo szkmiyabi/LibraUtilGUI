@@ -74,6 +74,8 @@
             this.guidelineSelectAllButton = new System.Windows.Forms.Button();
             this.guidelineListBox = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.doRepoTaskButton = new System.Windows.Forms.Button();
+            this.cancelRepoTaskButton = new System.Windows.Forms.Button();
             this.appMenu.SuspendLayout();
             this.pageIDGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -81,6 +83,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -358,6 +361,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.cancelRepoTaskButton);
+            this.tabPage2.Controls.Add(this.doRepoTaskButton);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -548,6 +553,26 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "達成基準";
             // 
+            // doRepoTaskButton
+            // 
+            this.doRepoTaskButton.Location = new System.Drawing.Point(311, 69);
+            this.doRepoTaskButton.Name = "doRepoTaskButton";
+            this.doRepoTaskButton.Size = new System.Drawing.Size(75, 23);
+            this.doRepoTaskButton.TabIndex = 0;
+            this.doRepoTaskButton.Text = "処理実行";
+            this.doRepoTaskButton.UseVisualStyleBackColor = true;
+            this.doRepoTaskButton.Click += new System.EventHandler(this.doRepoTaskButton_Click);
+            // 
+            // cancelRepoTaskButton
+            // 
+            this.cancelRepoTaskButton.Location = new System.Drawing.Point(392, 69);
+            this.cancelRepoTaskButton.Name = "cancelRepoTaskButton";
+            this.cancelRepoTaskButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelRepoTaskButton.TabIndex = 1;
+            this.cancelRepoTaskButton.Text = "キャンセル";
+            this.cancelRepoTaskButton.UseVisualStyleBackColor = true;
+            this.cancelRepoTaskButton.Click += new System.EventHandler(this.cancelRepoTaskButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -577,6 +602,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -640,6 +666,8 @@
         private System.Windows.Forms.Button guidelineSelectAllButton;
         private System.Windows.Forms.Button createSiteInfoBookButton;
         private System.Windows.Forms.Button cancelUrlTaskButton;
+        private System.Windows.Forms.Button doRepoTaskButton;
+        private System.Windows.Forms.Button cancelRepoTaskButton;
     }
 }
 

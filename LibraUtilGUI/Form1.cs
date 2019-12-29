@@ -225,7 +225,21 @@ namespace LibraUtilGUI
             create_site_info_book();
         }
 
+        //REPORTオペレーション処理実行
+        private void doRepoTaskButton_Click(object sender, EventArgs e)
+        {
+            //CancellationTokenを発行
+            token_src = new CancellationTokenSource();
+            token = token_src.Token;
+            //処理実行
+            create_survey_report();
+        }
 
+        //レポートオペレーション処理キャンセル
+        private void cancelRepoTaskButton_Click(object sender, EventArgs e)
+        {
+            token_src.Cancel();
+        }
     }
 
 }

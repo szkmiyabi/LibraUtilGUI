@@ -223,8 +223,8 @@ namespace LibraUtilGUI
             for(int i=0; i<data.Count; i++)
             {
                 List<string> col = (List<string>)data[i];
-                string text = col[0] + "   " + col[1];
-                itm = new pageIDComboItem(col[1], text);
+                string text = "[" + col[0] + "]  " + col[1];
+                itm = new pageIDComboItem(col[0], text);
                 ListBoxItem.Add(itm);
             }
             pageIDListBox.DisplayMember = "display_str";

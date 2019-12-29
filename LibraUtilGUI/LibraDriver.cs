@@ -38,7 +38,6 @@ namespace LibraUtilGUI
         private Boolean _basic_authenicated;
         private string workDir;
 
-
         //コンストラクタ
         public LibraDriver(string uid, string pswd, int[] appWait, string driver_type, string headless_flag, string basic_auth_flag, string workDir, string debugMode)
         {
@@ -370,6 +369,54 @@ namespace LibraUtilGUI
                 ret = mc[0].Groups[2].Value;
             }
             return ret;
+        }
+
+        //レポート詳細ページから検査結果データを生成
+        public List<List<string>> get_detail_table_data(string pageID, string pageURL, string guideline)
+        {
+            List<List<string>> data = new List<List<string>>();
+            var parser = new AngleSharp.Html.Parser.HtmlParser();
+            var dom = parser.ParseDocument(_wd.PageSource);
+            var tbl = dom.GetElementsByTagName("table").ElementAt<AngleSharp.Dom.IElement>(2);
+            var trs = tbl.GetElementsByTagName("tr");
+            for(int i=0; i<trs.Count<AngleSharp.Dom.IElement>(); i++)
+            {
+                if (i == 0) continue;
+                List<string> row_data = new List<string>();
+                row_data.Add(pageID);
+                row_data.Add(pageURL);
+                row_data.Add(guideline);
+                var tr = trs.ElementAt<AngleSharp.Dom.IElement>(i);
+                var tds = tr.GetElementsByTagName("td");
+                int col_num = 0;
+                for(int j=0; j<tds.Count<AngleSharp.Dom.IElement>(); j++)
+                {
+                    var td = tds.ElementAt<AngleSharp.Dom.IElement>(j);
+                    string td_val = td.InnerHtml;
+                    //コメント列
+                    if(col_num == 4)
+                    {
+                        td_val = TextUtil.br_decode(td_val);
+                        td_val = TextUtil.tag_decode(td_val);
+                    }
+                    //それ以外
+                    else
+                    {
+                        td_val = TextUtil.tag_decode(td_val);
+                    }
+                    if(td_val == "" || td_val == null)
+                    {
+                        row_data.Add("");
+                    }
+                    else
+                    {
+                        row_data.Add(td_val);
+                    }
+                    col_num++;
+                }
+                data.Add(row_data);
+            }
+            return data;
         }
 
 
