@@ -88,6 +88,9 @@
     </Compile>
     <Compile Include="DataStruct.cs" />
     <Compile Include="DateUtil.cs" />
+    <Compile Include="Delegates.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ExcelUtil.cs" />
     <Compile Include="FileUtil.cs" />
     <Compile Include="Form1.cs">
@@ -96,8 +99,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="JsUtil.cs" />
     <Compile Include="LibraDriver.cs" />
     <Compile Include="BaseTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PreSvTask.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />

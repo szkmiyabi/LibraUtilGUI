@@ -9,17 +9,6 @@ namespace LibraUtilGUI
     partial class Form1
     {
 
-
-        //デリゲート（UrlTaskの参照タイプ参照）
-        private delegate string d_get_UrlTask_source_flag();
-        private string w_get_UrlTask_source_flag()
-        {
-            string flag = "";
-            if (UrlTaskSrcSurvey.Checked) flag = "svpage";
-            else flag = "report";
-            return flag;
-        }
-
         //PID+URLのTSVファイル出力
         private void do_create_pid_url_list()
         {
