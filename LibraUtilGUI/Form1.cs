@@ -58,6 +58,9 @@ namespace LibraUtilGUI
             //Errorバッファ初期化
             error_buff = "";
 
+            //Imageボタンの初期化
+            imgButtonInit();
+
             pageIDListBoxSelectAllButton.Enabled = false;
             pageIDListBoxSelectClearButton.Enabled = false;
             createSiteInfoBookButton.Enabled = false;
@@ -117,8 +120,8 @@ namespace LibraUtilGUI
             guidelineListBox.SetSelected(0, false);
         }
 
-        //設定メニュークリック
-        private void FileMenuSettings_Click(object sender, EventArgs e)
+        //設定ボタンクリック
+        private void openAsSettingButton_Click(object sender, EventArgs e)
         {
             showSettingsForm();
         }
@@ -253,6 +256,7 @@ namespace LibraUtilGUI
         {
             token_src.Cancel();
         }
+
     }
 
 }

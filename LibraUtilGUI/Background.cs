@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -134,6 +136,32 @@ namespace LibraUtilGUI
                 buf.AddRange(GetAllControls<T>(ctrl));
             }
             return buf;
+        }
+
+        //imageリソースを取得
+        private Bitmap getImageFromResource(string imgname)
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            Stream stream = assembly.GetManifestResourceStream("LibraUtilGUI.resources." + imgname);
+            Bitmap bmp = new Bitmap(stream);
+            return bmp;
+        }
+
+        //イメージボタン初期化
+        private void imgButtonInit()
+        {
+            Bitmap ieImg = getImageFromResource("ie24.png");
+            Bitmap ffImg = getImageFromResource("ff24.png");
+            Bitmap gcImg = getImageFromResource("gc24.png");
+            Bitmap cfxImg = getImageFromResource("cfx24.png");
+            Bitmap folderImg = getImageFromResource("folder24.png");
+            Bitmap settingImg = getImageFromResource("setting24.png");
+            openAsIEButton.Image = ieImg;
+            openAsFirefoxButton.Image = ffImg;
+            openAsChromeButton.Image = gcImg;
+            openAsAnotherBrowserButton.Image = cfxImg;
+            openAsFolderButton.Image = folderImg;
+            openAsSettingButton.Image = settingImg;
         }
 
     }

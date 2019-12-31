@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.appMenu = new System.Windows.Forms.MenuStrip();
-            this.FileMenuList = new System.Windows.Forms.ToolStripMenuItem();
-            this.FileMenuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.projectIDListBox = new System.Windows.Forms.ListBox();
             this.projectIDLoadButton = new System.Windows.Forms.Button();
             this.pageIDGroup = new System.Windows.Forms.GroupBox();
@@ -72,8 +69,6 @@
             this.PreSvTaskDL = new System.Windows.Forms.CheckBox();
             this.PreSvTaskCC = new System.Windows.Forms.CheckBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.operationStatusReport = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -89,7 +84,21 @@
             this.guidelineSelectAllButton = new System.Windows.Forms.Button();
             this.guidelineListBox = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.appMenu.SuspendLayout();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.techSelectAllButton = new System.Windows.Forms.Button();
+            this.techSelectClearButton = new System.Windows.Forms.Button();
+            this.techListBox = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.openAsSettingButton = new System.Windows.Forms.Button();
+            this.openAsFolderButton = new System.Windows.Forms.Button();
+            this.openAsAnotherBrowserButton = new System.Windows.Forms.Button();
+            this.openAsChromeButton = new System.Windows.Forms.Button();
+            this.openAsIEButton = new System.Windows.Forms.Button();
+            this.openAsFirefoxButton = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.pageIDGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -100,38 +109,15 @@
             this.tabPage3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // appMenu
-            // 
-            this.appMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.FileMenuList});
-            this.appMenu.Location = new System.Drawing.Point(0, 0);
-            this.appMenu.Name = "appMenu";
-            this.appMenu.Size = new System.Drawing.Size(648, 24);
-            this.appMenu.TabIndex = 1;
-            this.appMenu.Text = "menuStrip1";
-            // 
-            // FileMenuList
-            // 
-            this.FileMenuList.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.FileMenuSettings});
-            this.FileMenuList.Name = "FileMenuList";
-            this.FileMenuList.Size = new System.Drawing.Size(53, 20);
-            this.FileMenuList.Text = "ファイル";
-            // 
-            // FileMenuSettings
-            // 
-            this.FileMenuSettings.Name = "FileMenuSettings";
-            this.FileMenuSettings.Size = new System.Drawing.Size(122, 22);
-            this.FileMenuSettings.Text = "環境設定";
-            this.FileMenuSettings.Click += new System.EventHandler(this.FileMenuSettings_Click);
             // 
             // projectIDListBox
             // 
@@ -238,7 +224,7 @@
             this.tabControl1.Location = new System.Drawing.Point(5, 15);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(483, 124);
+            this.tabControl1.Size = new System.Drawing.Size(615, 131);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -251,14 +237,14 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(475, 98);
+            this.tabPage1.Size = new System.Drawing.Size(607, 105);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "URL";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // cancelUrlTaskButton
             // 
-            this.cancelUrlTaskButton.Location = new System.Drawing.Point(394, 69);
+            this.cancelUrlTaskButton.Location = new System.Drawing.Point(523, 76);
             this.cancelUrlTaskButton.Name = "cancelUrlTaskButton";
             this.cancelUrlTaskButton.Size = new System.Drawing.Size(75, 23);
             this.cancelUrlTaskButton.TabIndex = 4;
@@ -303,7 +289,7 @@
             // 
             this.groupBox2.Controls.Add(this.UrlTaskFormatExcel);
             this.groupBox2.Controls.Add(this.UrlTaskFormatText);
-            this.groupBox2.Location = new System.Drawing.Point(319, 6);
+            this.groupBox2.Location = new System.Drawing.Point(299, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(150, 34);
             this.groupBox2.TabIndex = 2;
@@ -334,7 +320,7 @@
             // 
             // doUrlTaskButton
             // 
-            this.doUrlTaskButton.Location = new System.Drawing.Point(313, 69);
+            this.doUrlTaskButton.Location = new System.Drawing.Point(442, 76);
             this.doUrlTaskButton.Name = "doUrlTaskButton";
             this.doUrlTaskButton.Size = new System.Drawing.Size(75, 23);
             this.doUrlTaskButton.TabIndex = 1;
@@ -346,7 +332,7 @@
             // 
             this.groupBox1.Controls.Add(this.UrlTaskTypePID);
             this.groupBox1.Controls.Add(this.UrlTaskTypePIDURL);
-            this.groupBox1.Location = new System.Drawing.Point(180, 6);
+            this.groupBox1.Location = new System.Drawing.Point(170, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(123, 34);
             this.groupBox1.TabIndex = 0;
@@ -382,14 +368,14 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(475, 98);
+            this.tabPage2.Size = new System.Drawing.Size(607, 105);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "REPORT";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // cancelRepoTaskButton
             // 
-            this.cancelRepoTaskButton.Location = new System.Drawing.Point(392, 69);
+            this.cancelRepoTaskButton.Location = new System.Drawing.Point(523, 76);
             this.cancelRepoTaskButton.Name = "cancelRepoTaskButton";
             this.cancelRepoTaskButton.Size = new System.Drawing.Size(75, 23);
             this.cancelRepoTaskButton.TabIndex = 1;
@@ -399,7 +385,7 @@
             // 
             // doRepoTaskButton
             // 
-            this.doRepoTaskButton.Location = new System.Drawing.Point(311, 69);
+            this.doRepoTaskButton.Location = new System.Drawing.Point(442, 76);
             this.doRepoTaskButton.Name = "doRepoTaskButton";
             this.doRepoTaskButton.Size = new System.Drawing.Size(75, 23);
             this.doRepoTaskButton.TabIndex = 0;
@@ -415,14 +401,14 @@
             this.tabPage3.Controls.Add(this.groupBox4);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(475, 98);
+            this.tabPage3.Size = new System.Drawing.Size(607, 105);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "PRESV";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // doPreSvTaskButton
             // 
-            this.doPreSvTaskButton.Location = new System.Drawing.Point(306, 63);
+            this.doPreSvTaskButton.Location = new System.Drawing.Point(438, 74);
             this.doPreSvTaskButton.Name = "doPreSvTaskButton";
             this.doPreSvTaskButton.Size = new System.Drawing.Size(75, 23);
             this.doPreSvTaskButton.TabIndex = 3;
@@ -432,7 +418,7 @@
             // 
             // cancelPreSvTaskButton
             // 
-            this.cancelPreSvTaskButton.Location = new System.Drawing.Point(387, 63);
+            this.cancelPreSvTaskButton.Location = new System.Drawing.Point(519, 74);
             this.cancelPreSvTaskButton.Name = "cancelPreSvTaskButton";
             this.cancelPreSvTaskButton.Size = new System.Drawing.Size(75, 23);
             this.cancelPreSvTaskButton.TabIndex = 2;
@@ -563,33 +549,18 @@
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(475, 98);
+            this.tabPage4.Size = new System.Drawing.Size(607, 105);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "SRC";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 461);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(648, 22);
-            this.statusStrip1.TabIndex = 5;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
-            // 
             // operationStatusReport
             // 
-            this.operationStatusReport.Location = new System.Drawing.Point(3, 15);
+            this.operationStatusReport.Location = new System.Drawing.Point(2, 15);
             this.operationStatusReport.Multiline = true;
             this.operationStatusReport.Name = "operationStatusReport";
             this.operationStatusReport.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.operationStatusReport.Size = new System.Drawing.Size(614, 94);
+            this.operationStatusReport.Size = new System.Drawing.Size(617, 94);
             this.operationStatusReport.TabIndex = 0;
             // 
             // label1
@@ -626,7 +597,7 @@
             this.panel1.Controls.Add(this.projectIDListBox);
             this.panel1.Controls.Add(this.projectIDLoadButton);
             this.panel1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.panel1.Location = new System.Drawing.Point(12, 27);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(230, 124);
             this.panel1.TabIndex = 10;
@@ -649,7 +620,7 @@
             this.panel2.Controls.Add(this.pageIDGroup);
             this.panel2.Controls.Add(this.pageIDListBoxSelectAllButton);
             this.panel2.Controls.Add(this.pageIDListBoxSelectClearButton);
-            this.panel2.Location = new System.Drawing.Point(243, 27);
+            this.panel2.Location = new System.Drawing.Point(243, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(392, 124);
             this.panel2.TabIndex = 11;
@@ -658,16 +629,16 @@
             // 
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.tabControl1);
-            this.panel3.Location = new System.Drawing.Point(144, 168);
+            this.panel3.Location = new System.Drawing.Point(12, 244);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(491, 143);
+            this.panel3.Size = new System.Drawing.Size(623, 150);
             this.panel3.TabIndex = 12;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.operationStatusReport);
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(12, 334);
+            this.panel4.Location = new System.Drawing.Point(12, 400);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(623, 116);
             this.panel4.TabIndex = 13;
@@ -687,14 +658,14 @@
             this.panel5.Controls.Add(this.guidelineSelectAllButton);
             this.panel5.Controls.Add(this.guidelineListBox);
             this.panel5.Controls.Add(this.label5);
-            this.panel5.Location = new System.Drawing.Point(12, 168);
+            this.panel5.Location = new System.Drawing.Point(12, 142);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(130, 143);
+            this.panel5.Size = new System.Drawing.Size(169, 99);
             this.panel5.TabIndex = 14;
             // 
             // guidelineSelectClearButton
             // 
-            this.guidelineSelectClearButton.Location = new System.Drawing.Point(61, 112);
+            this.guidelineSelectClearButton.Location = new System.Drawing.Point(101, 73);
             this.guidelineSelectClearButton.Name = "guidelineSelectClearButton";
             this.guidelineSelectClearButton.Size = new System.Drawing.Size(65, 23);
             this.guidelineSelectClearButton.TabIndex = 3;
@@ -704,7 +675,7 @@
             // 
             // guidelineSelectAllButton
             // 
-            this.guidelineSelectAllButton.Location = new System.Drawing.Point(5, 112);
+            this.guidelineSelectAllButton.Location = new System.Drawing.Point(44, 73);
             this.guidelineSelectAllButton.Name = "guidelineSelectAllButton";
             this.guidelineSelectAllButton.Size = new System.Drawing.Size(51, 23);
             this.guidelineSelectAllButton.TabIndex = 2;
@@ -720,7 +691,7 @@
             this.guidelineListBox.Name = "guidelineListBox";
             this.guidelineListBox.ScrollAlwaysVisible = true;
             this.guidelineListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.guidelineListBox.Size = new System.Drawing.Size(123, 88);
+            this.guidelineListBox.Size = new System.Drawing.Size(163, 52);
             this.guidelineListBox.TabIndex = 1;
             // 
             // label5
@@ -732,25 +703,160 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "達成基準";
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.techSelectAllButton);
+            this.panel6.Controls.Add(this.techSelectClearButton);
+            this.panel6.Controls.Add(this.techListBox);
+            this.panel6.Controls.Add(this.label6);
+            this.panel6.Location = new System.Drawing.Point(184, 142);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(178, 99);
+            this.panel6.TabIndex = 15;
+            // 
+            // techSelectAllButton
+            // 
+            this.techSelectAllButton.Location = new System.Drawing.Point(44, 73);
+            this.techSelectAllButton.Name = "techSelectAllButton";
+            this.techSelectAllButton.Size = new System.Drawing.Size(55, 23);
+            this.techSelectAllButton.TabIndex = 3;
+            this.techSelectAllButton.Text = "全選択";
+            this.techSelectAllButton.UseVisualStyleBackColor = true;
+            // 
+            // techSelectClearButton
+            // 
+            this.techSelectClearButton.Location = new System.Drawing.Point(105, 73);
+            this.techSelectClearButton.Name = "techSelectClearButton";
+            this.techSelectClearButton.Size = new System.Drawing.Size(68, 23);
+            this.techSelectClearButton.TabIndex = 2;
+            this.techSelectClearButton.Text = "選択解除";
+            this.techSelectClearButton.UseVisualStyleBackColor = true;
+            // 
+            // techListBox
+            // 
+            this.techListBox.FormattingEnabled = true;
+            this.techListBox.ItemHeight = 12;
+            this.techListBox.Location = new System.Drawing.Point(3, 15);
+            this.techListBox.Name = "techListBox";
+            this.techListBox.ScrollAlwaysVisible = true;
+            this.techListBox.Size = new System.Drawing.Size(170, 52);
+            this.techListBox.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "実装番号";
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.openAsAnotherBrowserButton);
+            this.panel7.Controls.Add(this.openAsChromeButton);
+            this.panel7.Controls.Add(this.openAsIEButton);
+            this.panel7.Controls.Add(this.openAsFirefoxButton);
+            this.panel7.Controls.Add(this.label7);
+            this.panel7.Location = new System.Drawing.Point(368, 142);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(179, 53);
+            this.panel7.TabIndex = 16;
+            // 
+            // openAsSettingButton
+            // 
+            this.openAsSettingButton.Location = new System.Drawing.Point(43, 15);
+            this.openAsSettingButton.Name = "openAsSettingButton";
+            this.openAsSettingButton.Size = new System.Drawing.Size(32, 32);
+            this.openAsSettingButton.TabIndex = 0;
+            this.openAsSettingButton.UseVisualStyleBackColor = true;
+            this.openAsSettingButton.Click += new System.EventHandler(this.openAsSettingButton_Click);
+            // 
+            // openAsFolderButton
+            // 
+            this.openAsFolderButton.Location = new System.Drawing.Point(5, 15);
+            this.openAsFolderButton.Name = "openAsFolderButton";
+            this.openAsFolderButton.Size = new System.Drawing.Size(32, 32);
+            this.openAsFolderButton.TabIndex = 1;
+            this.openAsFolderButton.UseVisualStyleBackColor = true;
+            // 
+            // openAsAnotherBrowserButton
+            // 
+            this.openAsAnotherBrowserButton.Location = new System.Drawing.Point(119, 15);
+            this.openAsAnotherBrowserButton.Name = "openAsAnotherBrowserButton";
+            this.openAsAnotherBrowserButton.Size = new System.Drawing.Size(32, 32);
+            this.openAsAnotherBrowserButton.TabIndex = 4;
+            this.openAsAnotherBrowserButton.UseVisualStyleBackColor = true;
+            // 
+            // openAsChromeButton
+            // 
+            this.openAsChromeButton.Location = new System.Drawing.Point(81, 15);
+            this.openAsChromeButton.Name = "openAsChromeButton";
+            this.openAsChromeButton.Size = new System.Drawing.Size(32, 32);
+            this.openAsChromeButton.TabIndex = 3;
+            this.openAsChromeButton.UseVisualStyleBackColor = true;
+            // 
+            // openAsIEButton
+            // 
+            this.openAsIEButton.Location = new System.Drawing.Point(43, 15);
+            this.openAsIEButton.Name = "openAsIEButton";
+            this.openAsIEButton.Size = new System.Drawing.Size(32, 32);
+            this.openAsIEButton.TabIndex = 2;
+            this.openAsIEButton.UseVisualStyleBackColor = true;
+            // 
+            // openAsFirefoxButton
+            // 
+            this.openAsFirefoxButton.Location = new System.Drawing.Point(5, 15);
+            this.openAsFirefoxButton.Name = "openAsFirefoxButton";
+            this.openAsFirefoxButton.Size = new System.Drawing.Size(32, 32);
+            this.openAsFirefoxButton.TabIndex = 1;
+            this.openAsFirefoxButton.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 12);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "ブラウズ";
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.openAsSettingButton);
+            this.panel8.Controls.Add(this.label8);
+            this.panel8.Controls.Add(this.openAsFolderButton);
+            this.panel8.Location = new System.Drawing.Point(553, 142);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(82, 53);
+            this.panel8.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 12);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "設定";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 483);
+            this.ClientSize = new System.Drawing.Size(647, 520);
+            this.Controls.Add(this.panel8);
+            this.Controls.Add(this.panel7);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.appMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.appMenu;
             this.Name = "Form1";
             this.Text = "LibraUtilGUI";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.appMenu.ResumeLayout(false);
-            this.appMenu.PerformLayout();
             this.pageIDGroup.ResumeLayout(false);
             this.pageIDGroup.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -767,8 +873,6 @@
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -779,15 +883,17 @@
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.MenuStrip appMenu;
-        private System.Windows.Forms.ToolStripMenuItem FileMenuList;
-        private System.Windows.Forms.ToolStripMenuItem FileMenuSettings;
         private System.Windows.Forms.ListBox projectIDListBox;
         private System.Windows.Forms.GroupBox pageIDGroup;
         private System.Windows.Forms.ListBox pageIDListBox;
@@ -797,8 +903,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Button pageIDLoadButton;
         private System.Windows.Forms.RadioButton BaseTaskSrcSurvey;
         private System.Windows.Forms.RadioButton BaseTaskSrcReport;
@@ -845,6 +949,21 @@
         private System.Windows.Forms.CheckBox PreSvTaskCC;
         private System.Windows.Forms.Button doPreSvTaskButton;
         private System.Windows.Forms.Button cancelPreSvTaskButton;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button techSelectAllButton;
+        private System.Windows.Forms.Button techSelectClearButton;
+        private System.Windows.Forms.ListBox techListBox;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button openAsAnotherBrowserButton;
+        private System.Windows.Forms.Button openAsChromeButton;
+        private System.Windows.Forms.Button openAsIEButton;
+        private System.Windows.Forms.Button openAsFirefoxButton;
+        private System.Windows.Forms.Button openAsSettingButton;
+        private System.Windows.Forms.Button openAsFolderButton;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label8;
     }
 }
 
