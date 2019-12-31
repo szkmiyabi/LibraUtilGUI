@@ -289,5 +289,28 @@ namespace LibraUtilGUI
             return ret;
         }
 
+        //デリゲート（PreSvTaskの解析内容配列を取得）
+        private delegate List<string> d_get_presv_operation();
+        private List<string> w_get_presv_operation()
+        {
+            List<string> data = new List<string>();
+            if(PreSvTaskCC.Checked) data.Add("css-cut");
+            if(PreSvTaskDL.Checked) data.Add("document-link");
+            if(PreSvTaskTA.Checked) data.Add("target-attr");
+            if(PreSvTaskIA.Checked) data.Add("image-alt");
+            if(PreSvTaskLA.Checked) data.Add("lang-attr");
+            if(PreSvTaskSC.Checked) data.Add("semantic-check");
+            if(PreSvTaskTLTA.Checked) data.Add("tag-label-and-title-attr");
+            return data;
+        }
+
+        //デリゲート（PreSvTaskの重ね掛け判定）
+        private delegate Boolean d_get_layer_flag();
+        private Boolean w_get_layer_flag()
+        {
+            if (PreSvTaskLayerYes.Checked) return true;
+            else return false;
+        }
+
     }
 }

@@ -58,6 +58,19 @@
             this.cancelRepoTaskButton = new System.Windows.Forms.Button();
             this.doRepoTaskButton = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.doPreSvTaskButton = new System.Windows.Forms.Button();
+            this.cancelPreSvTaskButton = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.PreSvTaskLayerNo = new System.Windows.Forms.RadioButton();
+            this.PreSvTaskLayerYes = new System.Windows.Forms.RadioButton();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.PreSvTaskTLTA = new System.Windows.Forms.CheckBox();
+            this.PreSvTaskSC = new System.Windows.Forms.CheckBox();
+            this.PreSvTaskLA = new System.Windows.Forms.CheckBox();
+            this.PreSvTaskIA = new System.Windows.Forms.CheckBox();
+            this.PreSvTaskTA = new System.Windows.Forms.CheckBox();
+            this.PreSvTaskDL = new System.Windows.Forms.CheckBox();
+            this.PreSvTaskCC = new System.Windows.Forms.CheckBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -76,19 +89,6 @@
             this.guidelineSelectAllButton = new System.Windows.Forms.Button();
             this.guidelineListBox = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.PreSvTaskCC = new System.Windows.Forms.CheckBox();
-            this.PreSvTaskDL = new System.Windows.Forms.CheckBox();
-            this.PreSvTaskTA = new System.Windows.Forms.CheckBox();
-            this.PreSvTaskIA = new System.Windows.Forms.CheckBox();
-            this.PreSvTaskLA = new System.Windows.Forms.CheckBox();
-            this.PreSvTaskSC = new System.Windows.Forms.CheckBox();
-            this.PreSvTaskTLTA = new System.Windows.Forms.CheckBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.PreSvTaskLayerYes = new System.Windows.Forms.RadioButton();
-            this.PreSvTaskLayerNo = new System.Windows.Forms.RadioButton();
-            this.cancelPreSvTaskButton = new System.Windows.Forms.Button();
-            this.doPreSvTaskButton = new System.Windows.Forms.Button();
             this.appMenu.SuspendLayout();
             this.pageIDGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -98,14 +98,14 @@
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // appMenu
@@ -420,6 +420,145 @@
             this.tabPage3.Text = "PRESV";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // doPreSvTaskButton
+            // 
+            this.doPreSvTaskButton.Location = new System.Drawing.Point(306, 63);
+            this.doPreSvTaskButton.Name = "doPreSvTaskButton";
+            this.doPreSvTaskButton.Size = new System.Drawing.Size(75, 23);
+            this.doPreSvTaskButton.TabIndex = 3;
+            this.doPreSvTaskButton.Text = "処理実行";
+            this.doPreSvTaskButton.UseVisualStyleBackColor = true;
+            this.doPreSvTaskButton.Click += new System.EventHandler(this.doPreSvTaskButton_Click);
+            // 
+            // cancelPreSvTaskButton
+            // 
+            this.cancelPreSvTaskButton.Location = new System.Drawing.Point(387, 63);
+            this.cancelPreSvTaskButton.Name = "cancelPreSvTaskButton";
+            this.cancelPreSvTaskButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelPreSvTaskButton.TabIndex = 2;
+            this.cancelPreSvTaskButton.Text = "キャンセル";
+            this.cancelPreSvTaskButton.UseVisualStyleBackColor = true;
+            this.cancelPreSvTaskButton.Click += new System.EventHandler(this.cancelPreSvTaskButton_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.PreSvTaskLayerNo);
+            this.groupBox5.Controls.Add(this.PreSvTaskLayerYes);
+            this.groupBox5.Location = new System.Drawing.Point(257, 14);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(105, 37);
+            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "重ね掛け";
+            // 
+            // PreSvTaskLayerNo
+            // 
+            this.PreSvTaskLayerNo.AutoSize = true;
+            this.PreSvTaskLayerNo.Location = new System.Drawing.Point(53, 15);
+            this.PreSvTaskLayerNo.Name = "PreSvTaskLayerNo";
+            this.PreSvTaskLayerNo.Size = new System.Drawing.Size(52, 16);
+            this.PreSvTaskLayerNo.TabIndex = 1;
+            this.PreSvTaskLayerNo.TabStop = true;
+            this.PreSvTaskLayerNo.Text = "しない";
+            this.PreSvTaskLayerNo.UseVisualStyleBackColor = true;
+            // 
+            // PreSvTaskLayerYes
+            // 
+            this.PreSvTaskLayerYes.AutoSize = true;
+            this.PreSvTaskLayerYes.Location = new System.Drawing.Point(6, 15);
+            this.PreSvTaskLayerYes.Name = "PreSvTaskLayerYes";
+            this.PreSvTaskLayerYes.Size = new System.Drawing.Size(42, 16);
+            this.PreSvTaskLayerYes.TabIndex = 0;
+            this.PreSvTaskLayerYes.TabStop = true;
+            this.PreSvTaskLayerYes.Text = "する";
+            this.PreSvTaskLayerYes.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.PreSvTaskTLTA);
+            this.groupBox4.Controls.Add(this.PreSvTaskSC);
+            this.groupBox4.Controls.Add(this.PreSvTaskLA);
+            this.groupBox4.Controls.Add(this.PreSvTaskIA);
+            this.groupBox4.Controls.Add(this.PreSvTaskTA);
+            this.groupBox4.Controls.Add(this.PreSvTaskDL);
+            this.groupBox4.Controls.Add(this.PreSvTaskCC);
+            this.groupBox4.Location = new System.Drawing.Point(9, 14);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(233, 60);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "解析内容";
+            // 
+            // PreSvTaskTLTA
+            // 
+            this.PreSvTaskTLTA.AutoSize = true;
+            this.PreSvTaskTLTA.Location = new System.Drawing.Point(136, 36);
+            this.PreSvTaskTLTA.Name = "PreSvTaskTLTA";
+            this.PreSvTaskTLTA.Size = new System.Drawing.Size(74, 16);
+            this.PreSvTaskTLTA.TabIndex = 6;
+            this.PreSvTaskTLTA.Text = "label/title";
+            this.PreSvTaskTLTA.UseVisualStyleBackColor = true;
+            // 
+            // PreSvTaskSC
+            // 
+            this.PreSvTaskSC.AutoSize = true;
+            this.PreSvTaskSC.Location = new System.Drawing.Point(112, 14);
+            this.PreSvTaskSC.Name = "PreSvTaskSC";
+            this.PreSvTaskSC.Size = new System.Drawing.Size(54, 16);
+            this.PreSvTaskSC.TabIndex = 5;
+            this.PreSvTaskSC.Text = "struct";
+            this.PreSvTaskSC.UseVisualStyleBackColor = true;
+            // 
+            // PreSvTaskLA
+            // 
+            this.PreSvTaskLA.AutoSize = true;
+            this.PreSvTaskLA.Location = new System.Drawing.Point(9, 36);
+            this.PreSvTaskLA.Name = "PreSvTaskLA";
+            this.PreSvTaskLA.Size = new System.Drawing.Size(45, 16);
+            this.PreSvTaskLA.TabIndex = 4;
+            this.PreSvTaskLA.Text = "lang";
+            this.PreSvTaskLA.UseVisualStyleBackColor = true;
+            // 
+            // PreSvTaskIA
+            // 
+            this.PreSvTaskIA.AutoSize = true;
+            this.PreSvTaskIA.Location = new System.Drawing.Point(9, 14);
+            this.PreSvTaskIA.Name = "PreSvTaskIA";
+            this.PreSvTaskIA.Size = new System.Drawing.Size(37, 16);
+            this.PreSvTaskIA.TabIndex = 3;
+            this.PreSvTaskIA.Text = "alt";
+            this.PreSvTaskIA.UseVisualStyleBackColor = true;
+            // 
+            // PreSvTaskTA
+            // 
+            this.PreSvTaskTA.AutoSize = true;
+            this.PreSvTaskTA.Location = new System.Drawing.Point(57, 14);
+            this.PreSvTaskTA.Name = "PreSvTaskTA";
+            this.PreSvTaskTA.Size = new System.Drawing.Size(54, 16);
+            this.PreSvTaskTA.TabIndex = 2;
+            this.PreSvTaskTA.Text = "target";
+            this.PreSvTaskTA.UseVisualStyleBackColor = true;
+            // 
+            // PreSvTaskDL
+            // 
+            this.PreSvTaskDL.AutoSize = true;
+            this.PreSvTaskDL.Location = new System.Drawing.Point(57, 36);
+            this.PreSvTaskDL.Name = "PreSvTaskDL";
+            this.PreSvTaskDL.Size = new System.Drawing.Size(73, 16);
+            this.PreSvTaskDL.TabIndex = 1;
+            this.PreSvTaskDL.Text = "document";
+            this.PreSvTaskDL.UseVisualStyleBackColor = true;
+            // 
+            // PreSvTaskCC
+            // 
+            this.PreSvTaskCC.AutoSize = true;
+            this.PreSvTaskCC.Location = new System.Drawing.Point(172, 14);
+            this.PreSvTaskCC.Name = "PreSvTaskCC";
+            this.PreSvTaskCC.Size = new System.Drawing.Size(58, 16);
+            this.PreSvTaskCC.TabIndex = 0;
+            this.PreSvTaskCC.Text = "csscut";
+            this.PreSvTaskCC.UseVisualStyleBackColor = true;
+            // 
             // tabPage4
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -593,143 +732,6 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "達成基準";
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.PreSvTaskTLTA);
-            this.groupBox4.Controls.Add(this.PreSvTaskSC);
-            this.groupBox4.Controls.Add(this.PreSvTaskLA);
-            this.groupBox4.Controls.Add(this.PreSvTaskIA);
-            this.groupBox4.Controls.Add(this.PreSvTaskTA);
-            this.groupBox4.Controls.Add(this.PreSvTaskDL);
-            this.groupBox4.Controls.Add(this.PreSvTaskCC);
-            this.groupBox4.Location = new System.Drawing.Point(9, 14);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(233, 60);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "解析内容";
-            // 
-            // PreSvTaskCC
-            // 
-            this.PreSvTaskCC.AutoSize = true;
-            this.PreSvTaskCC.Location = new System.Drawing.Point(172, 14);
-            this.PreSvTaskCC.Name = "PreSvTaskCC";
-            this.PreSvTaskCC.Size = new System.Drawing.Size(58, 16);
-            this.PreSvTaskCC.TabIndex = 0;
-            this.PreSvTaskCC.Text = "csscut";
-            this.PreSvTaskCC.UseVisualStyleBackColor = true;
-            // 
-            // PreSvTaskDL
-            // 
-            this.PreSvTaskDL.AutoSize = true;
-            this.PreSvTaskDL.Location = new System.Drawing.Point(57, 36);
-            this.PreSvTaskDL.Name = "PreSvTaskDL";
-            this.PreSvTaskDL.Size = new System.Drawing.Size(73, 16);
-            this.PreSvTaskDL.TabIndex = 1;
-            this.PreSvTaskDL.Text = "document";
-            this.PreSvTaskDL.UseVisualStyleBackColor = true;
-            // 
-            // PreSvTaskTA
-            // 
-            this.PreSvTaskTA.AutoSize = true;
-            this.PreSvTaskTA.Location = new System.Drawing.Point(57, 14);
-            this.PreSvTaskTA.Name = "PreSvTaskTA";
-            this.PreSvTaskTA.Size = new System.Drawing.Size(54, 16);
-            this.PreSvTaskTA.TabIndex = 2;
-            this.PreSvTaskTA.Text = "target";
-            this.PreSvTaskTA.UseVisualStyleBackColor = true;
-            // 
-            // PreSvTaskIA
-            // 
-            this.PreSvTaskIA.AutoSize = true;
-            this.PreSvTaskIA.Location = new System.Drawing.Point(9, 14);
-            this.PreSvTaskIA.Name = "PreSvTaskIA";
-            this.PreSvTaskIA.Size = new System.Drawing.Size(37, 16);
-            this.PreSvTaskIA.TabIndex = 3;
-            this.PreSvTaskIA.Text = "alt";
-            this.PreSvTaskIA.UseVisualStyleBackColor = true;
-            // 
-            // PreSvTaskLA
-            // 
-            this.PreSvTaskLA.AutoSize = true;
-            this.PreSvTaskLA.Location = new System.Drawing.Point(9, 36);
-            this.PreSvTaskLA.Name = "PreSvTaskLA";
-            this.PreSvTaskLA.Size = new System.Drawing.Size(45, 16);
-            this.PreSvTaskLA.TabIndex = 4;
-            this.PreSvTaskLA.Text = "lang";
-            this.PreSvTaskLA.UseVisualStyleBackColor = true;
-            // 
-            // PreSvTaskSC
-            // 
-            this.PreSvTaskSC.AutoSize = true;
-            this.PreSvTaskSC.Location = new System.Drawing.Point(112, 14);
-            this.PreSvTaskSC.Name = "PreSvTaskSC";
-            this.PreSvTaskSC.Size = new System.Drawing.Size(54, 16);
-            this.PreSvTaskSC.TabIndex = 5;
-            this.PreSvTaskSC.Text = "struct";
-            this.PreSvTaskSC.UseVisualStyleBackColor = true;
-            // 
-            // PreSvTaskTLTA
-            // 
-            this.PreSvTaskTLTA.AutoSize = true;
-            this.PreSvTaskTLTA.Location = new System.Drawing.Point(136, 36);
-            this.PreSvTaskTLTA.Name = "PreSvTaskTLTA";
-            this.PreSvTaskTLTA.Size = new System.Drawing.Size(74, 16);
-            this.PreSvTaskTLTA.TabIndex = 6;
-            this.PreSvTaskTLTA.Text = "label/title";
-            this.PreSvTaskTLTA.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.PreSvTaskLayerNo);
-            this.groupBox5.Controls.Add(this.PreSvTaskLayerYes);
-            this.groupBox5.Location = new System.Drawing.Point(257, 14);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(105, 37);
-            this.groupBox5.TabIndex = 1;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "重ね掛け";
-            // 
-            // PreSvTaskLayerYes
-            // 
-            this.PreSvTaskLayerYes.AutoSize = true;
-            this.PreSvTaskLayerYes.Location = new System.Drawing.Point(6, 15);
-            this.PreSvTaskLayerYes.Name = "PreSvTaskLayerYes";
-            this.PreSvTaskLayerYes.Size = new System.Drawing.Size(42, 16);
-            this.PreSvTaskLayerYes.TabIndex = 0;
-            this.PreSvTaskLayerYes.TabStop = true;
-            this.PreSvTaskLayerYes.Text = "する";
-            this.PreSvTaskLayerYes.UseVisualStyleBackColor = true;
-            // 
-            // PreSvTaskLayerNo
-            // 
-            this.PreSvTaskLayerNo.AutoSize = true;
-            this.PreSvTaskLayerNo.Location = new System.Drawing.Point(53, 15);
-            this.PreSvTaskLayerNo.Name = "PreSvTaskLayerNo";
-            this.PreSvTaskLayerNo.Size = new System.Drawing.Size(52, 16);
-            this.PreSvTaskLayerNo.TabIndex = 1;
-            this.PreSvTaskLayerNo.TabStop = true;
-            this.PreSvTaskLayerNo.Text = "しない";
-            this.PreSvTaskLayerNo.UseVisualStyleBackColor = true;
-            // 
-            // cancelPreSvTaskButton
-            // 
-            this.cancelPreSvTaskButton.Location = new System.Drawing.Point(387, 63);
-            this.cancelPreSvTaskButton.Name = "cancelPreSvTaskButton";
-            this.cancelPreSvTaskButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelPreSvTaskButton.TabIndex = 2;
-            this.cancelPreSvTaskButton.Text = "キャンセル";
-            this.cancelPreSvTaskButton.UseVisualStyleBackColor = true;
-            // 
-            // doPreSvTaskButton
-            // 
-            this.doPreSvTaskButton.Location = new System.Drawing.Point(306, 63);
-            this.doPreSvTaskButton.Name = "doPreSvTaskButton";
-            this.doPreSvTaskButton.Size = new System.Drawing.Size(75, 23);
-            this.doPreSvTaskButton.TabIndex = 3;
-            this.doPreSvTaskButton.Text = "処理実行";
-            this.doPreSvTaskButton.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -761,6 +763,10 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -773,10 +779,6 @@
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

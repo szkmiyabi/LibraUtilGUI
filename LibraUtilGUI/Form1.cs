@@ -237,6 +237,22 @@ namespace LibraUtilGUI
         {
             token_src.Cancel();
         }
+
+        //PRESVオペレーション処理実行
+        private void doPreSvTaskButton_Click(object sender, EventArgs e)
+        {
+            //CancellationTokenを発行
+            token_src = new CancellationTokenSource();
+            token = token_src.Token;
+            //処理実行
+            create_presv_report();
+        }
+
+        //PRESVオペレーション処理キャンセル
+        private void cancelPreSvTaskButton_Click(object sender, EventArgs e)
+        {
+            token_src.Cancel();
+        }
     }
 
 }
