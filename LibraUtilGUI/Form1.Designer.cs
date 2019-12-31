@@ -629,7 +629,7 @@
             // 
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.tabControl1);
-            this.panel3.Location = new System.Drawing.Point(12, 244);
+            this.panel3.Location = new System.Drawing.Point(12, 260);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(623, 150);
             this.panel3.TabIndex = 12;
@@ -638,7 +638,7 @@
             // 
             this.panel4.Controls.Add(this.operationStatusReport);
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(12, 400);
+            this.panel4.Location = new System.Drawing.Point(12, 416);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(623, 116);
             this.panel4.TabIndex = 13;
@@ -660,12 +660,12 @@
             this.panel5.Controls.Add(this.label5);
             this.panel5.Location = new System.Drawing.Point(12, 142);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(169, 99);
+            this.panel5.Size = new System.Drawing.Size(169, 112);
             this.panel5.TabIndex = 14;
             // 
             // guidelineSelectClearButton
             // 
-            this.guidelineSelectClearButton.Location = new System.Drawing.Point(101, 73);
+            this.guidelineSelectClearButton.Location = new System.Drawing.Point(101, 82);
             this.guidelineSelectClearButton.Name = "guidelineSelectClearButton";
             this.guidelineSelectClearButton.Size = new System.Drawing.Size(65, 23);
             this.guidelineSelectClearButton.TabIndex = 3;
@@ -675,7 +675,7 @@
             // 
             // guidelineSelectAllButton
             // 
-            this.guidelineSelectAllButton.Location = new System.Drawing.Point(44, 73);
+            this.guidelineSelectAllButton.Location = new System.Drawing.Point(44, 82);
             this.guidelineSelectAllButton.Name = "guidelineSelectAllButton";
             this.guidelineSelectAllButton.Size = new System.Drawing.Size(51, 23);
             this.guidelineSelectAllButton.TabIndex = 2;
@@ -691,7 +691,7 @@
             this.guidelineListBox.Name = "guidelineListBox";
             this.guidelineListBox.ScrollAlwaysVisible = true;
             this.guidelineListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.guidelineListBox.Size = new System.Drawing.Size(163, 52);
+            this.guidelineListBox.Size = new System.Drawing.Size(163, 64);
             this.guidelineListBox.TabIndex = 1;
             // 
             // label5
@@ -711,12 +711,12 @@
             this.panel6.Controls.Add(this.label6);
             this.panel6.Location = new System.Drawing.Point(184, 142);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(178, 99);
+            this.panel6.Size = new System.Drawing.Size(178, 112);
             this.panel6.TabIndex = 15;
             // 
             // techSelectAllButton
             // 
-            this.techSelectAllButton.Location = new System.Drawing.Point(44, 73);
+            this.techSelectAllButton.Location = new System.Drawing.Point(44, 82);
             this.techSelectAllButton.Name = "techSelectAllButton";
             this.techSelectAllButton.Size = new System.Drawing.Size(55, 23);
             this.techSelectAllButton.TabIndex = 3;
@@ -725,7 +725,7 @@
             // 
             // techSelectClearButton
             // 
-            this.techSelectClearButton.Location = new System.Drawing.Point(105, 73);
+            this.techSelectClearButton.Location = new System.Drawing.Point(105, 82);
             this.techSelectClearButton.Name = "techSelectClearButton";
             this.techSelectClearButton.Size = new System.Drawing.Size(68, 23);
             this.techSelectClearButton.TabIndex = 2;
@@ -739,7 +739,7 @@
             this.techListBox.Location = new System.Drawing.Point(3, 15);
             this.techListBox.Name = "techListBox";
             this.techListBox.ScrollAlwaysVisible = true;
-            this.techListBox.Size = new System.Drawing.Size(170, 52);
+            this.techListBox.Size = new System.Drawing.Size(170, 64);
             this.techListBox.TabIndex = 1;
             // 
             // label6
@@ -765,7 +765,7 @@
             // 
             // openAsSettingButton
             // 
-            this.openAsSettingButton.Location = new System.Drawing.Point(43, 15);
+            this.openAsSettingButton.Location = new System.Drawing.Point(5, 14);
             this.openAsSettingButton.Name = "openAsSettingButton";
             this.openAsSettingButton.Size = new System.Drawing.Size(32, 32);
             this.openAsSettingButton.TabIndex = 0;
@@ -774,7 +774,7 @@
             // 
             // openAsFolderButton
             // 
-            this.openAsFolderButton.Location = new System.Drawing.Point(5, 15);
+            this.openAsFolderButton.Location = new System.Drawing.Point(43, 14);
             this.openAsFolderButton.Name = "openAsFolderButton";
             this.openAsFolderButton.Size = new System.Drawing.Size(32, 32);
             this.openAsFolderButton.TabIndex = 1;
@@ -826,9 +826,9 @@
             this.panel8.Controls.Add(this.openAsSettingButton);
             this.panel8.Controls.Add(this.label8);
             this.panel8.Controls.Add(this.openAsFolderButton);
-            this.panel8.Location = new System.Drawing.Point(553, 142);
+            this.panel8.Location = new System.Drawing.Point(368, 201);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(82, 53);
+            this.panel8.Size = new System.Drawing.Size(179, 53);
             this.panel8.TabIndex = 17;
             // 
             // label8
@@ -844,7 +844,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 520);
+            this.ClientSize = new System.Drawing.Size(647, 543);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
