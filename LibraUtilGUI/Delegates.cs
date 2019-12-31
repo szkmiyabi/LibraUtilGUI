@@ -118,6 +118,21 @@ namespace LibraUtilGUI
             }
         }
 
+        //デリゲート（コントロールの無効制御）
+        private delegate void d_ctrl_deactivate(string ctrl_name);
+        private void ctrl_deactivate(string ctrl_name)
+        {
+            List<Control> controls = GetAllControls<Control>(this);
+            foreach (var ctrl in controls)
+            {
+                if (ctrl.Name == ctrl_name)
+                {
+                    ctrl.Enabled = false;
+                    break;
+                }
+            }
+        }
+
         //デリゲート（メイン画面のサイトIDコンボセットアップ）
         private delegate void d_set_projectID_combo(List<List<string>> data);
         private void w_set_projectID_combo(List<List<string>> data)

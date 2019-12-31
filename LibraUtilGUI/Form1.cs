@@ -61,10 +61,13 @@ namespace LibraUtilGUI
             //Imageボタンの初期化
             imgButtonInit();
 
+            //起動時のコントロール無効化設定
+            createSiteInfoBookButton.Enabled = false;
+            pageIDLoadButton.Enabled = false;
             pageIDListBoxSelectAllButton.Enabled = false;
             pageIDListBoxSelectClearButton.Enabled = false;
-            createSiteInfoBookButton.Enabled = false;
-
+            
+            techIDLoadButton.Enabled = false;
             techSelectAllButton.Enabled = false;
             techSelectClearButton.Enabled = false;
 

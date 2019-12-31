@@ -99,6 +99,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
+            this.techIDLoadButton = new System.Windows.Forms.Button();
             this.pageIDGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -133,9 +134,9 @@
             // 
             this.projectIDLoadButton.Location = new System.Drawing.Point(5, 90);
             this.projectIDLoadButton.Name = "projectIDLoadButton";
-            this.projectIDLoadButton.Size = new System.Drawing.Size(75, 23);
+            this.projectIDLoadButton.Size = new System.Drawing.Size(41, 23);
             this.projectIDLoadButton.TabIndex = 2;
-            this.projectIDLoadButton.Text = "サイトID読込";
+            this.projectIDLoadButton.Text = "読込";
             this.projectIDLoadButton.UseVisualStyleBackColor = true;
             this.projectIDLoadButton.Click += new System.EventHandler(this.projectIDLoadButton_Click);
             // 
@@ -198,9 +199,9 @@
             // 
             this.pageIDLoadButton.Location = new System.Drawing.Point(5, 90);
             this.pageIDLoadButton.Name = "pageIDLoadButton";
-            this.pageIDLoadButton.Size = new System.Drawing.Size(82, 23);
+            this.pageIDLoadButton.Size = new System.Drawing.Size(44, 23);
             this.pageIDLoadButton.TabIndex = 1;
-            this.pageIDLoadButton.Text = "ページID読込";
+            this.pageIDLoadButton.Text = "読込";
             this.pageIDLoadButton.UseVisualStyleBackColor = true;
             this.pageIDLoadButton.Click += new System.EventHandler(this.pageIDLoadButton_Click);
             // 
@@ -289,7 +290,7 @@
             // 
             this.groupBox2.Controls.Add(this.UrlTaskFormatExcel);
             this.groupBox2.Controls.Add(this.UrlTaskFormatText);
-            this.groupBox2.Location = new System.Drawing.Point(299, 6);
+            this.groupBox2.Location = new System.Drawing.Point(310, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(150, 34);
             this.groupBox2.TabIndex = 2;
@@ -332,7 +333,7 @@
             // 
             this.groupBox1.Controls.Add(this.UrlTaskTypePID);
             this.groupBox1.Controls.Add(this.UrlTaskTypePIDURL);
-            this.groupBox1.Location = new System.Drawing.Point(170, 6);
+            this.groupBox1.Location = new System.Drawing.Point(176, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(123, 34);
             this.groupBox1.TabIndex = 0;
@@ -660,12 +661,12 @@
             this.panel5.Controls.Add(this.label5);
             this.panel5.Location = new System.Drawing.Point(12, 142);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(169, 112);
+            this.panel5.Size = new System.Drawing.Size(187, 112);
             this.panel5.TabIndex = 14;
             // 
             // guidelineSelectClearButton
             // 
-            this.guidelineSelectClearButton.Location = new System.Drawing.Point(101, 82);
+            this.guidelineSelectClearButton.Location = new System.Drawing.Point(119, 82);
             this.guidelineSelectClearButton.Name = "guidelineSelectClearButton";
             this.guidelineSelectClearButton.Size = new System.Drawing.Size(65, 23);
             this.guidelineSelectClearButton.TabIndex = 3;
@@ -675,7 +676,7 @@
             // 
             // guidelineSelectAllButton
             // 
-            this.guidelineSelectAllButton.Location = new System.Drawing.Point(44, 82);
+            this.guidelineSelectAllButton.Location = new System.Drawing.Point(62, 82);
             this.guidelineSelectAllButton.Name = "guidelineSelectAllButton";
             this.guidelineSelectAllButton.Size = new System.Drawing.Size(51, 23);
             this.guidelineSelectAllButton.TabIndex = 2;
@@ -691,7 +692,7 @@
             this.guidelineListBox.Name = "guidelineListBox";
             this.guidelineListBox.ScrollAlwaysVisible = true;
             this.guidelineListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.guidelineListBox.Size = new System.Drawing.Size(163, 64);
+            this.guidelineListBox.Size = new System.Drawing.Size(181, 64);
             this.guidelineListBox.TabIndex = 1;
             // 
             // label5
@@ -705,18 +706,19 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.techIDLoadButton);
             this.panel6.Controls.Add(this.techSelectAllButton);
             this.panel6.Controls.Add(this.techSelectClearButton);
             this.panel6.Controls.Add(this.techListBox);
             this.panel6.Controls.Add(this.label6);
-            this.panel6.Location = new System.Drawing.Point(184, 142);
+            this.panel6.Location = new System.Drawing.Point(202, 142);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(178, 112);
+            this.panel6.Size = new System.Drawing.Size(198, 112);
             this.panel6.TabIndex = 15;
             // 
             // techSelectAllButton
             // 
-            this.techSelectAllButton.Location = new System.Drawing.Point(44, 82);
+            this.techSelectAllButton.Location = new System.Drawing.Point(63, 82);
             this.techSelectAllButton.Name = "techSelectAllButton";
             this.techSelectAllButton.Size = new System.Drawing.Size(55, 23);
             this.techSelectAllButton.TabIndex = 3;
@@ -725,7 +727,7 @@
             // 
             // techSelectClearButton
             // 
-            this.techSelectClearButton.Location = new System.Drawing.Point(105, 82);
+            this.techSelectClearButton.Location = new System.Drawing.Point(118, 82);
             this.techSelectClearButton.Name = "techSelectClearButton";
             this.techSelectClearButton.Size = new System.Drawing.Size(68, 23);
             this.techSelectClearButton.TabIndex = 2;
@@ -736,16 +738,16 @@
             // 
             this.techListBox.FormattingEnabled = true;
             this.techListBox.ItemHeight = 12;
-            this.techListBox.Location = new System.Drawing.Point(3, 15);
+            this.techListBox.Location = new System.Drawing.Point(5, 15);
             this.techListBox.Name = "techListBox";
             this.techListBox.ScrollAlwaysVisible = true;
-            this.techListBox.Size = new System.Drawing.Size(170, 64);
+            this.techListBox.Size = new System.Drawing.Size(181, 64);
             this.techListBox.TabIndex = 1;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(4, 0);
+            this.label6.Location = new System.Drawing.Point(5, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 0;
@@ -758,9 +760,9 @@
             this.panel7.Controls.Add(this.openAsIEButton);
             this.panel7.Controls.Add(this.openAsFirefoxButton);
             this.panel7.Controls.Add(this.label7);
-            this.panel7.Location = new System.Drawing.Point(368, 142);
+            this.panel7.Location = new System.Drawing.Point(406, 142);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(179, 53);
+            this.panel7.Size = new System.Drawing.Size(229, 53);
             this.panel7.TabIndex = 16;
             // 
             // openAsSettingButton
@@ -827,9 +829,9 @@
             this.panel8.Controls.Add(this.openAsSettingButton);
             this.panel8.Controls.Add(this.label8);
             this.panel8.Controls.Add(this.openAsFolderButton);
-            this.panel8.Location = new System.Drawing.Point(368, 201);
+            this.panel8.Location = new System.Drawing.Point(406, 201);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(179, 53);
+            this.panel8.Size = new System.Drawing.Size(229, 53);
             this.panel8.TabIndex = 17;
             // 
             // label8
@@ -841,11 +843,20 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "設定";
             // 
+            // techIDLoadButton
+            // 
+            this.techIDLoadButton.Location = new System.Drawing.Point(5, 82);
+            this.techIDLoadButton.Name = "techIDLoadButton";
+            this.techIDLoadButton.Size = new System.Drawing.Size(44, 23);
+            this.techIDLoadButton.TabIndex = 4;
+            this.techIDLoadButton.Text = "読込";
+            this.techIDLoadButton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 543);
+            this.ClientSize = new System.Drawing.Size(644, 543);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
@@ -965,6 +976,7 @@
         private System.Windows.Forms.Button openAsFolderButton;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button techIDLoadButton;
     }
 }
 
