@@ -32,7 +32,6 @@ namespace LibraUtilGUI
         private string iePath;
         private string ffPath;
         private string gcPath;
-        private string etcBrowserPath;
 
         //環境設定ダイアログを開く
         private void showSettingsForm()
@@ -75,7 +74,6 @@ namespace LibraUtilGUI
                 iePath = appSettings.iePath;
                 ffPath = appSettings.ffPath;
                 gcPath = appSettings.gcPath;
-                etcBrowserPath = appSettings.etcBrowserPath;
 
             }
             catch (Exception ex)
@@ -163,13 +161,11 @@ namespace LibraUtilGUI
             Bitmap ieImg = getImageFromResource("ie24.png");
             Bitmap ffImg = getImageFromResource("ff24.png");
             Bitmap gcImg = getImageFromResource("gc24.png");
-            Bitmap cfxImg = getImageFromResource("cfx24.png");
             Bitmap folderImg = getImageFromResource("folder24.png");
             Bitmap settingImg = getImageFromResource("setting24.png");
             openAsIEButton.Image = ieImg;
             openAsFirefoxButton.Image = ffImg;
             openAsChromeButton.Image = gcImg;
-            openAsAnotherBrowserButton.Image = cfxImg;
             openAsFolderButton.Image = folderImg;
             openAsSettingButton.Image = settingImg;
         }

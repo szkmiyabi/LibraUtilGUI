@@ -419,6 +419,11 @@ namespace LibraUtilGUI
             return data;
         }
 
+        //検査メイン画面のURL取得
+        public string get_sv_mainpage_url()
+        {
+            return sv_mainpage_url_base + _projectID;
+        }
 
     }
 }

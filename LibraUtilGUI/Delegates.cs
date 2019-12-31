@@ -327,5 +327,15 @@ namespace LibraUtilGUI
             else return false;
         }
 
+        //デリゲート（BrowseTaskのモード判定
+        private delegate string d_get_browse_mode();
+        private string w_get_browse_mode()
+        {
+            string ret = "normal";
+            if (BrowseTaskNormal.Checked) ret = "normal";
+            else if (BrowseTaskSurvey.Checked) ret = "survey";
+            return ret;
+        }
+
     }
 }

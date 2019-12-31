@@ -74,7 +74,6 @@ namespace LibraUtilGUI
             openAsFirefoxButton.Enabled = false;
             openAsIEButton.Enabled = false;
             openAsChromeButton.Enabled = false;
-            openAsAnotherBrowserButton.Enabled = false;
 
         }
 
@@ -274,6 +273,23 @@ namespace LibraUtilGUI
             token_src.Cancel();
         }
 
+        //BrowseTask Firefoxをクリック
+        private void openAsFirefoxButton_Click(object sender, EventArgs e)
+        {
+            do_browse_page_as("firefox");
+        }
+
+        //BrowseTask IEをクリック
+        private void openAsIEButton_Click(object sender, EventArgs e)
+        {
+            do_browse_page_as("ie");
+        }
+
+        //BrowseTask Chromeをクリック
+        private void openAsChromeButton_Click(object sender, EventArgs e)
+        {
+            do_browse_page_as("chrome");
+        }
     }
 
 }

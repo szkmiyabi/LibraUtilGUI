@@ -46,7 +46,6 @@ namespace LibraUtilGUI
                 appSettings.iePath = iePathText.Text;
                 appSettings.ffPath = ffPathText.Text;
                 appSettings.gcPath = gcPathText.Text;
-                appSettings.etcBrowserPath = etcBrowserText.Text;
 
                 XmlSerializer xsz = new XmlSerializer(typeof(Settings));
                 StreamWriter sw = new StreamWriter(
@@ -92,7 +91,6 @@ namespace LibraUtilGUI
                 iePathText.Text = appSettings.iePath;
                 ffPathText.Text = appSettings.ffPath;
                 gcPathText.Text = appSettings.gcPath;
-                etcBrowserText.Text = appSettings.etcBrowserPath;
 
             }
             catch(Exception ex)
@@ -122,7 +120,6 @@ namespace LibraUtilGUI
                 appSettings.iePath = "";
                 appSettings.ffPath = "";
                 appSettings.gcPath = "";
-                appSettings.etcBrowserPath = "";
 
                 XmlSerializer xsz = new XmlSerializer(typeof(Settings));
                 StreamWriter sw = new StreamWriter(
@@ -149,7 +146,6 @@ namespace LibraUtilGUI
                 iePathText.Text = "";
                 ffPathText.Text = "";
                 gcPathText.Text = "";
-                etcBrowserText.Text = "";
 
                 MessageBox.Show("設定が削除できました。");
 

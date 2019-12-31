@@ -22,7 +22,6 @@ namespace LibraUtilGUI
         private string _iePath;
         private string _ffPath;
         private string _gcPath;
-        private string _etcBrowserPath;
 
         public string uid
         {
@@ -111,11 +110,6 @@ namespace LibraUtilGUI
             get { return _gcPath; }
             set { _gcPath = value; }
         }
-        public string etcBrowserPath
-        {
-            get { return _etcBrowserPath; }
-            set { _etcBrowserPath = value; }
-        }
 
         //コンストラクタ
         public Settings()
@@ -135,7 +129,6 @@ namespace LibraUtilGUI
             _iePath = "";
             _ffPath = "";
             _gcPath = "";
-            _etcBrowserPath = "";
         }
 
     }
