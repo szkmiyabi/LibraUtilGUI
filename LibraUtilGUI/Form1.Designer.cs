@@ -779,6 +779,7 @@
             this.openAsFolderButton.Size = new System.Drawing.Size(32, 32);
             this.openAsFolderButton.TabIndex = 1;
             this.openAsFolderButton.UseVisualStyleBackColor = true;
+            this.openAsFolderButton.Click += new System.EventHandler(this.openAsFolderButton_Click);
             // 
             // openAsAnotherBrowserButton
             // 

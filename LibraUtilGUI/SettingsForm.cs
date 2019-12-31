@@ -43,6 +43,11 @@ namespace LibraUtilGUI
                 appSettings.workDir = (workDirText.Text == "") ? getDefaultWorkDir() : workDirText.Text;
                 appSettings.debugMode = (debugModeCheck.Checked == true) ? "yes" : "no";
 
+                appSettings.iePath = iePathText.Text;
+                appSettings.ffPath = ffPathText.Text;
+                appSettings.gcPath = gcPathText.Text;
+                appSettings.etcBrowserPath = etcBrowserText.Text;
+
                 XmlSerializer xsz = new XmlSerializer(typeof(Settings));
                 StreamWriter sw = new StreamWriter(
                     filename,
@@ -84,6 +89,11 @@ namespace LibraUtilGUI
                 workDirText.Text = (appSettings.workDir == "") ? Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\" : appSettings.workDir;
                 debugModeCheck.Checked = (appSettings.debugMode == "yes") ? true : false;
 
+                iePathText.Text = appSettings.iePath;
+                ffPathText.Text = appSettings.ffPath;
+                gcPathText.Text = appSettings.gcPath;
+                etcBrowserText.Text = appSettings.etcBrowserPath;
+
             }
             catch(Exception ex)
             {
@@ -109,6 +119,11 @@ namespace LibraUtilGUI
                 appSettings.workDir = "";
                 appSettings.debugMode = "";
 
+                appSettings.iePath = "";
+                appSettings.ffPath = "";
+                appSettings.gcPath = "";
+                appSettings.etcBrowserPath = "";
+
                 XmlSerializer xsz = new XmlSerializer(typeof(Settings));
                 StreamWriter sw = new StreamWriter(
                     filename,
@@ -130,6 +145,12 @@ namespace LibraUtilGUI
                 basicAuthCombo.Text = "";
                 workDirText.Text = "";
                 debugModeCheck.Checked = false;
+
+                iePathText.Text = "";
+                ffPathText.Text = "";
+                gcPathText.Text = "";
+                etcBrowserText.Text = "";
+
                 MessageBox.Show("設定が削除できました。");
 
             }
@@ -158,6 +179,52 @@ namespace LibraUtilGUI
             return Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
         }
 
+
+        //IE起動パスを取得
+        private void iePathDefaultLoad()
+        {
+            string iepath = "";
+            string iepath1 = @"C:\Program Files\Internet Explorer\iexplore.exe";
+            string iepath2 = @"C:\Program Files (x86)\Internet Explorer\iexplore.exe";
+            if (System.IO.File.Exists(iepath1)) iepath = iepath1;
+            else if (System.IO.File.Exists(iepath2)) iepath = iepath2;
+            if (iepath == "") MessageBox.Show("取得できません");
+            else iePathText.Text = iepath;
+        }
+
+        //Firefox起動パスを取得
+        private void ffPathDefaultLoad()
+        {
+            string ffpath = "";
+            string ffpath1 = @"C:\Program Files\Mozilla Firefox\firefox.exe";
+            string ffpath2 = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+            if (System.IO.File.Exists(ffpath1)) ffpath = ffpath1;
+            else if (System.IO.File.Exists(ffpath2)) ffpath = ffpath2;
+            if (ffpath == "") MessageBox.Show("取得できません");
+            else ffPathText.Text = ffpath;
+        }
+
+        //Chrome起動パスを取得
+        private void gcPathDefaultLoad()
+        {
+            string gcpath = "";
+            string gcpath1 = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
+            string gcpath2 = @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe";
+            string gcpath3 = getUserHomePath() + @"\Local Settings\Application Data\Google\Chrome\Application\chrome.exe";
+            if (System.IO.File.Exists(gcpath1)) gcpath = gcpath1;
+            else if (System.IO.File.Exists(gcpath2)) gcpath = gcpath2;
+            else if (System.IO.File.Exists(gcpath3)) gcpath = gcpath3;
+            if (gcpath == "") MessageBox.Show("取得できません");
+            else gcPathText.Text = gcpath;
+
+        }
+
+        //ユーザのホームフォルダパス
+        private string getUserHomePath()
+        {
+            return System.Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        }
+
         private void OkButton_Click(object sender, EventArgs e)
         {
             saveSettings();
@@ -177,6 +244,21 @@ namespace LibraUtilGUI
         private void workDirBrowseButton_Click(object sender, EventArgs e)
         {
             setWorkDir();
+        }
+
+        private void ffDefaultBtn_Click(object sender, EventArgs e)
+        {
+            ffPathDefaultLoad();
+        }
+
+        private void ieDefaultBtn_Click(object sender, EventArgs e)
+        {
+            iePathDefaultLoad();
+        }
+
+        private void gcDefaultBtn_Click(object sender, EventArgs e)
+        {
+            gcPathDefaultLoad();
         }
     }
 }

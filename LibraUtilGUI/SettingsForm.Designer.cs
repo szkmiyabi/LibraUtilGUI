@@ -52,6 +52,7 @@
             this.headlessCombo = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.basicAuthCombo = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.OkButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
@@ -60,8 +61,22 @@
             this.label11 = new System.Windows.Forms.Label();
             this.workDirText = new System.Windows.Forms.TextBox();
             this.workDirBrowseButton = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
             this.debugModeCheck = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.ffPathText = new System.Windows.Forms.TextBox();
+            this.ffDefaultBtn = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.iePathText = new System.Windows.Forms.TextBox();
+            this.ieDefaultBtn = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.gcPathText = new System.Windows.Forms.TextBox();
+            this.gcDefaultBtn = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.etcBrowserText = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -72,6 +87,10 @@
             this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
+            this.flowLayoutPanel6.SuspendLayout();
+            this.flowLayoutPanel7.SuspendLayout();
+            this.flowLayoutPanel8.SuspendLayout();
+            this.flowLayoutPanel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -81,18 +100,26 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel4, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel5, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel4, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel6, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel7, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel8, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel9, 0, 7);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.11267F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.88733F));
+            this.tableLayoutPanel1.RowCount = 9;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.5625F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.4375F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(539, 174);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(539, 312);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -106,7 +133,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(533, 26);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(533, 27);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -176,9 +203,9 @@
             this.flowLayoutPanel2.Controls.Add(this.label6);
             this.flowLayoutPanel2.Controls.Add(this.shortWaitCombo);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 35);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 36);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(533, 24);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(533, 25);
             this.flowLayoutPanel2.TabIndex = 1;
             // 
             // label3
@@ -304,7 +331,7 @@
             this.flowLayoutPanel3.Controls.Add(this.basicAuthCombo);
             this.flowLayoutPanel3.Controls.Add(this.label12);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 65);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 67);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(533, 29);
             this.flowLayoutPanel3.TabIndex = 2;
@@ -372,15 +399,23 @@
             this.basicAuthCombo.Size = new System.Drawing.Size(62, 20);
             this.basicAuthCombo.TabIndex = 7;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(419, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(0, 12);
+            this.label12.TabIndex = 8;
+            // 
             // flowLayoutPanel4
             // 
             this.flowLayoutPanel4.Controls.Add(this.OkButton);
             this.flowLayoutPanel4.Controls.Add(this.CancelButton);
             this.flowLayoutPanel4.Controls.Add(this.ClearButton);
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(169, 139);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(169, 283);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(367, 32);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(367, 26);
             this.flowLayoutPanel4.TabIndex = 3;
             // 
             // OkButton
@@ -420,9 +455,9 @@
             this.flowLayoutPanel5.Controls.Add(this.workDirBrowseButton);
             this.flowLayoutPanel5.Controls.Add(this.debugModeCheck);
             this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 100);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 102);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(533, 33);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(533, 32);
             this.flowLayoutPanel5.TabIndex = 4;
             // 
             // label11
@@ -452,14 +487,6 @@
             this.workDirBrowseButton.UseVisualStyleBackColor = true;
             this.workDirBrowseButton.Click += new System.EventHandler(this.workDirBrowseButton_Click);
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(419, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(0, 12);
-            this.label12.TabIndex = 8;
-            // 
             // debugModeCheck
             // 
             this.debugModeCheck.AutoSize = true;
@@ -471,11 +498,151 @@
             this.debugModeCheck.Text = "開発者モード";
             this.debugModeCheck.UseVisualStyleBackColor = true;
             // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.Controls.Add(this.label13);
+            this.flowLayoutPanel6.Controls.Add(this.ffPathText);
+            this.flowLayoutPanel6.Controls.Add(this.ffDefaultBtn);
+            this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 140);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(533, 29);
+            this.flowLayoutPanel6.TabIndex = 5;
+            // 
+            // flowLayoutPanel7
+            // 
+            this.flowLayoutPanel7.Controls.Add(this.label14);
+            this.flowLayoutPanel7.Controls.Add(this.iePathText);
+            this.flowLayoutPanel7.Controls.Add(this.ieDefaultBtn);
+            this.flowLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel7.Location = new System.Drawing.Point(3, 175);
+            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
+            this.flowLayoutPanel7.Size = new System.Drawing.Size(533, 29);
+            this.flowLayoutPanel7.TabIndex = 6;
+            // 
+            // flowLayoutPanel8
+            // 
+            this.flowLayoutPanel8.Controls.Add(this.label15);
+            this.flowLayoutPanel8.Controls.Add(this.gcPathText);
+            this.flowLayoutPanel8.Controls.Add(this.gcDefaultBtn);
+            this.flowLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 210);
+            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
+            this.flowLayoutPanel8.Size = new System.Drawing.Size(533, 28);
+            this.flowLayoutPanel8.TabIndex = 7;
+            // 
+            // flowLayoutPanel9
+            // 
+            this.flowLayoutPanel9.Controls.Add(this.label16);
+            this.flowLayoutPanel9.Controls.Add(this.etcBrowserText);
+            this.flowLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel9.Location = new System.Drawing.Point(3, 244);
+            this.flowLayoutPanel9.Name = "flowLayoutPanel9";
+            this.flowLayoutPanel9.Size = new System.Drawing.Size(533, 33);
+            this.flowLayoutPanel9.TabIndex = 8;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 0);
+            this.label13.Margin = new System.Windows.Forms.Padding(3, 0, 26, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(84, 12);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Firefox実行パス";
+            // 
+            // ffPathText
+            // 
+            this.ffPathText.Location = new System.Drawing.Point(116, 3);
+            this.ffPathText.Name = "ffPathText";
+            this.ffPathText.Size = new System.Drawing.Size(323, 19);
+            this.ffPathText.TabIndex = 1;
+            // 
+            // ffDefaultBtn
+            // 
+            this.ffDefaultBtn.Location = new System.Drawing.Point(445, 3);
+            this.ffDefaultBtn.Name = "ffDefaultBtn";
+            this.ffDefaultBtn.Size = new System.Drawing.Size(75, 23);
+            this.ffDefaultBtn.TabIndex = 2;
+            this.ffDefaultBtn.Text = "自動取得";
+            this.ffDefaultBtn.UseVisualStyleBackColor = true;
+            this.ffDefaultBtn.Click += new System.EventHandler(this.ffDefaultBtn_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(3, 0);
+            this.label14.Margin = new System.Windows.Forms.Padding(3, 0, 53, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(58, 12);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "IE実行パス";
+            // 
+            // iePathText
+            // 
+            this.iePathText.Location = new System.Drawing.Point(117, 3);
+            this.iePathText.Name = "iePathText";
+            this.iePathText.Size = new System.Drawing.Size(323, 19);
+            this.iePathText.TabIndex = 1;
+            // 
+            // ieDefaultBtn
+            // 
+            this.ieDefaultBtn.Location = new System.Drawing.Point(446, 3);
+            this.ieDefaultBtn.Name = "ieDefaultBtn";
+            this.ieDefaultBtn.Size = new System.Drawing.Size(75, 23);
+            this.ieDefaultBtn.TabIndex = 2;
+            this.ieDefaultBtn.Text = "自動取得";
+            this.ieDefaultBtn.UseVisualStyleBackColor = true;
+            this.ieDefaultBtn.Click += new System.EventHandler(this.ieDefaultBtn_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(3, 0);
+            this.label15.Margin = new System.Windows.Forms.Padding(3, 0, 25, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(87, 12);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Chrome実行パス";
+            // 
+            // gcPathText
+            // 
+            this.gcPathText.Location = new System.Drawing.Point(118, 3);
+            this.gcPathText.Name = "gcPathText";
+            this.gcPathText.Size = new System.Drawing.Size(323, 19);
+            this.gcPathText.TabIndex = 1;
+            // 
+            // gcDefaultBtn
+            // 
+            this.gcDefaultBtn.Location = new System.Drawing.Point(447, 3);
+            this.gcDefaultBtn.Name = "gcDefaultBtn";
+            this.gcDefaultBtn.Size = new System.Drawing.Size(75, 23);
+            this.gcDefaultBtn.TabIndex = 2;
+            this.gcDefaultBtn.Text = "自動取得";
+            this.gcDefaultBtn.UseVisualStyleBackColor = true;
+            this.gcDefaultBtn.Click += new System.EventHandler(this.gcDefaultBtn_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(3, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(108, 12);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "任意ブラウザ実行パス";
+            // 
+            // etcBrowserText
+            // 
+            this.etcBrowserText.Location = new System.Drawing.Point(117, 3);
+            this.etcBrowserText.Name = "etcBrowserText";
+            this.etcBrowserText.Size = new System.Drawing.Size(323, 19);
+            this.etcBrowserText.TabIndex = 1;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 174);
+            this.ClientSize = new System.Drawing.Size(539, 312);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -496,6 +663,14 @@
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel5.ResumeLayout(false);
             this.flowLayoutPanel5.PerformLayout();
+            this.flowLayoutPanel6.ResumeLayout(false);
+            this.flowLayoutPanel6.PerformLayout();
+            this.flowLayoutPanel7.ResumeLayout(false);
+            this.flowLayoutPanel7.PerformLayout();
+            this.flowLayoutPanel8.ResumeLayout(false);
+            this.flowLayoutPanel8.PerformLayout();
+            this.flowLayoutPanel9.ResumeLayout(false);
+            this.flowLayoutPanel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -536,5 +711,20 @@
         private System.Windows.Forms.Button workDirBrowseButton;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox debugModeCheck;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox ffPathText;
+        private System.Windows.Forms.Button ffDefaultBtn;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox iePathText;
+        private System.Windows.Forms.Button ieDefaultBtn;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox gcPathText;
+        private System.Windows.Forms.Button gcDefaultBtn;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox etcBrowserText;
     }
 }

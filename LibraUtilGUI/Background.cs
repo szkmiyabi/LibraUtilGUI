@@ -29,6 +29,11 @@ namespace LibraUtilGUI
         private string workDir;
         private string debugMode;
 
+        private string iePath;
+        private string ffPath;
+        private string gcPath;
+        private string etcBrowserPath;
+
         //環境設定ダイアログを開く
         private void showSettingsForm()
         {
@@ -66,6 +71,11 @@ namespace LibraUtilGUI
                 basic_auth = appSettings.basic_auth;
                 workDir = (appSettings.workDir == "") ? Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\" : appSettings.workDir;
                 debugMode = (appSettings.debugMode == "" || appSettings.debugMode == "no") ? "no" : "yes";
+
+                iePath = appSettings.iePath;
+                ffPath = appSettings.ffPath;
+                gcPath = appSettings.gcPath;
+                etcBrowserPath = appSettings.etcBrowserPath;
 
             }
             catch (Exception ex)

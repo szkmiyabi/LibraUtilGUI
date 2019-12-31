@@ -65,6 +65,14 @@ namespace LibraUtilGUI
             pageIDListBoxSelectClearButton.Enabled = false;
             createSiteInfoBookButton.Enabled = false;
 
+            techSelectAllButton.Enabled = false;
+            techSelectClearButton.Enabled = false;
+
+            openAsFirefoxButton.Enabled = false;
+            openAsIEButton.Enabled = false;
+            openAsChromeButton.Enabled = false;
+            openAsAnotherBrowserButton.Enabled = false;
+
         }
 
         //Formのゲッターとセッター
@@ -124,6 +132,12 @@ namespace LibraUtilGUI
         private void openAsSettingButton_Click(object sender, EventArgs e)
         {
             showSettingsForm();
+        }
+
+        //作業フォルダボタンクリック
+        private void openAsFolderButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(workDir);
         }
 
         //フォームを閉じようとしたとき
