@@ -290,6 +290,26 @@ namespace LibraUtilGUI
         {
             do_browse_page_as("chrome");
         }
+
+        //達成基準ID読み込みクリック
+        private void techIDLoadButton_Click(object sender, EventArgs e)
+        {
+            set_techID_combo();
+        }
+        //達成基準ID全選択クリック
+        private void techSelectAllButton_Click(object sender, EventArgs e)
+        {
+            SendMessage(techListBox.Handle, LB_SETSEL, 1, -1);
+            techListBox.SetSelected(0, true);
+        }
+        //達成基準ID選択解除クリック
+        private void techSelectClearButton_Click(object sender, EventArgs e)
+        {
+            SendMessage(techListBox.Handle, LB_SETSEL, 0, -1);
+            techListBox.SetSelected(0, false);
+        }
+
+
     }
 
 }

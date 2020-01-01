@@ -727,6 +727,7 @@
             this.techIDLoadButton.TabIndex = 4;
             this.techIDLoadButton.Text = "読込";
             this.techIDLoadButton.UseVisualStyleBackColor = true;
+            this.techIDLoadButton.Click += new System.EventHandler(this.techIDLoadButton_Click);
             // 
             // techSelectAllButton
             // 
@@ -736,6 +737,7 @@
             this.techSelectAllButton.TabIndex = 3;
             this.techSelectAllButton.Text = "全選択";
             this.techSelectAllButton.UseVisualStyleBackColor = true;
+            this.techSelectAllButton.Click += new System.EventHandler(this.techSelectAllButton_Click);
             // 
             // techSelectClearButton
             // 
@@ -745,6 +747,7 @@
             this.techSelectClearButton.TabIndex = 2;
             this.techSelectClearButton.Text = "選択解除";
             this.techSelectClearButton.UseVisualStyleBackColor = true;
+            this.techSelectClearButton.Click += new System.EventHandler(this.techSelectClearButton_Click);
             // 
             // techListBox
             // 
@@ -753,6 +756,7 @@
             this.techListBox.Location = new System.Drawing.Point(5, 15);
             this.techListBox.Name = "techListBox";
             this.techListBox.ScrollAlwaysVisible = true;
+            this.techListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.techListBox.Size = new System.Drawing.Size(176, 64);
             this.techListBox.TabIndex = 1;
             // 

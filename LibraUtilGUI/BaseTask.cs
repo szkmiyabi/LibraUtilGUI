@@ -87,6 +87,7 @@ namespace LibraUtilGUI
 
                 //2重実行防止
                 this.Invoke(w_ctrl_deactivate, "pageIDLoadButton");
+                this.Invoke(w_ctrl_deactivate, "projectIDLoadButton");
                 this.Invoke(w_ctrl_deactivate, "doRepoTaskButton");
                 this.Invoke(w_ctrl_deactivate, "cancelRepoTaskButton");
 
@@ -140,6 +141,7 @@ namespace LibraUtilGUI
                 this.Invoke(message, "処理が完了しました。（" + DateUtil.get_logtime() + "）");
 
                 this.Invoke(w_ctrl_activate, "pageIDLoadButton");
+                this.Invoke(w_ctrl_activate, "projectIDLoadButton");
                 this.Invoke(w_ctrl_activate, "doRepoTaskButton");
                 this.Invoke(w_ctrl_activate, "cancelRepoTaskButton");
 
@@ -151,6 +153,7 @@ namespace LibraUtilGUI
                 this.Invoke(w_ctrl_activate, "openAsChromeButton");
                 this.Invoke(w_ctrl_activate, "openAsAnotherBrowserButton");
 
+                this.Invoke(w_ctrl_activate, "techIDLoadButton");
 
             });
         }
@@ -193,6 +196,87 @@ namespace LibraUtilGUI
 
                 ldr.logout();
                 this.Invoke(message, "処理が完了しました。（" + DateUtil.get_logtime() + "）");
+
+            });
+        }
+
+        //実装番号コンボをセット
+        private void set_techID_combo()
+        {
+            Task.Run(() =>
+            {
+                //デリゲートのインスタンス取得
+                d_status_messenger message = w_status_messenger;
+                d_ldr_activate ldr_activate = w_ldr_activate;
+                d_task_cancel canceler = w_task_cancel;
+                d_ctrl_activate w_ctrl_activate = ctrl_activate;
+                d_ctrl_deactivate w_ctrl_deactivate = ctrl_deactivate;
+                d_get_projectID _projectID = w_get_projectID;
+                d_pageID_data _page_rows = w_pageID_data;
+                d_guideline_data _guideline_rows = w_guideline_data;
+                d_set_techID_combo _set_techID_combo = w_set_techID_combo;
+
+                //2重実行防止
+                this.Invoke(w_ctrl_deactivate, "techIDLoadButton");
+                this.Invoke(w_ctrl_deactivate, "projectIDLoadButton");
+                this.Invoke(w_ctrl_deactivate, "pageIDLoadButton");
+
+                if (ldr_activated == false)
+                {
+                    //Libraドライバ起動しエラーの場合早期退出
+                    if (!(Boolean)this.Invoke(ldr_activate)) return;
+                }
+                ldr.home();
+                this.Invoke(message, "Libraにログインします。（" + DateUtil.get_logtime() + "）");
+                ldr.login();
+                DateUtil.app_sleep(shortWait);
+
+                //projectIDコンボから選択値を取得しセットする
+                string projectID = (string)this.Invoke(_projectID);
+                ldr.projectID = projectID;
+
+                //pageIDコンボの選択値を匿名関数で取得（複数選択の場合先頭のみ取得）
+                List<List<string>> page_rows = (List<List<string>>)this.Invoke(_page_rows);
+                Func<List<List<string>>, string> _pageID = delegate(List<List<string>> data)
+                {
+                    return data[0][0];
+                };
+                string pageID = _pageID(page_rows);
+
+                //guidelineコンボの選択値を匿名関数で取得（複数選択の場合先頭のみ取得）
+                List<string> guideline_rows = (List<string>)this.Invoke(_guideline_rows);
+                Func<List<string>, string> _guideline = delegate (List<string> data)
+                {
+                    return data[0];
+                };
+                string guideline = _guideline(guideline_rows);
+
+                //タスクのキャンセル判定
+                if ((Boolean)this.Invoke(canceler)) return;
+
+                this.Invoke(message, "検査メインページにアクセスしています。（" + DateUtil.get_logtime() + "）");
+                ldr.wd.Navigate().GoToUrl(ldr.get_sv_mainpage_url(pageID));
+                DateUtil.app_sleep(midWait);
+
+                this.Invoke(message, "検査メイン画面から実装番号を取得しています。（" + DateUtil.get_logtime() + "）");
+
+                ldr.select_guideline(guideline);
+                DateUtil.app_sleep(midWait);
+
+                List<string> tech_rows = ldr.get_tech_list();
+                this.Invoke(_set_techID_combo, tech_rows);
+
+                this.Invoke(message, "実装番号コンボが設定完了しました。（" + DateUtil.get_logtime() + "）");
+
+                ldr.logout();
+                this.Invoke(message, "処理が完了しました。（" + DateUtil.get_logtime() + "）");
+
+                this.Invoke(w_ctrl_activate, "techIDLoadButton");
+                this.Invoke(w_ctrl_activate, "projectIDLoadButton");
+                this.Invoke(w_ctrl_activate, "pageIDLoadButton");
+
+                this.Invoke(w_ctrl_activate, "techSelectAllButton");
+                this.Invoke(w_ctrl_activate, "techSelectClearButton");
 
             });
         }

@@ -172,6 +172,26 @@ namespace LibraUtilGUI
             pageIDListBox.SetSelected(0, false);
         }
 
+        //デリゲート（メイン画面の実装番号コンボセットアップ）
+        private delegate void d_set_techID_combo(List<string> data);
+        private void w_set_techID_combo(List<string> data)
+        {
+            List<techIDComboItem> ListBoxItem = new List<techIDComboItem>();
+            techIDComboItem itm;
+            for(int i=0; i<data.Count; i++)
+            {
+                string row = (string)data[i];
+                itm = new techIDComboItem(row, row);
+                ListBoxItem.Add(itm);
+            }
+            techListBox.DisplayMember = "display_str";
+            techListBox.ValueMember = "id_str";
+            techListBox.DataSource = ListBoxItem;
+
+            SendMessage(techListBox.Handle, LB_SETSEL, 0, -1);
+            techListBox.SetSelected(0, false);
+        }
+
 
         //デリゲート（UrlTaskの参照タイプ参照）
         private delegate string d_get_UrlTask_source_flag();

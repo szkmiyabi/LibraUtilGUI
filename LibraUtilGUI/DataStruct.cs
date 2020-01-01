@@ -143,4 +143,33 @@ namespace LibraUtilGUI
         }
 
     }
+
+
+    //達成基準コンボのデータ構造クラス
+    public class techIDComboItem
+    {
+        private string _id_str;
+        private string _display_str;
+
+        //コンストラクタ
+        public techIDComboItem() { }
+        public techIDComboItem(string id, string display)
+        {
+            _id_str = id;
+            _display_str = display;
+        }
+
+        //ゲッターとセッター
+        public string id_str
+        {
+            get { return _id_str; }
+            set { _id_str = value; }
+        }
+        public string display_str
+        {
+            get { return _display_str; }
+            set { _display_str = value; }
+        }
+    }
+
 }

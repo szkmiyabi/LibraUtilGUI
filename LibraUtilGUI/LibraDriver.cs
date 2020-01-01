@@ -225,6 +225,46 @@ namespace LibraUtilGUI
             return rep_detail_url_base + _projectID + "/controlID/" + pageID + "/guideline/" + guidelineID + "/";
         }
 
+        //達成基準番号を選択
+        public void select_guideline(string guidelineID)
+        {
+            IWebElement guidelineSelect = _wd.FindElement(By.Id("guideline"));
+            var guidelineOptions = guidelineSelect.FindElements(By.TagName("option"));
+            for (int i = 0; i< guidelineOptions.Count<IWebElement>(); i++)
+            {
+                if (i == 0) continue;
+                IWebElement guidelineOP = guidelineOptions.ElementAt<IWebElement>(i);
+                string guidelineOP_val = guidelineOP.Text.TrimStart().TrimEnd();
+                Regex pt = new Regex(guidelineID + @".*");
+                if(pt.IsMatch(guidelineOP_val))
+                {
+                    guidelineOP.Click();
+                    break;
+                }
+            }
+        }
+
+        //実装番号一覧を取得
+        public List<string> get_tech_list(){
+            List<string> data = new List<string>();
+            IWebElement techSelect = _wd.FindElement(By.Id("techList"));
+            var techOptions = techSelect.FindElements(By.TagName("option"));
+            for(int i=0; i<techOptions.Count<IWebElement>(); i++)
+            {
+                if (i == 0) continue;
+                IWebElement techOP = techOptions.ElementAt<IWebElement>(i);
+                string techOP_val = techOP.Text.TrimStart().TrimEnd();
+                Regex pt = new Regex(@"([A-Z0-9]+)(.*)");
+                if (pt.IsMatch(techOP_val))
+                {
+                    Match mt = pt.Match(techOP_val);
+                    string row = mt.Groups[1].Value;
+                    data.Add(row);
+                }
+            }
+            return data;
+        }
+
         //サイト一覧を取得
         public List<List<string>> get_site_list()
         {
@@ -420,9 +460,9 @@ namespace LibraUtilGUI
         }
 
         //検査メイン画面のURL取得
-        public string get_sv_mainpage_url()
+        public string get_sv_mainpage_url(string pageID)
         {
-            return sv_mainpage_url_base + _projectID;
+            return sv_mainpage_url_base + _projectID + "/controlID/\"" + pageID + "\"";
         }
 
     }

@@ -50,7 +50,7 @@ namespace LibraUtilGUI
                             if (!(Boolean)this.Invoke(_ldr_activate)) return;
                             ldr.projectID = _projectID();
                         }
-                        string svpage_url = ldr.get_sv_mainpage_url() + "/controlID/\"" + pageID + "\"";
+                        string svpage_url = ldr.get_sv_mainpage_url(pageID);
                         switch (browser_name)
                         {
                             case "firefox":
