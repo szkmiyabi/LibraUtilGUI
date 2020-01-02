@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -324,6 +325,28 @@ namespace LibraUtilGUI
             return ret;
         }
 
+        //デリゲート（実装番号コンボが選択されているか）
+        private delegate Boolean d_is_tech_selected();
+        private Boolean w_is_tech_selected()
+        {
+            if (techListBox.SelectedItems.Count == 0) return false;
+            else return true;
+        }
+
+        //デリゲート（実装番号コンボ選択値を取得）
+        private delegate List<string> d_tech_data();
+        private List<string> w_tech_data()
+        {
+            List<string> data = new List<string>();
+
+            //データバインドしたListBoxの項目はそのデータ型でしか取り出せない
+            foreach (techIDComboItem cmb in techListBox.SelectedItems)
+            {
+                data.Add(cmb.id_str);
+            }
+            return data;
+        }
+
         //デリゲート（PreSvTaskの解析内容配列を取得）
         private delegate List<string> d_get_presv_operation();
         private List<string> w_get_presv_operation()
@@ -355,6 +378,55 @@ namespace LibraUtilGUI
             if (BrowseTaskNormal.Checked) ret = "normal";
             else if (BrowseTaskSurvey.Checked) ret = "survey";
             return ret;
+        }
+
+        //デリゲート（RepoTaskのデータグリッド出力）
+        private delegate void d_data_grid_as_RepoTask(List<List<string>> data, List<string> param);
+        private void w_data_grid_as_RepoTask(List<List<string>> data, List<string> param)
+        {
+            DataTable tbl = new DataTable("RepoTaskTable");
+
+            //カラム設定
+            List<string> head_row = (List<string>)data[0];
+            foreach (string col in head_row)
+            {
+                tbl.Columns.Add(col);
+            }
+
+            //行のループ
+            for (int i = 0; i < data.Count; i++)
+            {
+                if (i == 0) continue;
+                List<string> row = (List<string>)data[i];
+                Func<List<string>, string, Boolean> _contain_param = delegate (List<string> arr, string key)
+                {
+                    Boolean flg = false;
+                    foreach (string vl in arr)
+                    {
+                        if (vl == key)
+                        {
+                            flg = true;
+                        }
+                    }
+                    return flg;
+                };
+                string q_col = row[4];
+                if (!_contain_param(param, q_col)) continue;
+
+                DataRow newRow = tbl.NewRow();
+
+                //列のループ
+                for (int j = 0; j < row.Count; j++)
+                {
+                    string col = (string)row[j];
+                    newRow[head_row[j]] = col;
+                }
+                tbl.Rows.Add(newRow);
+            }
+
+            data_grid_form.init(tbl);
+            data_grid_form.col_fix_as(5);
+            data_grid_form.Show();
         }
 
     }

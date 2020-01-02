@@ -33,6 +33,8 @@ namespace LibraUtilGUI
         //Form1インスタンス
         private static Form1 _main_form;
 
+        private static DataGridForm _data_grid_form;
+
         //Taskのキャンセル
         private CancellationTokenSource token_src;
         private CancellationToken token;
@@ -82,6 +84,19 @@ namespace LibraUtilGUI
         {
             get { return _main_form; }
             set { _main_form = value; }
+        }
+
+        //DataGridFormのゲッター
+        public static DataGridForm data_grid_form
+        {
+            get
+            {
+                if(_data_grid_form == null || _data_grid_form.IsDisposed)
+                {
+                    _data_grid_form = new DataGridForm();
+                }
+                return _data_grid_form;
+            }
         }
 
         //wdインスタンス生成
@@ -247,8 +262,21 @@ namespace LibraUtilGUI
             //CancellationTokenを発行
             token_src = new CancellationTokenSource();
             token = token_src.Token;
+
+            string mode = "";
+            if (RepoTaskModeExcel.Checked) mode = "excel";
+            else if (RepoTaskModeDataGrid.Checked) mode = "datagrid";
+
             //処理実行
-            create_survey_report();
+            switch (mode)
+            {
+                case "excel":
+                    create_survey_report();
+                    break;
+                case "datagrid":
+                    display_survey_report();
+                    break;
+            }
         }
 
         //レポートオペレーション処理キャンセル

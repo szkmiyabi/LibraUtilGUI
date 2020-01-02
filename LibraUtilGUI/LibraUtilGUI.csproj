@@ -89,6 +89,12 @@
     <Compile Include="BrowseTask.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DataGridForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataGridForm.Designer.cs">
+      <DependentUpon>DataGridForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataStruct.cs" />
     <Compile Include="DateUtil.cs" />
     <Compile Include="Delegates.cs">
@@ -126,6 +132,9 @@
     <Compile Include="UrlTask.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="DataGridForm.resx">
+      <DependentUpon>DataGridForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -102,6 +102,9 @@
             this.openAsFolderButton = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.RepoTaskModeExcel = new System.Windows.Forms.RadioButton();
+            this.RepoTaskModeDataGrid = new System.Windows.Forms.RadioButton();
             this.pageIDGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -121,6 +124,7 @@
             this.panel7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // projectIDListBox
@@ -367,6 +371,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox7);
             this.tabPage2.Controls.Add(this.cancelRepoTaskButton);
             this.tabPage2.Controls.Add(this.doRepoTaskButton);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -887,6 +892,39 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "設定";
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.RepoTaskModeDataGrid);
+            this.groupBox7.Controls.Add(this.RepoTaskModeExcel);
+            this.groupBox7.Location = new System.Drawing.Point(6, 6);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(176, 43);
+            this.groupBox7.TabIndex = 2;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "処理モード";
+            // 
+            // RepoTaskModeExcel
+            // 
+            this.RepoTaskModeExcel.AutoSize = true;
+            this.RepoTaskModeExcel.Location = new System.Drawing.Point(3, 15);
+            this.RepoTaskModeExcel.Name = "RepoTaskModeExcel";
+            this.RepoTaskModeExcel.Size = new System.Drawing.Size(75, 16);
+            this.RepoTaskModeExcel.TabIndex = 0;
+            this.RepoTaskModeExcel.TabStop = true;
+            this.RepoTaskModeExcel.Text = "Excel出力";
+            this.RepoTaskModeExcel.UseVisualStyleBackColor = true;
+            // 
+            // RepoTaskModeDataGrid
+            // 
+            this.RepoTaskModeDataGrid.AutoSize = true;
+            this.RepoTaskModeDataGrid.Location = new System.Drawing.Point(81, 15);
+            this.RepoTaskModeDataGrid.Name = "RepoTaskModeDataGrid";
+            this.RepoTaskModeDataGrid.Size = new System.Drawing.Size(79, 16);
+            this.RepoTaskModeDataGrid.TabIndex = 1;
+            this.RepoTaskModeDataGrid.TabStop = true;
+            this.RepoTaskModeDataGrid.Text = "グリッド表示";
+            this.RepoTaskModeDataGrid.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -938,6 +976,8 @@
             this.groupBox6.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1016,6 +1056,9 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.RadioButton BrowseTaskNormal;
         private System.Windows.Forms.RadioButton BrowseTaskSurvey;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.RadioButton RepoTaskModeDataGrid;
+        private System.Windows.Forms.RadioButton RepoTaskModeExcel;
     }
 }
 
