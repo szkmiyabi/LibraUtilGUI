@@ -60,13 +60,12 @@ namespace LibraUtilGUI
                         for (int j = 0; j < row.Count; j++)
                         {
                             string col = (string)row[j];
-                            ws.Cell(i + 1, j + 1).Value = fetch_overflow_characters(col);
+                            ws.Cell(i + 1, j + 1).SetValue<string>(fetch_overflow_characters(col));
                             ws.Cell(i + 1, j + 1).Style.Border.TopBorder = XLBorderStyleValues.Thin;
                             ws.Cell(i + 1, j + 1).Style.Border.BottomBorder = XLBorderStyleValues.Thin;
                             ws.Cell(i + 1, j + 1).Style.Border.LeftBorder = XLBorderStyleValues.Thin;
                             ws.Cell(i + 1, j + 1).Style.Border.RightBorder = XLBorderStyleValues.Thin;
-
-
+                            ws.Cell(i + 1, j + 1).Style.Font.FontName = "ＭＳ Ｐゴシック";
                         }
 
                     }

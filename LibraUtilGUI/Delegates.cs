@@ -49,15 +49,15 @@ namespace LibraUtilGUI
         }
 
         //デリゲート（保存先フォルダ参照）
-        private delegate string d_get_workDir();
-        private string w_get_workDir()
+        public delegate string d_get_workDir();
+        public string w_get_workDir()
         {
             return workDir;
         }
 
         //デリゲート（プロジェクトID参照）
-        private delegate string d_get_projectID();
-        private string w_get_projectID()
+        public delegate string d_get_projectID();
+        public string w_get_projectID()
         {
             return projectIDListBox.SelectedValue.ToString();
         }
@@ -419,13 +419,13 @@ namespace LibraUtilGUI
                 for (int j = 0; j < row.Count; j++)
                 {
                     string col = (string)row[j];
+                    if (j == 2) col = TextUtil.jis2016_encode(col);
                     newRow[head_row[j]] = col;
                 }
                 tbl.Rows.Add(newRow);
             }
 
             data_grid_form.init(tbl);
-            data_grid_form.col_fix_as(5);
             data_grid_form.Show();
         }
 

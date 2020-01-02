@@ -126,6 +126,15 @@ namespace LibraUtilGUI
             if(ldr != null) ldr.shutdown();
         }
 
+        //子フォームインスタンス解放
+        private void destroy_child_form()
+        {
+            if(data_grid_form != null || !data_grid_form.IsDisposed)
+            {
+                data_grid_form.Dispose();
+            }
+        }
+
         //ガイドラインIDコンボの設定
         private void init_guideline_combo()
         {
@@ -160,6 +169,7 @@ namespace LibraUtilGUI
         //フォームを閉じようとしたとき
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            destroy_child_form();
             destroy_wd();
         }
 
