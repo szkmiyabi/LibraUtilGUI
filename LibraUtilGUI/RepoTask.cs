@@ -33,6 +33,10 @@ namespace LibraUtilGUI
                 d_get_pageID_sufix get_pageID_sufix = new d_get_pageID_sufix(w_get_pageID_sufix);
                 d_get_guideline_sufix get_guideline_sufix = new d_get_guideline_sufix(w_get_guideline_sufix);
 
+                //ファイル名サフィックスを先に取得しておく
+                string guideline_sufix = (string)this.Invoke(get_guideline_sufix);
+                string pageID_sufix = (string)this.Invoke(get_pageID_sufix);
+
                 if (ldr_activated == false)
                 {
                     //Libraドライバ起動しエラーの場合早期退出
@@ -99,10 +103,8 @@ namespace LibraUtilGUI
                 this.Invoke(message, "Excelファイルへの書き出しを開始します。（" + DateUtil.get_logtime() + "）");
                 List<string> head_row = TextUtil.get_header();
                 rep_data.Insert(0, head_row);
-                string guideline_sufix = (string)this.Invoke(get_guideline_sufix);
-                string pageID_sufix = (string)this.Invoke(get_pageID_sufix);
                 string save_dir = (string)this.Invoke(_d_get_workDir);
-                string save_filename = save_dir + projectID + "_" + site_name + "_" + guideline_sufix + "_" + pageID_sufix + " " + " 検査結果.xlsx";
+                string save_filename = save_dir + projectID + "_" + site_name + "_" + guideline_sufix + "_" + pageID_sufix + " " + " 検査結果 " + DateUtil.fetch_filename_logtime() + ".xlsx";
 
                 //タスクのキャンセル判定
                 if ((Boolean)this.Invoke(canceler)) return;

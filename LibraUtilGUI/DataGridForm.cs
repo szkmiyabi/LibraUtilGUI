@@ -21,6 +21,7 @@ namespace LibraUtilGUI
             reportGridTable.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
             reportGridTable.AllowUserToAddRows = false;
             main_form = Form1.main_form;
+            saveExcelButton.Image = main_form.getImageFromResource("ico-excel-21.png");
         }
 
         //データグリッドセットアップ

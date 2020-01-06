@@ -49,7 +49,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.07552F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.924485F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 431);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 484);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // reportGridTable
@@ -59,25 +59,25 @@
             this.reportGridTable.Location = new System.Drawing.Point(3, 3);
             this.reportGridTable.Name = "reportGridTable";
             this.reportGridTable.RowTemplate.Height = 21;
-            this.reportGridTable.Size = new System.Drawing.Size(778, 386);
+            this.reportGridTable.Size = new System.Drawing.Size(778, 434);
             this.reportGridTable.TabIndex = 0;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.saveExcelButton);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(347, 395);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(560, 443);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(434, 33);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(221, 38);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // saveExcelButton
             // 
-            this.saveExcelButton.Location = new System.Drawing.Point(3, 3);
+            this.saveExcelButton.Location = new System.Drawing.Point(186, 3);
             this.saveExcelButton.Name = "saveExcelButton";
-            this.saveExcelButton.Size = new System.Drawing.Size(75, 23);
+            this.saveExcelButton.Size = new System.Drawing.Size(32, 32);
             this.saveExcelButton.TabIndex = 0;
-            this.saveExcelButton.Text = "Excel出力";
             this.saveExcelButton.UseVisualStyleBackColor = true;
             this.saveExcelButton.Click += new System.EventHandler(this.saveExcelButton_Click);
             // 
@@ -85,7 +85,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 431);
+            this.ClientSize = new System.Drawing.Size(784, 484);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DataGridForm";
             this.ShowIcon = false;

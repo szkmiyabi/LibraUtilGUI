@@ -52,6 +52,9 @@
             this.UrlTaskTypePID = new System.Windows.Forms.RadioButton();
             this.UrlTaskTypePIDURL = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.RepoTaskModeDataGrid = new System.Windows.Forms.RadioButton();
+            this.RepoTaskModeExcel = new System.Windows.Forms.RadioButton();
             this.cancelRepoTaskButton = new System.Windows.Forms.Button();
             this.doRepoTaskButton = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -102,9 +105,6 @@
             this.openAsFolderButton = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.RepoTaskModeExcel = new System.Windows.Forms.RadioButton();
-            this.RepoTaskModeDataGrid = new System.Windows.Forms.RadioButton();
             this.pageIDGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -112,6 +112,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -124,7 +125,6 @@
             this.panel7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // projectIDListBox
@@ -139,11 +139,10 @@
             // 
             // projectIDLoadButton
             // 
-            this.projectIDLoadButton.Location = new System.Drawing.Point(5, 90);
+            this.projectIDLoadButton.Location = new System.Drawing.Point(3, 83);
             this.projectIDLoadButton.Name = "projectIDLoadButton";
-            this.projectIDLoadButton.Size = new System.Drawing.Size(41, 23);
+            this.projectIDLoadButton.Size = new System.Drawing.Size(32, 32);
             this.projectIDLoadButton.TabIndex = 2;
-            this.projectIDLoadButton.Text = "読込";
             this.projectIDLoadButton.UseVisualStyleBackColor = true;
             this.projectIDLoadButton.Click += new System.EventHandler(this.projectIDLoadButton_Click);
             // 
@@ -204,11 +203,10 @@
             // 
             // pageIDLoadButton
             // 
-            this.pageIDLoadButton.Location = new System.Drawing.Point(5, 90);
+            this.pageIDLoadButton.Location = new System.Drawing.Point(5, 83);
             this.pageIDLoadButton.Name = "pageIDLoadButton";
-            this.pageIDLoadButton.Size = new System.Drawing.Size(44, 23);
+            this.pageIDLoadButton.Size = new System.Drawing.Size(32, 32);
             this.pageIDLoadButton.TabIndex = 1;
-            this.pageIDLoadButton.Text = "読込";
             this.pageIDLoadButton.UseVisualStyleBackColor = true;
             this.pageIDLoadButton.Click += new System.EventHandler(this.pageIDLoadButton_Click);
             // 
@@ -381,6 +379,39 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "REPORT";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.RepoTaskModeDataGrid);
+            this.groupBox7.Controls.Add(this.RepoTaskModeExcel);
+            this.groupBox7.Location = new System.Drawing.Point(6, 6);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(176, 43);
+            this.groupBox7.TabIndex = 2;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "処理モード";
+            // 
+            // RepoTaskModeDataGrid
+            // 
+            this.RepoTaskModeDataGrid.AutoSize = true;
+            this.RepoTaskModeDataGrid.Location = new System.Drawing.Point(81, 15);
+            this.RepoTaskModeDataGrid.Name = "RepoTaskModeDataGrid";
+            this.RepoTaskModeDataGrid.Size = new System.Drawing.Size(79, 16);
+            this.RepoTaskModeDataGrid.TabIndex = 1;
+            this.RepoTaskModeDataGrid.TabStop = true;
+            this.RepoTaskModeDataGrid.Text = "グリッド表示";
+            this.RepoTaskModeDataGrid.UseVisualStyleBackColor = true;
+            // 
+            // RepoTaskModeExcel
+            // 
+            this.RepoTaskModeExcel.AutoSize = true;
+            this.RepoTaskModeExcel.Location = new System.Drawing.Point(3, 15);
+            this.RepoTaskModeExcel.Name = "RepoTaskModeExcel";
+            this.RepoTaskModeExcel.Size = new System.Drawing.Size(75, 16);
+            this.RepoTaskModeExcel.TabIndex = 0;
+            this.RepoTaskModeExcel.TabStop = true;
+            this.RepoTaskModeExcel.Text = "Excel出力";
+            this.RepoTaskModeExcel.UseVisualStyleBackColor = true;
             // 
             // cancelRepoTaskButton
             // 
@@ -613,11 +644,10 @@
             // 
             // createSiteInfoBookButton
             // 
-            this.createSiteInfoBookButton.Location = new System.Drawing.Point(150, 90);
+            this.createSiteInfoBookButton.Location = new System.Drawing.Point(193, 83);
             this.createSiteInfoBookButton.Name = "createSiteInfoBookButton";
-            this.createSiteInfoBookButton.Size = new System.Drawing.Size(75, 23);
+            this.createSiteInfoBookButton.Size = new System.Drawing.Size(32, 32);
             this.createSiteInfoBookButton.TabIndex = 8;
-            this.createSiteInfoBookButton.Text = "Excel出力";
             this.createSiteInfoBookButton.UseVisualStyleBackColor = true;
             this.createSiteInfoBookButton.Click += new System.EventHandler(this.createSiteInfoBookButton_Click);
             // 
@@ -638,7 +668,7 @@
             // 
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.tabControl1);
-            this.panel3.Location = new System.Drawing.Point(12, 260);
+            this.panel3.Location = new System.Drawing.Point(10, 274);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(630, 150);
             this.panel3.TabIndex = 12;
@@ -647,7 +677,7 @@
             // 
             this.panel4.Controls.Add(this.operationStatusReport);
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(12, 416);
+            this.panel4.Location = new System.Drawing.Point(13, 430);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(630, 116);
             this.panel4.TabIndex = 13;
@@ -669,12 +699,12 @@
             this.panel5.Controls.Add(this.label5);
             this.panel5.Location = new System.Drawing.Point(12, 142);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(184, 112);
+            this.panel5.Size = new System.Drawing.Size(184, 126);
             this.panel5.TabIndex = 14;
             // 
             // guidelineSelectClearButton
             // 
-            this.guidelineSelectClearButton.Location = new System.Drawing.Point(114, 82);
+            this.guidelineSelectClearButton.Location = new System.Drawing.Point(114, 91);
             this.guidelineSelectClearButton.Name = "guidelineSelectClearButton";
             this.guidelineSelectClearButton.Size = new System.Drawing.Size(65, 23);
             this.guidelineSelectClearButton.TabIndex = 3;
@@ -684,7 +714,7 @@
             // 
             // guidelineSelectAllButton
             // 
-            this.guidelineSelectAllButton.Location = new System.Drawing.Point(60, 82);
+            this.guidelineSelectAllButton.Location = new System.Drawing.Point(57, 91);
             this.guidelineSelectAllButton.Name = "guidelineSelectAllButton";
             this.guidelineSelectAllButton.Size = new System.Drawing.Size(51, 23);
             this.guidelineSelectAllButton.TabIndex = 2;
@@ -721,22 +751,21 @@
             this.panel6.Controls.Add(this.label6);
             this.panel6.Location = new System.Drawing.Point(198, 142);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(188, 112);
+            this.panel6.Size = new System.Drawing.Size(188, 126);
             this.panel6.TabIndex = 15;
             // 
             // techIDLoadButton
             // 
             this.techIDLoadButton.Location = new System.Drawing.Point(5, 82);
             this.techIDLoadButton.Name = "techIDLoadButton";
-            this.techIDLoadButton.Size = new System.Drawing.Size(44, 23);
+            this.techIDLoadButton.Size = new System.Drawing.Size(32, 32);
             this.techIDLoadButton.TabIndex = 4;
-            this.techIDLoadButton.Text = "読込";
             this.techIDLoadButton.UseVisualStyleBackColor = true;
             this.techIDLoadButton.Click += new System.EventHandler(this.techIDLoadButton_Click);
             // 
             // techSelectAllButton
             // 
-            this.techSelectAllButton.Location = new System.Drawing.Point(55, 82);
+            this.techSelectAllButton.Location = new System.Drawing.Point(52, 91);
             this.techSelectAllButton.Name = "techSelectAllButton";
             this.techSelectAllButton.Size = new System.Drawing.Size(55, 23);
             this.techSelectAllButton.TabIndex = 3;
@@ -746,7 +775,7 @@
             // 
             // techSelectClearButton
             // 
-            this.techSelectClearButton.Location = new System.Drawing.Point(113, 82);
+            this.techSelectClearButton.Location = new System.Drawing.Point(113, 91);
             this.techSelectClearButton.Name = "techSelectClearButton";
             this.techSelectClearButton.Size = new System.Drawing.Size(68, 23);
             this.techSelectClearButton.TabIndex = 2;
@@ -857,7 +886,7 @@
             // 
             // openAsSettingButton
             // 
-            this.openAsSettingButton.Location = new System.Drawing.Point(5, 14);
+            this.openAsSettingButton.Location = new System.Drawing.Point(5, 15);
             this.openAsSettingButton.Name = "openAsSettingButton";
             this.openAsSettingButton.Size = new System.Drawing.Size(32, 32);
             this.openAsSettingButton.TabIndex = 0;
@@ -866,7 +895,7 @@
             // 
             // openAsFolderButton
             // 
-            this.openAsFolderButton.Location = new System.Drawing.Point(39, 14);
+            this.openAsFolderButton.Location = new System.Drawing.Point(39, 15);
             this.openAsFolderButton.Name = "openAsFolderButton";
             this.openAsFolderButton.Size = new System.Drawing.Size(32, 32);
             this.openAsFolderButton.TabIndex = 1;
@@ -878,9 +907,9 @@
             this.panel8.Controls.Add(this.openAsSettingButton);
             this.panel8.Controls.Add(this.label8);
             this.panel8.Controls.Add(this.openAsFolderButton);
-            this.panel8.Location = new System.Drawing.Point(392, 201);
+            this.panel8.Location = new System.Drawing.Point(393, 209);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(250, 53);
+            this.panel8.Size = new System.Drawing.Size(250, 55);
             this.panel8.TabIndex = 17;
             // 
             // label8
@@ -892,44 +921,11 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "設定";
             // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.RepoTaskModeDataGrid);
-            this.groupBox7.Controls.Add(this.RepoTaskModeExcel);
-            this.groupBox7.Location = new System.Drawing.Point(6, 6);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(176, 43);
-            this.groupBox7.TabIndex = 2;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "処理モード";
-            // 
-            // RepoTaskModeExcel
-            // 
-            this.RepoTaskModeExcel.AutoSize = true;
-            this.RepoTaskModeExcel.Location = new System.Drawing.Point(3, 15);
-            this.RepoTaskModeExcel.Name = "RepoTaskModeExcel";
-            this.RepoTaskModeExcel.Size = new System.Drawing.Size(75, 16);
-            this.RepoTaskModeExcel.TabIndex = 0;
-            this.RepoTaskModeExcel.TabStop = true;
-            this.RepoTaskModeExcel.Text = "Excel出力";
-            this.RepoTaskModeExcel.UseVisualStyleBackColor = true;
-            // 
-            // RepoTaskModeDataGrid
-            // 
-            this.RepoTaskModeDataGrid.AutoSize = true;
-            this.RepoTaskModeDataGrid.Location = new System.Drawing.Point(81, 15);
-            this.RepoTaskModeDataGrid.Name = "RepoTaskModeDataGrid";
-            this.RepoTaskModeDataGrid.Size = new System.Drawing.Size(79, 16);
-            this.RepoTaskModeDataGrid.TabIndex = 1;
-            this.RepoTaskModeDataGrid.TabStop = true;
-            this.RepoTaskModeDataGrid.Text = "グリッド表示";
-            this.RepoTaskModeDataGrid.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(655, 543);
+            this.ClientSize = new System.Drawing.Size(655, 558);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
@@ -953,6 +949,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -976,8 +974,6 @@
             this.groupBox6.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }

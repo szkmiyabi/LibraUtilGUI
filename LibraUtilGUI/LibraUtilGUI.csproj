@@ -165,6 +165,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="lu.ico" />
+    <EmbeddedResource Include="resources\ico-load.png" />
+    <EmbeddedResource Include="resources\ico-excel-21.png" />
+    <EmbeddedResource Include="resources\ico-grid-21.png" />
     <EmbeddedResource Include="resources\ff24.png" />
     <EmbeddedResource Include="resources\folder24.png" />
     <EmbeddedResource Include="resources\gc24.png" />

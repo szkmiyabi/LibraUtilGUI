@@ -147,7 +147,7 @@ namespace LibraUtilGUI
         }
 
         //imageリソースを取得
-        private Bitmap getImageFromResource(string imgname)
+        public Bitmap getImageFromResource(string imgname)
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
             Stream stream = assembly.GetManifestResourceStream("LibraUtilGUI.resources." + imgname);
@@ -163,11 +163,18 @@ namespace LibraUtilGUI
             Bitmap gcImg = getImageFromResource("gc24.png");
             Bitmap folderImg = getImageFromResource("folder24.png");
             Bitmap settingImg = getImageFromResource("setting24.png");
+            Bitmap excelImg = getImageFromResource("ico-excel-21.png");
+            Bitmap gridImg = getImageFromResource("ico-grid-21.png");
+            Bitmap loadImg = getImageFromResource("ico-load.png");
             openAsIEButton.Image = ieImg;
             openAsFirefoxButton.Image = ffImg;
             openAsChromeButton.Image = gcImg;
             openAsFolderButton.Image = folderImg;
             openAsSettingButton.Image = settingImg;
+            createSiteInfoBookButton.Image = excelImg;
+            projectIDLoadButton.Image = loadImg;
+            pageIDLoadButton.Image = loadImg;
+            techIDLoadButton.Image = loadImg;
         }
 
     }
