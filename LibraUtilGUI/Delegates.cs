@@ -381,8 +381,8 @@ namespace LibraUtilGUI
         }
 
         //デリゲート（RepoTaskのデータグリッド出力）
-        private delegate void d_data_grid_as_RepoTask(List<List<string>> data, List<string> param);
-        private void w_data_grid_as_RepoTask(List<List<string>> data, List<string> param)
+        private delegate void d_data_grid_as_RepoTask(List<List<string>> data);
+        private void w_data_grid_as_RepoTask(List<List<string>> data)
         {
             DataTable tbl = new DataTable("RepoTaskTable");
 
@@ -398,21 +398,6 @@ namespace LibraUtilGUI
             {
                 if (i == 0) continue;
                 List<string> row = (List<string>)data[i];
-                Func<List<string>, string, Boolean> _contain_param = delegate (List<string> arr, string key)
-                {
-                    Boolean flg = false;
-                    foreach (string vl in arr)
-                    {
-                        if (vl == key)
-                        {
-                            flg = true;
-                        }
-                    }
-                    return flg;
-                };
-                string q_col = row[4];
-                if (!_contain_param(param, q_col)) continue;
-
                 DataRow newRow = tbl.NewRow();
 
                 //列のループ
