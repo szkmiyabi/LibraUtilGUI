@@ -662,27 +662,8 @@ namespace LibraUtilGUI
             return jsc.ToString();
         }
 
-        //対象ソースコード一覧を取得する(検査メインページから)
-        public static string get_srccode_list()
-        {
-            StringBuilder jsc = new StringBuilder();
-            jsc.Append("var src = document.getElementById(\"source\");");
-            jsc.Append("var dch = src.childNodes;");
-            jsc.Append("var str = \"\";");
-            jsc.Append("for(var i=0; i<dch.length; i++){");
-            jsc.Append("if(dch.item(i).id){");
-            jsc.Append("var j = i + 1;");
-            jsc.Append("if(dch.item(j).nodeValue != null){");
-            jsc.Append("str += dch.item(j).nodeValue + \"<bkmk:br>\";");
-            jsc.Append("}");
-            jsc.Append("}");
-            jsc.Append("}");
-            jsc.Append("return str;");
-            return jsc.ToString();
-        }
-
         //対象ソースコード一覧を取得する(一括検査画面から)
-        public static string get_srccode_list_from_all_sv()
+        public static string get_srccode_list()
         {
             StringBuilder jsc = new StringBuilder();
             jsc.Append("class allSurveyByTable {");

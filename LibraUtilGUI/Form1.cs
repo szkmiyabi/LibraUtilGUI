@@ -347,7 +347,15 @@ namespace LibraUtilGUI
             techListBox.SetSelected(0, false);
         }
 
-
+        //SRCオペレーション処理実行
+        private void doSrcTaskButton_Click(object sender, EventArgs e)
+        {
+            //CancellationTokenを発行
+            token_src = new CancellationTokenSource();
+            token = token_src.Token;
+            //処理実行
+            display_srccode_report();
+        }
     }
 
 }

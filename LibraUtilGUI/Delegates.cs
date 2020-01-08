@@ -370,7 +370,7 @@ namespace LibraUtilGUI
             else return false;
         }
 
-        //デリゲート（BrowseTaskのモード判定
+        //デリゲート（BrowseTaskのモード判定）
         private delegate string d_get_browse_mode();
         private string w_get_browse_mode()
         {
@@ -420,6 +420,39 @@ namespace LibraUtilGUI
                 {
                     string col = (string)row[j];
                     if (j == 2) col = TextUtil.jis2016_encode(col);
+                    newRow[head_row[j]] = col;
+                }
+                tbl.Rows.Add(newRow);
+            }
+
+            data_grid_form.init(tbl);
+            data_grid_form.Show();
+        }
+
+        //デリゲート（SrcTaskのデータグリッド出力）
+        private delegate void d_data_grid_as_SrcTask(List<List<string>> data);
+        private void w_data_grid_as_SrcTask(List<List<string>> data)
+        {
+            DataTable tbl = new DataTable("SrcTaskTable");
+
+            //カラム設定
+            List<string> head_row = (List<string>)data[0];
+            foreach (string col in head_row)
+            {
+                tbl.Columns.Add(col);
+            }
+
+            //行のループ
+            for (int i = 0; i < data.Count; i++)
+            {
+                if (i == 0) continue;
+                List<string> row = (List<string>)data[i];
+                DataRow newRow = tbl.NewRow();
+
+                //列のループ
+                for (int j = 0; j < row.Count; j++)
+                {
+                    string col = (string)row[j];
                     newRow[head_row[j]] = col;
                 }
                 tbl.Rows.Add(newRow);

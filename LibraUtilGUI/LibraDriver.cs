@@ -78,6 +78,7 @@ namespace LibraUtilGUI
             _wd.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(systemWait);
             _wd.Manage().Window.Size = new System.Drawing.Size(1280, 900);
             _windowID = _wd.WindowHandles[0];
+            //MessageBox.Show(_windowID);
             _jexe = (IJavaScriptExecutor)_wd;
         }
 
@@ -263,6 +264,52 @@ namespace LibraUtilGUI
                 }
             }
             return data;
+        }
+
+        //実装番号を選択
+        public void select_techlist(string techID)
+        {
+            IWebElement techSelect = _wd.FindElement(By.Id("techList"));
+            var techOptions = techSelect.FindElements(By.TagName("option"));
+            for (int i = 0; i < techOptions.Count<IWebElement>(); i++)
+            {
+                if (i == 0) continue;
+                IWebElement techOP = techOptions.ElementAt<IWebElement>(i);
+                string techOP_val = techOP.Text.TrimStart().TrimEnd();
+                Regex pt = new Regex(techID + @".*");
+                if (pt.IsMatch(techOP_val))
+                {
+                    techOP.Click();
+                    _wd.FindElement(By.Id("footer")).Click();
+                    break;
+                }
+            }
+        }
+
+        //一括検査画面を表示する
+        public void browse_all_sv_page()
+        {
+            _wd.FindElement(By.XPath("//*[@id='all_btn']/button")).Click();
+            DateUtil.app_sleep(longWait);
+            var windowsIDS = _wd.WindowHandles;
+            foreach(string row in windowsIDS)
+            {
+                //MessageBox.Show(row);
+                if (!row.Equals(_windowID))
+                {
+                    _wd.SwitchTo().Window(row);
+                    break;
+                }
+            }
+
+        }
+
+        //一括検査画面を退出する
+        public void leave_all_sv_page()
+        {
+            _wd.FindElement(By.Id("close_diag_form")).Click();
+            _wd.SwitchTo().Window(_windowID);
+            DateUtil.app_sleep(midWait);
         }
 
         //サイト一覧を取得
@@ -463,6 +510,24 @@ namespace LibraUtilGUI
         public string get_sv_mainpage_url(string pageID)
         {
             return sv_mainpage_url_base + _projectID + "/controlID/\"" + pageID + "\"";
+        }
+
+        //対象ソースコード一覧を取得
+        public List<string> get_srccode_list()
+        {
+            browse_all_sv_page();
+            List<string> data = new List<string>();
+            string ret = "";
+            IJavaScriptExecutor act = (IJavaScriptExecutor)_wd;
+            ret = (string)act.ExecuteScript(JsUtil.get_srccode_list());
+            string[] sep = { "<bkmk:br>" };
+            string[] lines = ret.Split(sep, StringSplitOptions.None);
+            foreach(string line in lines)
+            {
+                data.Add(line);
+            }
+            leave_all_sv_page();
+            return data;
         }
 
     }

@@ -66,5 +66,17 @@ namespace LibraUtilGUI
             return head_row;
         }
 
+        //レポートのヘッダー行を生成
+        public static List<string> get_header_SrcTask()
+        {
+            List<string> head_row = new List<string>();
+            head_row.Add("管理番号");
+            head_row.Add("URL");
+            head_row.Add("達成基準");
+            head_row.Add("実装番号");
+            head_row.Add("対象ソースコード");
+            return head_row;
+        }
+
     }
 }
