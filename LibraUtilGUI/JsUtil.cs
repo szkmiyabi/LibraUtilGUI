@@ -797,7 +797,6 @@ namespace LibraUtilGUI
             jsc.Append("}");
             jsc.Append("clean_text(str) {");
             jsc.Append("str = str.replace(/^ +/mg, \"\");");
-            jsc.Append("str = str.replace(/(\\r\\n|\\n)/mg, \"\");");
             jsc.Append("str = str.replace(/\\t/mg, \"\");");
             jsc.Append("return str;");
             jsc.Append("}");
