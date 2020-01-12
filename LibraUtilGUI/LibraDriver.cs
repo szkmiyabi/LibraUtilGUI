@@ -316,19 +316,28 @@ namespace LibraUtilGUI
         public List<List<string>> get_site_list()
         {
             List<List<string>> data = new List<List<string>>();
-            var parser = new AngleSharp.Html.Parser.HtmlParser();
-            var dom = parser.ParseDocument(_wd.PageSource);
-            var tbl = dom.GetElementById("myTable");
+            //var parser = new AngleSharp.Html.Parser.HtmlParser();
+            //var dom = parser.ParseDocument(_wd.PageSource);
+            //var tbl = dom.GetElementById("myTable");
 
-            var trs = tbl.GetElementsByTagName("tr");
-            int nx = trs.Count<AngleSharp.Dom.IElement>();
+            var tbl = _wd.FindElement(By.Id("myTable"));
+
+            //var trs = tbl.GetElementsByTagName("tr");
+            var trs = tbl.FindElements(By.TagName("tr"));
+
+            //int nx = trs.Count<AngleSharp.Dom.IElement>();
+            int nx = trs.Count<IWebElement>();
+
             for(int i=1; i<nx; i++)
             {
-                var tds = trs.ElementAt<AngleSharp.Dom.IElement>(i).GetElementsByTagName("td");
+                //var tds = trs.ElementAt<AngleSharp.Dom.IElement>(i).GetElementsByTagName("td");
+                var tds = trs.ElementAt<IWebElement>(i).FindElements(By.TagName("td"));
 
                 List<string> row = new List<string>();
-                string td1 = TextUtil.text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(0).TextContent);
-                string td2 = TextUtil.text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(1).TextContent);
+                //string td1 = TextUtil.text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(0).TextContent);
+                string td1 = TextUtil.text_clean(tds.ElementAt<IWebElement>(0).Text);
+                //string td2 = TextUtil.text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(1).TextContent);
+                string td2 = TextUtil.text_clean(tds.ElementAt<IWebElement>(1).Text);
                 row.Add(td1);
                 row.Add(td2);
                 data.Add(row);
