@@ -66,6 +66,8 @@ namespace LibraUtilGUI
                             ws.Cell(i + 1, j + 1).Style.Border.LeftBorder = XLBorderStyleValues.Thin;
                             ws.Cell(i + 1, j + 1).Style.Border.RightBorder = XLBorderStyleValues.Thin;
                             ws.Cell(i + 1, j + 1).Style.Font.FontName = "ＭＳ Ｐゴシック";
+                            ws.Cell(i + 1, j + 1).Style.Alignment.SetVertical(XLAlignmentVerticalValues.Top);
+
                         }
 
                     }

@@ -411,6 +411,7 @@ namespace LibraUtilGUI
             }
 
             data_grid_form.init(tbl);
+            data_grid_form.col_auto_size(0, 2, 3, 4, 5);
             data_grid_form.Show();
         }
 
@@ -444,6 +445,7 @@ namespace LibraUtilGUI
             }
 
             data_grid_form.init(tbl);
+            data_grid_form.col_auto_size(0, 2, 3);
             data_grid_form.Show();
         }
 

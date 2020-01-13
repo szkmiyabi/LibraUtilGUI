@@ -36,6 +36,15 @@ namespace LibraUtilGUI
             reportGridTable.Columns[n].Frozen = true;
         }
 
+        //列幅自動セット
+        public void col_auto_size(params int[] n)
+        {
+            foreach(int nx in n)
+            {
+                reportGridTable.Columns[nx].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            }
+        }
+
         //Excel出力
         private void save_as_excel()
         {
