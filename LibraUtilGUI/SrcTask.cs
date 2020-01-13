@@ -165,7 +165,7 @@ namespace LibraUtilGUI
                                 DateUtil.app_sleep(midWait);
 
                                 //LibraDriverクラスからtechデータ取得
-                                tech_rows = ldr.get_tech_list();
+                                tech_rows = ldr.get_tech_list_from_svpage();
 
                                 //techのループ
                                 for (int k = 0; k < tech_rows.Count; k++)
