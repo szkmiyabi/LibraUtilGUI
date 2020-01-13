@@ -250,18 +250,18 @@ namespace LibraUtilGUI
                     return data[0];
                 };
                 string guideline = _guideline(guideline_rows);
+                guideline = "7." + guideline;
 
                 //タスクのキャンセル判定
                 if ((Boolean)this.Invoke(canceler)) return;
 
-                this.Invoke(message, "検査メインページにアクセスしています。（" + DateUtil.get_logtime() + "）");
-                ldr.wd.Navigate().GoToUrl(ldr.get_sv_mainpage_url(pageID));
-                DateUtil.app_sleep(midWait);
+                this.Invoke(message, "レポート詳細ページに移動します。（" + DateUtil.get_logtime() + "）");
 
-                this.Invoke(message, "検査メイン画面から実装番号を取得しています。（" + DateUtil.get_logtime() + "）");
+                string path = ldr.fetch_report_detail_path(pageID, guideline);
+                ldr.wd.Navigate().GoToUrl(path);
+                DateUtil.app_sleep(shortWait);
 
-                ldr.select_guideline(guideline);
-                DateUtil.app_sleep(midWait);
+                this.Invoke(message, "レポート詳細ページから実装番号を取得しています。（" + DateUtil.get_logtime() + "）");
 
                 List<string> tech_rows = ldr.get_tech_list();
                 this.Invoke(_set_techID_combo, tech_rows);

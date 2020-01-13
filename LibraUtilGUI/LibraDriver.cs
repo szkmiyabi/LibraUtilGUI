@@ -246,7 +246,40 @@ namespace LibraUtilGUI
         }
 
         //実装番号一覧を取得
-        public List<string> get_tech_list(){
+        public List<string> get_tech_list()
+        {
+            List<string> data = new List<string>();
+            Func<List<string>, string, Boolean> _contains = delegate (List<string> arr, string str)
+            {
+                Boolean flg = true;
+                if (arr.Count < 1)
+                {
+                    flg = false;
+                }
+                else if (arr.Contains(str) == false)
+                {
+                    flg = false;
+                }
+                return flg;
+            };
+            var tbl = _wd.FindElements(By.TagName("table")).ElementAt<IWebElement>(2);
+            var trs = tbl.FindElements(By.TagName("tr"));
+
+            for (int i = 0; i < trs.Count<IWebElement>(); i++)
+            {
+                if (i == 0) continue;
+                var tr = trs.ElementAt<IWebElement>(i);
+                var tds = tr.FindElements(By.TagName("td"));
+                var td = tds.ElementAt<IWebElement>(1);
+                string td_val = td.Text.TrimStart().TrimEnd();
+                if (!_contains(data, td_val)) data.Add(td_val);
+            }
+
+            return data;
+        }
+
+        //実装番号一覧を取得（検査メイン画面から）
+        public List<string> get_tech_list_from_svpage(){
             List<string> data = new List<string>();
             IWebElement techSelect = _wd.FindElement(By.Id("techList"));
             var techOptions = techSelect.FindElements(By.TagName("option"));
