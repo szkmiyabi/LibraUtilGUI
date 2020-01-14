@@ -22,6 +22,12 @@ namespace LibraUtilGUI
             return str.TrimStart().TrimEnd();
         }
 
+        //インデントを除去
+        public static string trim_indent(string str)
+        {
+            return Regex.Replace(str, @"(^\t+|^ +)", "", RegexOptions.Multiline);
+        }
+
         //brタグを改行コード変換
         public static string br_decode(string str)
         {

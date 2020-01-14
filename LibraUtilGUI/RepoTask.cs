@@ -14,28 +14,43 @@ namespace LibraUtilGUI
         {
             Task.Run(() =>
             {
-                d_set_pageID_combo worker = new d_set_pageID_combo(w_set_pageID_combo);
-                d_status_messenger message = new d_status_messenger(w_status_messenger);
-                d_get_projectID _d_get_projectID = new d_get_projectID(w_get_projectID);
-                d_get_basic_auth_cond _d_get_basic_auth_cond = new d_get_basic_auth_cond(w_get_basic_auth_cond);
-                d_get_source_flag _d_get_source_flag = new d_get_source_flag(w_get_source_flag);
+                //共通デリゲートインスタンス
+                d_status_messenger message = w_status_messenger;
+                d_ldr_activate ldr_activate = w_ldr_activate;
+                d_task_cancel canceler = w_task_cancel;
 
-                d_ldr_activate ldr_activate = new d_ldr_activate(w_ldr_activate);
-                d_task_cancel canceler = new d_task_cancel(w_task_cancel);
+                //専用デリゲートインスタンス（条件系）
+                d_get_basic_auth_cond _d_get_basic_auth_cond = w_get_basic_auth_cond;
+                d_get_source_flag _d_get_source_flag = w_get_source_flag;
+                d_is_pageID_selected _is_pageID_selected = w_is_pageID_selected;
+                d_is_guideline_selected _is_guideline_selected = w_is_guideline_selected;
 
-                d_get_workDir _d_get_workDir = new d_get_workDir(w_get_workDir);
+                //専用デリゲートインスタンス（取得系）
+                d_get_workDir _get_workDir = w_get_workDir;
+                d_get_projectID _get_projectID = w_get_projectID;
+                d_pageID_data get_page_rows = w_pageID_data;
+                d_guideline_data get_guideline_rows = w_guideline_data;
+                d_get_pageID_sufix get_pageID_sufix = w_get_pageID_sufix;
+                d_get_guideline_sufix get_guideline_sufix = w_get_guideline_sufix;
 
-                d_is_pageID_selected is_pageID_selected = new d_is_pageID_selected(w_is_pageID_selected);
-                d_is_guideline_selected is_guideline_selected = new d_is_guideline_selected(w_is_guideline_selected);
-                d_pageID_data get_page_rows = new d_pageID_data(w_pageID_data);
-                d_guideline_data get_guideline_rows = new d_guideline_data(w_guideline_data);
 
-                d_get_pageID_sufix get_pageID_sufix = new d_get_pageID_sufix(w_get_pageID_sufix);
-                d_get_guideline_sufix get_guideline_sufix = new d_get_guideline_sufix(w_get_guideline_sufix);
-
-                //ファイル名サフィックスを先に取得しておく
+                //ファイル名サフィックス取得
                 string guideline_sufix = (string)this.Invoke(get_guideline_sufix);
                 string pageID_sufix = (string)this.Invoke(get_pageID_sufix);
+
+                Boolean is_pageID_selected = (Boolean)this.Invoke(_is_pageID_selected);
+                Boolean is_guideline_selected = (Boolean)this.Invoke(_is_guideline_selected);
+
+                if(is_pageID_selected == false)
+                {
+                    this.Invoke(message, "【エラー】ページIDが選択されていません！処理を停止します。");
+                    return;
+                }
+                if(is_guideline_selected == false)
+                {
+                    this.Invoke(message, "【エラー】達成基準が選択されていません！処理を停止します。");
+                    return;
+                }
 
                 if (ldr_activated == false)
                 {
@@ -48,7 +63,7 @@ namespace LibraUtilGUI
                 ldr.login();
                 DateUtil.app_sleep(shortWait);
 
-                string projectID = (string)this.Invoke(_d_get_projectID);
+                string projectID = (string)this.Invoke(_get_projectID);
                 ldr.projectID = projectID;
 
                 //サイト名取得
@@ -103,7 +118,7 @@ namespace LibraUtilGUI
                 this.Invoke(message, "Excelファイルへの書き出しを開始します。（" + DateUtil.get_logtime() + "）");
                 List<string> head_row = TextUtil.get_header();
                 rep_data.Insert(0, head_row);
-                string save_dir = (string)this.Invoke(_d_get_workDir);
+                string save_dir = (string)this.Invoke(_get_workDir);
                 string save_filename = save_dir + projectID + "_" + site_name + "_" + guideline_sufix + "_" + pageID_sufix + " " + " 検査結果 " + DateUtil.fetch_filename_logtime() + ".xlsx";
 
                 //タスクのキャンセル判定
@@ -123,22 +138,42 @@ namespace LibraUtilGUI
         {
             Task.Run(() =>
             {
+                //共通デリゲートインスタンス
                 d_status_messenger message = w_status_messenger;
+                d_ldr_activate ldr_activate = w_ldr_activate;
+                d_task_cancel canceler = w_task_cancel;
+
+                //専用デリゲートインスタンス（条件分岐）
+                d_is_pageID_selected _is_pageID_selected = w_is_pageID_selected;
+                d_is_guideline_selected _is_guideline_selected = w_is_guideline_selected;
+                d_is_tech_selected _is_tech_selected = w_is_tech_selected;
+
+                //専用デリゲートインスタンス（取得系）
                 d_get_projectID get_projectID = w_get_projectID;
                 d_get_basic_auth_cond get_basic_auth_cond = w_get_basic_auth_cond;
                 d_get_source_flag get_source_flag = w_get_source_flag;
-                d_ldr_activate ldr_activate = w_ldr_activate;
-                d_task_cancel canceler = w_task_cancel;
                 d_get_workDir get_workDir = w_get_workDir;
-                d_is_pageID_selected is_pageID_selected = w_is_pageID_selected;
-                d_is_guideline_selected is_guideline_selected = w_is_guideline_selected;
-                d_is_tech_selected is_tech_selected = w_is_tech_selected;
                 d_pageID_data get_page_rows = w_pageID_data;
                 d_guideline_data get_guideline_rows = w_guideline_data;
                 d_get_pageID_sufix get_pageID_sufix = w_get_pageID_sufix;
                 d_get_guideline_sufix get_guideline_sufix = w_get_guideline_sufix;
                 d_data_grid_as_RepoTask _data_grid_as_RepoTask = w_data_grid_as_RepoTask;
                 d_tech_data get_tech_rows = w_tech_data;
+
+                Boolean is_pageID_selected = (Boolean)this.Invoke(_is_pageID_selected);
+                Boolean is_guideline_selected = (Boolean)this.Invoke(_is_guideline_selected);
+                Boolean is_tech_selected = (Boolean)this.Invoke(_is_tech_selected);
+
+                if(is_pageID_selected == false)
+                {
+                    this.Invoke(message, "【エラー】ページIDが選択されていません！処理を停止します。");
+                    return;
+                }
+                if(is_guideline_selected == false)
+                {
+                    this.Invoke(message, "【エラー】達成基準が選択されていません！処理を停止します。");
+                    return;
+                }
 
                 if (ldr_activated == false)
                 {
@@ -179,7 +214,7 @@ namespace LibraUtilGUI
 
                 //処理タイプ条件分岐
                 string opt_type = "";
-                if ((Boolean)this.Invoke(is_tech_selected)) opt_type = "qry";
+                if (is_tech_selected == true) opt_type = "qry";
                 else opt_type = "seq";
 
                 switch (opt_type)

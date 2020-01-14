@@ -484,24 +484,25 @@ namespace LibraUtilGUI
         //レポート詳細ページから検査結果データを生成
         public List<List<string>> get_detail_table_data(string pageID, string pageURL, string guideline)
         {
+
             List<List<string>> data = new List<List<string>>();
-            var parser = new AngleSharp.Html.Parser.HtmlParser();
-            var dom = parser.ParseDocument(_wd.PageSource);
-            var tbl = dom.GetElementsByTagName("table").ElementAt<AngleSharp.Dom.IElement>(2);
-            var trs = tbl.GetElementsByTagName("tr");
-            for(int i=0; i<trs.Count<AngleSharp.Dom.IElement>(); i++)
+            var dom = new HtmlAgilityPack.HtmlDocument();
+            dom.LoadHtml(_wd.PageSource);
+            var tbl = dom.QuerySelectorAll("table").ElementAt<HtmlAgilityPack.HtmlNode>(2);
+            var trs = tbl.QuerySelectorAll("tr");
+            for (int i = 0; i < trs.Count<HtmlAgilityPack.HtmlNode>(); i++)
             {
                 if (i == 0) continue;
                 List<string> row_data = new List<string>();
                 row_data.Add(pageID);
                 row_data.Add(pageURL);
                 row_data.Add(guideline);
-                var tr = trs.ElementAt<AngleSharp.Dom.IElement>(i);
-                var tds = tr.GetElementsByTagName("td");
+                var tr = trs.ElementAt<HtmlAgilityPack.HtmlNode>(i);
+                var tds = tr.QuerySelectorAll("td");
                 int col_num = 0;
-                for(int j=0; j<tds.Count<AngleSharp.Dom.IElement>(); j++)
+                for (int j = 0; j < tds.Count<HtmlAgilityPack.HtmlNode>(); j++)
                 {
-                    var td = tds.ElementAt<AngleSharp.Dom.IElement>(j);
+                    var td = tds.ElementAt<HtmlAgilityPack.HtmlNode>(j);
                     string td_val = td.InnerHtml;
                     //コメント列
                     if(col_num == 4)
@@ -513,6 +514,7 @@ namespace LibraUtilGUI
                     else
                     {
                         td_val = TextUtil.tag_decode(td_val);
+                        td_val = TextUtil.trim_indent(td_val);
                     }
                     if(td_val == "" || td_val == null)
                     {
