@@ -413,26 +413,25 @@ namespace LibraUtilGUI
         public List<List<string>> get_page_list_data()
         {
             List<List<string>> data = new List<List<string>>();
-            var parser = new AngleSharp.Html.Parser.HtmlParser();
-            var dom = parser.ParseDocument(_wd.PageSource);
-            var tbls = dom.GetElementsByTagName("table");
-            var tbl = tbls.ElementAt<AngleSharp.Dom.IElement>(2);
+            var tbls = _wd.FindElements(By.TagName("table"));
+            var tbl = tbls.ElementAt<IWebElement>(2);
 
             List<string> col1 = new List<string>();
             List<string> col2 = new List<string>();
 
-            var first_tds = tbl.QuerySelectorAll("tr td:first-child");
-            int fnx = first_tds.Count<AngleSharp.Dom.IElement>();
+            var first_tds = tbl.FindElements(By.CssSelector("tr td:first-child"));
+            int fnx = first_tds.Count<IWebElement>();
             for(int i=0; i<fnx; i++)
             {
-                string pageID = TextUtil.text_clean(first_tds.ElementAt<AngleSharp.Dom.IElement>(i).TextContent);
+                string pageID = TextUtil.text_clean(first_tds.ElementAt<IWebElement>(i).Text);
                 col1.Add(pageID);
             }
-            var second_tds = tbl.QuerySelectorAll("tr td:nth-child(2)");
-            int snx = second_tds.Count<AngleSharp.Dom.IElement>();
+            var second_tds = tbl.FindElements(By.CssSelector("tr td:nth-child(2)"));
+
+            int snx = second_tds.Count<IWebElement>();
             for(int i=0; i<snx; i++)
             {
-                string pageURL = TextUtil.text_clean(second_tds.ElementAt<AngleSharp.Dom.IElement>(i).TextContent);
+                string pageURL = TextUtil.text_clean(second_tds.ElementAt<IWebElement>(i).Text);
                 col2.Add(pageURL);
             }
 

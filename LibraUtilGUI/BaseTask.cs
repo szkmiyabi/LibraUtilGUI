@@ -18,15 +18,15 @@ namespace LibraUtilGUI
 
             Task.Run(() =>
             {
-                d_set_projectID_combo worker = new d_set_projectID_combo(w_set_projectID_combo);
-                d_status_messenger message = new d_status_messenger(w_status_messenger);
-                d_ldr_activate ldr_activate = new d_ldr_activate(w_ldr_activate);
-                d_task_cancel canceler = new d_task_cancel(w_task_cancel);
+                //共通デリゲートインスタンス
+                d_status_messenger message = w_status_messenger;
+                d_ldr_activate ldr_activate = w_ldr_activate;
+                d_task_cancel canceler = w_task_cancel;
+                d_ctrl_activate w_ctrl_activate = ctrl_activate;
+                d_ctrl_deactivate w_ctrl_deactivate = ctrl_deactivate;
 
-                d_ctrl_activate w_ctrl_activate = new d_ctrl_activate(ctrl_activate);
-                d_ctrl_deactivate w_ctrl_deactivate = new d_ctrl_deactivate(ctrl_deactivate);
-
-
+                //専用デリゲートインスタンス
+                d_set_projectID_combo _set_projectID_combo = w_set_projectID_combo;
 
                 //2重実行防止
                 this.Invoke(w_ctrl_deactivate, "projectIDLoadButton");
@@ -50,7 +50,7 @@ namespace LibraUtilGUI
                 if ((Boolean)this.Invoke(canceler)) return;
 
                 this.Invoke(message, "サイト一覧を取得しています。（" + DateUtil.get_logtime() + "）");
-                this.Invoke(worker, data);
+                this.Invoke(_set_projectID_combo, data);
                 this.Invoke(message, "サイト名コンボが設定完了しました。（" + DateUtil.get_logtime() + "）");
                 ldr.logout();
                 this.Invoke(message, "処理が完了しました。（" + DateUtil.get_logtime() + "）");
@@ -73,17 +73,18 @@ namespace LibraUtilGUI
 
             Task.Run(() =>
             {
-                d_set_pageID_combo worker = new d_set_pageID_combo(w_set_pageID_combo);
-                d_status_messenger message = new d_status_messenger(w_status_messenger);
-                d_get_projectID _d_get_projectID = new d_get_projectID(w_get_projectID);
-                d_get_basic_auth_cond _d_get_basic_auth_cond = new d_get_basic_auth_cond(w_get_basic_auth_cond);
-                d_get_source_flag _d_get_source_flag = new d_get_source_flag(w_get_source_flag);
+                //共通デリゲートインスタンス
+                d_status_messenger message = w_status_messenger;
+                d_ldr_activate ldr_activate = w_ldr_activate;
+                d_task_cancel canceler = w_task_cancel;
+                d_ctrl_activate w_ctrl_activate = ctrl_activate;
+                d_ctrl_deactivate w_ctrl_deactivate = ctrl_deactivate;
 
-                d_ldr_activate ldr_activate = new d_ldr_activate(w_ldr_activate);
-                d_task_cancel canceler = new d_task_cancel(w_task_cancel);
-
-                d_ctrl_activate w_ctrl_activate = new d_ctrl_activate(ctrl_activate);
-                d_ctrl_deactivate w_ctrl_deactivate = new d_ctrl_deactivate(ctrl_deactivate);
+                //専用デリゲートインスタンス
+                d_get_projectID _d_get_projectID = w_get_projectID;
+                d_get_source_flag _d_get_source_flag = w_get_source_flag;
+                d_get_basic_auth_cond _d_get_basic_auth_cond = w_get_basic_auth_cond;
+                d_set_pageID_combo _set_pageID_combo = w_set_pageID_combo;
 
                 //2重実行防止
                 this.Invoke(w_ctrl_deactivate, "pageIDLoadButton");
@@ -116,7 +117,7 @@ namespace LibraUtilGUI
                     //タスクのキャンセル判定
                     if ((Boolean)this.Invoke(canceler)) return;
 
-                    this.Invoke(worker, data);
+                    this.Invoke(_set_pageID_combo, data);
                 }
                 else if(flg == "svpage")
                 {
@@ -132,7 +133,7 @@ namespace LibraUtilGUI
                     //タスクのキャンセル判定
                     if ((Boolean)this.Invoke(canceler)) return;
 
-                    this.Invoke(worker, data);
+                    this.Invoke(_set_pageID_combo, data);
                 }
 
                 this.Invoke(message, "ページIDコンボが設定完了しました。（" + DateUtil.get_logtime() + "）");
@@ -165,11 +166,11 @@ namespace LibraUtilGUI
         {
             Task.Run(() =>
             {
-                d_status_messenger message = new d_status_messenger(w_status_messenger);
-                d_get_workDir _d_get_workDir = new d_get_workDir(w_get_workDir);
-
-                d_ldr_activate ldr_activate = new d_ldr_activate(w_ldr_activate);
-                d_task_cancel canceler = new d_task_cancel(w_task_cancel);
+                //共通デリゲートインスタンス
+                d_status_messenger message = w_status_messenger;
+                d_ldr_activate ldr_activate = w_ldr_activate;
+                d_task_cancel canceler = w_task_cancel;
+                d_get_workDir _d_get_workDir = w_get_workDir;
 
                 if (ldr_activated == false)
                 {
@@ -205,12 +206,16 @@ namespace LibraUtilGUI
         {
             Task.Run(() =>
             {
-                //デリゲートのインスタンス取得
+                //共通デリゲートインスタンス
                 d_status_messenger message = w_status_messenger;
                 d_ldr_activate ldr_activate = w_ldr_activate;
                 d_task_cancel canceler = w_task_cancel;
                 d_ctrl_activate w_ctrl_activate = ctrl_activate;
                 d_ctrl_deactivate w_ctrl_deactivate = ctrl_deactivate;
+
+                //専用デリゲートインスタンス
+                d_is_pageID_selected _is_pageID_selected = w_is_pageID_selected;
+                d_is_guideline_selected _is_guideline_selected = w_is_guideline_selected;
                 d_get_projectID _projectID = w_get_projectID;
                 d_pageID_data _page_rows = w_pageID_data;
                 d_guideline_data _guideline_rows = w_guideline_data;
@@ -220,6 +225,25 @@ namespace LibraUtilGUI
                 this.Invoke(w_ctrl_deactivate, "techIDLoadButton");
                 this.Invoke(w_ctrl_deactivate, "projectIDLoadButton");
                 this.Invoke(w_ctrl_deactivate, "pageIDLoadButton");
+
+                Boolean pageID_selected = (Boolean)this.Invoke(_is_pageID_selected);
+                if(!pageID_selected)
+                {
+                    this.Invoke(message, "【エラー】ページIDが未選択です！処理を停止します。");
+                    this.Invoke(w_ctrl_activate, "techIDLoadButton");
+                    this.Invoke(w_ctrl_activate, "projectIDLoadButton");
+                    this.Invoke(w_ctrl_activate, "pageIDLoadButton");
+                    return;
+                }
+                Boolean guideline_selected = (Boolean)this.Invoke(_is_guideline_selected);
+                if (!guideline_selected)
+                {
+                    this.Invoke(message, "【エラー】達成基準が未選択です！処理を停止します。");
+                    this.Invoke(w_ctrl_activate, "techIDLoadButton");
+                    this.Invoke(w_ctrl_activate, "projectIDLoadButton");
+                    this.Invoke(w_ctrl_activate, "pageIDLoadButton");
+                    return;
+                }
 
                 if (ldr_activated == false)
                 {
