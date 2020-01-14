@@ -370,13 +370,11 @@ namespace LibraUtilGUI
         public string get_site_name()
         {
             string sname = "";
-            var parser = new AngleSharp.Html.Parser.HtmlParser();
-            var dom = parser.ParseDocument(_wd.PageSource);
-            var tbls = dom.GetElementsByTagName("table");
-            var tbl = tbls.ElementAt<AngleSharp.Dom.IElement>(1);
-            var tds = tbl.QuerySelectorAll("tr td");
-            var td = tds.ElementAt<AngleSharp.Dom.IElement>(0);
-            string td_val = td.TextContent;
+            var tbls = _wd.FindElements(By.TagName("table"));
+            var tbl = tbls.ElementAt<IWebElement>(1);
+            var tds = tbl.FindElements(By.CssSelector("tr td"));
+            var td = tds.ElementAt<IWebElement>(0);
+            string td_val = TextUtil.text_clean(td.Text);
             Regex pt = new Regex(@"(\[)([a-zA-Z0-9]+)(\])(\s*)(.+)");
             if (pt.IsMatch(td_val))
             {
@@ -390,21 +388,17 @@ namespace LibraUtilGUI
         public List<List<string>> get_site_info_data()
         {
             List<List<string>> data = new List<List<string>>();
-            var parser = new AngleSharp.Html.Parser.HtmlParser();
-            var dom = parser.ParseDocument(_wd.PageSource);
-            var tbl = dom.GetElementById("myTable");
-
-            var trs = tbl.GetElementsByTagName("tr");
-            int nx = trs.Count<AngleSharp.Dom.IElement>();
+            var tbl = _wd.FindElement(By.Id("myTable"));
+            var trs = tbl.FindElements(By.TagName("tr"));
+            int nx = trs.Count<IWebElement>();
             for (int i = 1; i < nx; i++)
             {
-                var tds = trs.ElementAt<AngleSharp.Dom.IElement>(i).GetElementsByTagName("td");
-
+                var tds = trs.ElementAt<IWebElement>(i).FindElements(By.TagName("td"));
                 List<string> row = new List<string>();
-                string id = TextUtil.text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(0).TextContent);
-                string name = TextUtil.text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(1).TextContent);
-                string note = TextUtil.text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(2).TextContent);
-                string period = TextUtil.text_clean(tds.ElementAt<AngleSharp.Dom.IElement>(4).TextContent);
+                string id = TextUtil.text_clean(tds.ElementAt<IWebElement>(0).Text);
+                string name = TextUtil.text_clean(tds.ElementAt<IWebElement>(1).Text);
+                string note = TextUtil.text_clean(tds.ElementAt<IWebElement>(2).Text);
+                string period = TextUtil.text_clean(tds.ElementAt<IWebElement>(4).Text);
                 row.Add(id);
                 row.Add(name);
                 row.Add(note);
