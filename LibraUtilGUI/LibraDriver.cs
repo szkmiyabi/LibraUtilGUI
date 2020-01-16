@@ -504,6 +504,8 @@ namespace LibraUtilGUI
                 {
                     var td = tds.ElementAt<HtmlAgilityPack.HtmlNode>(j);
                     string td_val = td.InnerHtml;
+                    td_val = td_val.TrimStart().TrimEnd();
+
                     //コメント列
                     if(col_num == 4)
                     {
