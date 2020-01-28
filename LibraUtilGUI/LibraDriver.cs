@@ -32,8 +32,8 @@ namespace LibraUtilGUI
         private string rep_index_url_base = "http://jis.infocreate.co.jp/diagnose/indexv2/report/projID/";
         private string rep_detail_url_base = "http://jis.infocreate.co.jp/diagnose/indexv2/report2/projID/";
         private string sv_mainpage_url_base = "http://jis.infocreate.co.jp/diagnose/indexv2/index/projID/";
-        private string guideline_file_name = "guideline_datas.txt";
-        private List<List<string>> rep_data;
+        private string completed_site_url = "https://jis.infocreate.co.jp/index/end/";
+        private string certificated_site_url = "https://jis.infocreate.co.jp/index/rediagnose/";
         private string _basic_auth_flag;
         private Boolean _basic_authenicated;
         private string workDir;
@@ -50,8 +50,6 @@ namespace LibraUtilGUI
             midWait = appWait[2];
             shortWait = appWait[3];
             this.workDir = workDir;
-
-            //レポートデータ初期化
 
             //basic認証フラグ
             _basic_auth_flag = basic_auth_flag;
@@ -172,6 +170,18 @@ namespace LibraUtilGUI
         public void home()
         {
             _wd.Navigate().GoToUrl(app_url);
+        }
+
+        //検査終了サイト一覧ページを開く
+        public void completed_site()
+        {
+            _wd.Navigate().GoToUrl(completed_site_url);
+        }
+
+        //証明書発行サイト一覧ページを開く
+        public void certificated_site()
+        {
+            _wd.Navigate().GoToUrl(certificated_site_url);
         }
 
         //シャットダウン

@@ -44,12 +44,28 @@ namespace LibraUtilGUI
                 ldr.login();
                 DateUtil.app_sleep(shortWait);
 
-                List<List<string>> data = ldr.get_site_list();
 
                 //タスクのキャンセル判定
                 if ((Boolean)this.Invoke(canceler)) return;
 
                 this.Invoke(message, "サイト一覧を取得しています。（" + DateUtil.get_logtime() + "）");
+                List<List<string>> data = new List<List<string>>();
+                data.AddRange(ldr.get_site_list());
+
+                this.Invoke(message, "検査終了サイト一覧を取得しています。（" + DateUtil.get_logtime() + "）");
+                ldr.completed_site();
+                DateUtil.app_sleep(shortWait);
+                data.AddRange(ldr.get_site_list());
+
+                this.Invoke(message, "証明書発行サイト一覧を取得しています。（" + DateUtil.get_logtime() + "）");
+                ldr.certificated_site();
+                DateUtil.app_sleep(shortWait);
+                data.AddRange(ldr.get_site_list());
+
+                //タスクのキャンセル判定
+                if ((Boolean)this.Invoke(canceler)) return;
+
+
                 this.Invoke(_set_projectID_combo, data);
                 this.Invoke(message, "サイト名コンボが設定完了しました。（" + DateUtil.get_logtime() + "）");
                 ldr.logout();
