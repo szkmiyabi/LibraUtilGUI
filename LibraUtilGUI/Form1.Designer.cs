@@ -72,6 +72,8 @@
             this.PreSvTaskDL = new System.Windows.Forms.CheckBox();
             this.PreSvTaskCC = new System.Windows.Forms.CheckBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.cancelSrcTaskButton = new System.Windows.Forms.Button();
+            this.doSrcTaskButton = new System.Windows.Forms.Button();
             this.operationStatusReport = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -105,8 +107,7 @@
             this.openAsFolderButton = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.doSrcTaskButton = new System.Windows.Forms.Button();
-            this.cancelSrcTaskButton = new System.Windows.Forms.Button();
+            this.UrlTaskSrcPageIDCombo = new System.Windows.Forms.RadioButton();
             this.pageIDGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -263,11 +264,12 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.UrlTaskSrcPageIDCombo);
             this.groupBox3.Controls.Add(this.UrlTaskSrcSurvey);
             this.groupBox3.Controls.Add(this.UrlTaskSrcReport);
             this.groupBox3.Location = new System.Drawing.Point(6, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(158, 34);
+            this.groupBox3.Size = new System.Drawing.Size(231, 34);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "参照先";
@@ -275,7 +277,7 @@
             // UrlTaskSrcSurvey
             // 
             this.UrlTaskSrcSurvey.AutoSize = true;
-            this.UrlTaskSrcSurvey.Location = new System.Drawing.Point(80, 15);
+            this.UrlTaskSrcSurvey.Location = new System.Drawing.Point(150, 15);
             this.UrlTaskSrcSurvey.Name = "UrlTaskSrcSurvey";
             this.UrlTaskSrcSurvey.Size = new System.Drawing.Size(71, 16);
             this.UrlTaskSrcSurvey.TabIndex = 1;
@@ -298,7 +300,7 @@
             // 
             this.groupBox2.Controls.Add(this.UrlTaskFormatExcel);
             this.groupBox2.Controls.Add(this.UrlTaskFormatText);
-            this.groupBox2.Location = new System.Drawing.Point(310, 6);
+            this.groupBox2.Location = new System.Drawing.Point(374, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(150, 34);
             this.groupBox2.TabIndex = 2;
@@ -341,7 +343,7 @@
             // 
             this.groupBox1.Controls.Add(this.UrlTaskTypePID);
             this.groupBox1.Controls.Add(this.UrlTaskTypePIDURL);
-            this.groupBox1.Location = new System.Drawing.Point(176, 6);
+            this.groupBox1.Location = new System.Drawing.Point(244, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(123, 34);
             this.groupBox1.TabIndex = 0;
@@ -598,6 +600,25 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "SRC";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // cancelSrcTaskButton
+            // 
+            this.cancelSrcTaskButton.Location = new System.Drawing.Point(527, 67);
+            this.cancelSrcTaskButton.Name = "cancelSrcTaskButton";
+            this.cancelSrcTaskButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelSrcTaskButton.TabIndex = 1;
+            this.cancelSrcTaskButton.Text = "キャンセル";
+            this.cancelSrcTaskButton.UseVisualStyleBackColor = true;
+            // 
+            // doSrcTaskButton
+            // 
+            this.doSrcTaskButton.Location = new System.Drawing.Point(446, 67);
+            this.doSrcTaskButton.Name = "doSrcTaskButton";
+            this.doSrcTaskButton.Size = new System.Drawing.Size(75, 23);
+            this.doSrcTaskButton.TabIndex = 0;
+            this.doSrcTaskButton.Text = "処理実行";
+            this.doSrcTaskButton.UseVisualStyleBackColor = true;
+            this.doSrcTaskButton.Click += new System.EventHandler(this.doSrcTaskButton_Click);
             // 
             // operationStatusReport
             // 
@@ -926,24 +947,16 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "設定";
             // 
-            // doSrcTaskButton
+            // UrlTaskSrcPageIDCombo
             // 
-            this.doSrcTaskButton.Location = new System.Drawing.Point(446, 67);
-            this.doSrcTaskButton.Name = "doSrcTaskButton";
-            this.doSrcTaskButton.Size = new System.Drawing.Size(75, 23);
-            this.doSrcTaskButton.TabIndex = 0;
-            this.doSrcTaskButton.Text = "処理実行";
-            this.doSrcTaskButton.UseVisualStyleBackColor = true;
-            this.doSrcTaskButton.Click += new System.EventHandler(this.doSrcTaskButton_Click);
-            // 
-            // cancelSrcTaskButton
-            // 
-            this.cancelSrcTaskButton.Location = new System.Drawing.Point(527, 67);
-            this.cancelSrcTaskButton.Name = "cancelSrcTaskButton";
-            this.cancelSrcTaskButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelSrcTaskButton.TabIndex = 1;
-            this.cancelSrcTaskButton.Text = "キャンセル";
-            this.cancelSrcTaskButton.UseVisualStyleBackColor = true;
+            this.UrlTaskSrcPageIDCombo.AutoSize = true;
+            this.UrlTaskSrcPageIDCombo.Location = new System.Drawing.Point(80, 15);
+            this.UrlTaskSrcPageIDCombo.Name = "UrlTaskSrcPageIDCombo";
+            this.UrlTaskSrcPageIDCombo.Size = new System.Drawing.Size(64, 16);
+            this.UrlTaskSrcPageIDCombo.TabIndex = 2;
+            this.UrlTaskSrcPageIDCombo.TabStop = true;
+            this.UrlTaskSrcPageIDCombo.Text = "ページID";
+            this.UrlTaskSrcPageIDCombo.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1082,6 +1095,7 @@
         private System.Windows.Forms.RadioButton RepoTaskModeExcel;
         private System.Windows.Forms.Button cancelSrcTaskButton;
         private System.Windows.Forms.Button doSrcTaskButton;
+        private System.Windows.Forms.RadioButton UrlTaskSrcPageIDCombo;
     }
 }
 

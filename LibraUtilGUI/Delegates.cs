@@ -200,6 +200,7 @@ namespace LibraUtilGUI
         {
             string flag = "";
             if (UrlTaskSrcSurvey.Checked) flag = "svpage";
+            else if (UrlTaskSrcPageIDCombo.Checked) flag = "combo";
             else flag = "report";
             return flag;
         }
