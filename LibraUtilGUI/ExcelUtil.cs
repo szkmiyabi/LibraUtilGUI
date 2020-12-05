@@ -146,19 +146,19 @@ namespace LibraUtilGUI
 
                                 if (sv_val == "適合")
                                 {
-                                    ws.Cell(i + 1, j + 1).Style.Fill.BackgroundColor = XLColor.FromArgb(0x00CCFF);
+                                    ws.Cell(i + 1, j + 1).Style.Fill.BackgroundColor = XLColor.FromArgb(0x89FFFF);
                                 }
                                 else if (sv_val == "適合(注記)")
                                 {
-                                    ws.Cell(i + 1, j + 1).Style.Fill.BackgroundColor = XLColor.FromArgb(0x00FF00);
+                                    ws.Cell(i + 1, j + 1).Style.Fill.BackgroundColor = XLColor.FromArgb(0x99FF99);
                                 }
                                 else if (sv_val == "不適合")
                                 {
-                                    ws.Cell(i + 1, j + 1).Style.Fill.BackgroundColor = XLColor.FromArgb(0xFF8080);
+                                    ws.Cell(i + 1, j + 1).Style.Fill.BackgroundColor = XLColor.FromArgb(0xFFB3B3);
                                 }
                                 else if (sv_val == "非適用")
                                 {
-                                    ws.Cell(i + 1, j + 1).Style.Fill.BackgroundColor = XLColor.FromArgb(0xC0C0C0);
+                                    ws.Cell(i + 1, j + 1).Style.Fill.BackgroundColor = XLColor.FromArgb(0xDDDDDD);
                                 }
                             }
                         }
