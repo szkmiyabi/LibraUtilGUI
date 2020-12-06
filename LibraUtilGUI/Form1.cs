@@ -360,6 +360,10 @@ namespace LibraUtilGUI
         //DOM展開後ソース取得ボタンクリック
         private void doDomExpandedSrccodeButton_Click(object sender, EventArgs e)
         {
+            //CancellationTokenを発行
+            token_src = new CancellationTokenSource();
+            token = token_src.Token;
+            //処理実行
             get_dom_expanded_srccode();
         }
     }
