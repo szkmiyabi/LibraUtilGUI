@@ -356,6 +356,12 @@ namespace LibraUtilGUI
             //処理実行
             display_srccode_report();
         }
+
+        //DOM展開後ソース取得ボタンクリック
+        private void doDomExpandedSrccodeButton_Click(object sender, EventArgs e)
+        {
+            get_dom_expanded_srccode();
+        }
     }
 
 }

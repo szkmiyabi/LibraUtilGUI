@@ -54,5 +54,28 @@ namespace LibraUtilGUI
             sw.Close();
             main_form.Invoke(message, "保存に成功しました。（" + filename + "）");
         }
+
+        //テキストを指定文字コードで任意形式のファイルとして保存する
+        public void write_anyfile_encode_by(string data, string encode, string filename)
+        {
+            d_messenger message = new d_messenger(w_messenger);
+            Encoding enc = null;
+            switch(encode)
+            {
+                case "sjis":
+                    enc = System.Text.Encoding.GetEncoding("shift_jis");
+                    break;
+                case "euc":
+                    enc = System.Text.Encoding.GetEncoding("euc-jp");
+                    break;
+                default:
+                    enc = new System.Text.UTF8Encoding(false);
+                    break;
+            }
+            StreamWriter sw = new StreamWriter(filename, false, enc);
+            sw.Write(data);
+            sw.Close();
+            main_form.Invoke(message, "保存に成功しました。（" + filename + "）");
+        }
     }
 }

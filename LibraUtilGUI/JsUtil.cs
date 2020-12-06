@@ -823,5 +823,38 @@ namespace LibraUtilGUI
             jsc.Append("return str;");
             return jsc.ToString();
         }
+
+        //DOCTYPE宣言文を取得する
+        public static string get_doctype_string()
+        {
+            StringBuilder jsc = new StringBuilder();
+            jsc.Append("function outerHTML(node){");
+            jsc.Append("return node.outerHTML || (");
+            jsc.Append("function(n){");
+            jsc.Append("var div = document.createElement('div'), h;");
+            jsc.Append("div.appendChild( n.cloneNode(true) );");
+            jsc.Append("h = div.innerHTML;");
+            jsc.Append("div = null;");
+            jsc.Append("return h;");
+            jsc.Append("}");
+            jsc.Append(")(node);");
+            jsc.Append("}");
+            jsc.Append("var outerhtml = outerHTML(document.getElementsByTagName('html')[0]);");
+            jsc.Append("var node = document.doctype;");
+            jsc.Append("var doctypestring=\"\";");
+            jsc.Append("if(node) {");
+            jsc.Append("doctypestring = \"<!DOCTYPE \"");
+            jsc.Append("+ node.name");
+            jsc.Append("+ (node.publicId ? ' PUBLIC \"' + node.publicId + '\"' : '')");
+            jsc.Append("+ (!node.publicId && node.systemId ? ' SYSTEM' : '') ");
+            jsc.Append("+ (node.systemId ? ' \"' + node.systemId + '\"' : '')");
+            jsc.Append("+ '>';");
+            jsc.Append("} else {");
+            jsc.Append("doctypestring = document.all[0].text;");
+            jsc.Append("}");
+            jsc.Append("return doctypestring;");
+            return jsc.ToString();
+        }
+
     }
 }
